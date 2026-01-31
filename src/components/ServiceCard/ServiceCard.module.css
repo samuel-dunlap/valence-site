@@ -1,0 +1,42 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.title {
+  font-size: var(--fs-subheading);
+  margin: 0;
+}
+
+.tagline {
+  font-family: var(--font-heading);
+  font-size: var(--fs-body);
+  color: var(--color-burgundy);
+  margin: 0;
+}
+
+.description {
+  font-size: var(--fs-body);
+  margin: 0;
+  flex: 1;
+}
+
+.ctaLabel {
+  font-size: var(--fs-body);
+  letter-spacing: 0.02em;
+  display: inline-block;
+  padding: 0.5em 1.25em;
+  border: 1px solid var(--color-navy);
+  align-self: flex-start;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.card:hover .ctaLabel {
+  background-color: var(--color-navy);
+  color: var(--color-warm-white);
+}
