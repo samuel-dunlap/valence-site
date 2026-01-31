@@ -10,6 +10,17 @@
   padding: 0 var(--content-padding);
 }
 
+.splitContainer {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: var(--space-xl);
+  align-items: center;
+  max-width: var(--max-width);
+  padding: 0 var(--content-padding);
+}
+
 .headline {
   font-size: var(--fs-heading);
   letter-spacing: 0.02em;
@@ -31,4 +42,27 @@
 
 .cta {
   margin-top: var(--space-lg);
+}
+
+.imageWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  border-radius: var(--radius-image);
+  width: 100%;
+  height: auto;
+  max-width: 480px;
+}
+
+@media (max-width: 767px) {
+  .splitContainer {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .image {
+    max-width: 100%;
+  }
 }

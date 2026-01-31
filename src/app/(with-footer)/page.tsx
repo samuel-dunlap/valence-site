@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero/Hero";
 import ServiceCard from "@/components/ServiceCard/ServiceCard";
+import FadeIn from "@/components/FadeIn/FadeIn";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -21,26 +22,30 @@ export default function HomePage() {
         ]}
         ctaText="Request an Introduction"
         ctaHref="/inquire"
+        imageSrc="/images/home.png"
+        imageAlt="Couple in New York City"
       />
 
-      <section className={styles.services}>
-        <div className={styles.servicesGrid}>
-          <ServiceCard
-            title="The Couples Retreat"
-            tagline="Private weekends for couples."
-            description="Integrating luxury hospitality, wellness, and structured relational work to revitalize partnerships, preserve legacy, and deepen relational mastery."
-            href="/couples-retreat"
-            ctaText="Explore the Retreat"
-          />
-          <ServiceCard
-            title="The Partner Search"
-            tagline="Headhunting for your personal life."
-            description="Psychologically curated matchmaking and rigorous screening for lifetime partnership with high-quality & high-integrity women."
-            href="/partner-search"
-            ctaText="Begin the Search"
-          />
-        </div>
-      </section>
+      <FadeIn>
+        <section className={styles.services}>
+          <div className={styles.servicesGrid}>
+            <ServiceCard
+              title="The Couples Retreat"
+              tagline="Private weekends for couples."
+              description="Integrating luxury hospitality, wellness, and structured relational work to revitalize partnerships, preserve legacy, and deepen relational mastery."
+              href="/couples-retreat"
+              ctaText="Explore the Retreat"
+            />
+            <ServiceCard
+              title="The Partner Search"
+              tagline="Headhunting for your personal life."
+              description="Psychologically curated matchmaking and rigorous screening for lifetime partnership with high-quality & high-integrity women."
+              href="/partner-search"
+              ctaText="Begin the Search"
+            />
+          </div>
+        </section>
+      </FadeIn>
     </>
   );
 }

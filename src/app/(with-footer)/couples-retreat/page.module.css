@@ -58,6 +58,19 @@
   line-height: 1.7;
 }
 
+.accentWrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--content-padding);
+}
+
+.accentImage {
+  border-radius: var(--radius-image);
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+}
+
 .cta {
   padding: 2.5rem var(--content-padding) var(--section-padding);
   text-align: center;

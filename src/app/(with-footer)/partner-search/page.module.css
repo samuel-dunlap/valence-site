@@ -25,6 +25,19 @@
   gap: var(--space-xs);
 }
 
+.accentWrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--content-padding);
+}
+
+.accentImage {
+  border-radius: var(--radius-image);
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+}
+
 .methodSection {
   padding: var(--section-padding) var(--content-padding);
   max-width: var(--max-width);
