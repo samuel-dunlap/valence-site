@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(node --version:*)",
+      "Bash(npm:*)",
+      "Bash(npx create-next-app:*)",
+      "Bash(ls:*)",
+      "Bash(python3:*)",
+      "Bash(tree:*)",
+      "Bash(export PATH=\"/usr/local/bin:$PATH\")",
+      "Bash(xargs:*)",
+      "Bash(gh auth:*)",
+      "Bash(git -C /Users/samueldunlap/Downloads/Website/valence-site status -u)",
+      "Bash(git -C /Users/samueldunlap/Downloads/Website/valence-site diff --stat)",
+      "Bash(git -C /Users/samueldunlap/Downloads/Website/valence-site log --oneline -5)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(export PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\")",
+      "Bash(gh repo create:*)",
+      "Bash(gh api /repos/samuel-dunlap/valence-site --jq '.full_name + \"\" | visibility: \"\" + .visibility')"
+    ]
+  }
+}
