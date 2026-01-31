@@ -29,6 +29,7 @@
   max-width: var(--max-width);
   margin: 0 auto;
   padding: var(--space-lg) var(--content-padding);
+  text-align: center;
 }
 
 .accentImage {
