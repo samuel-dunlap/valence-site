@@ -11,7 +11,7 @@ export default function Footer() {
       <div className={styles.container}>
         <div className={styles.left}>
           <Image
-            src="/images/logo-mark-large.png"
+            src="/images/logo-mark.png"
             alt="Valence"
             width={40}
             height={40}
