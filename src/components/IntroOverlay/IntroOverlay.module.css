@@ -78,6 +78,7 @@
   overflow: hidden;
   max-width: 0;
   padding-left: 0.35em;
+  will-change: max-width;
   transition: max-width 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 

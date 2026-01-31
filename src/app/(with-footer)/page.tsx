@@ -22,7 +22,7 @@ export default function HomePage() {
         ]}
         ctaText="Request an Introduction"
         ctaHref="/inquire"
-        imageSrc="/images/home.png"
+        imageSrc="/images/home.webp"
         imageAlt="Couple in New York City"
       />
 

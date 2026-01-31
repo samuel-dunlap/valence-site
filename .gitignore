@@ -22,7 +22,10 @@
 
 # misc
 .DS_Store
+.AppleDouble
+.LSOverride
 *.pem
+Photos/
 
 # debug
 npm-debug.log*

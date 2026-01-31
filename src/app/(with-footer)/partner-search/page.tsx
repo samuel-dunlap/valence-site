@@ -13,9 +13,28 @@ export const metadata: Metadata = {
   alternates: { canonical: "/partner-search" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "The Partner Search",
+  description:
+    "Psychologically curated matchmaking and rigorous screening for lifetime partnership. Headhunting for your personal life.",
+  provider: {
+    "@type": "ProfessionalService",
+    name: "Valence",
+    url: "https://valenceprivate.com",
+  },
+  areaServed: ["New York City", "Aspen"],
+  url: "https://valenceprivate.com/partner-search",
+};
+
 export default function PartnerSearchPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <FadeIn>
         <section className={`navySection ${styles.header}`}>
           <div className={styles.headerContent}>
@@ -49,7 +68,7 @@ export default function PartnerSearchPage() {
       <FadeIn>
         <div className={styles.accentWrap}>
           <Image
-            src="/images/assessment.png"
+            src="/images/assessment.webp"
             alt="Partner assessment consultation"
             width={600}
             height={400}

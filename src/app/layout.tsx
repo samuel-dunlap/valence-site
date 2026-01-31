@@ -32,10 +32,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
     default: "Valence | Private Relationship Advisory",
-    template: "%s — : V A L E N C E .",
+    template: "%s — VALENCE",
   },
   description:
-    "Relationship Advisory for High-Net-Worth Men. NYC + Aspen.",
+    "Private relationship advisory for high-net-worth men. Expert matchmaking, couples retreats, and relational coaching in New York City and Aspen.",
   robots: { index: true, follow: true },
   icons: {
     icon: [{ url: "/images/favicon-32.png", sizes: "32x32", type: "image/png" }],
@@ -47,20 +47,18 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE.url,
     siteName: SITE.name,
-    title: "Valence | Private Relationship Advisory",
-    description: "Relationship Advisory for High-Net-Worth Men. NYC + Aspen.",
     images: [
       {
-        url: "/images/logo-mark-large.png",
-        alt: "Valence",
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Valence — Private Relationship Advisory",
       },
     ],
   },
   twitter: {
-    card: "summary",
-    title: "Valence | Private Relationship Advisory",
-    description: "Relationship Advisory for High-Net-Worth Men. NYC + Aspen.",
-    images: ["/images/logo-mark-large.png"],
+    card: "summary_large_image",
+    images: ["/images/og-image.png"],
   },
 };
 
