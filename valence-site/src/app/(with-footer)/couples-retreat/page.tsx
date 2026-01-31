@@ -89,16 +89,18 @@ export default function CouplesRetreatPage() {
         </section>
       </FadeIn>
 
-      <div className="atmosphereImage">
-        <Image
-          src="/images/aspen.jpg"
-          alt="Aspen mountain landscape"
-          fill
-          sizes="100vw"
-          style={{ objectFit: 'cover' }}
-        />
-        <div className="atmosphereOverlay" />
-      </div>
+      <FadeIn>
+        <div className={styles.accentWrap}>
+          <Image
+            src="/images/retreat.png"
+            alt="Luxury retreat with mountain views"
+            width={600}
+            height={400}
+            unoptimized
+            className={styles.accentImage}
+          />
+        </div>
+      </FadeIn>
 
       <FadeIn>
         <ComparisonColumns

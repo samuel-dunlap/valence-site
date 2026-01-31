@@ -46,16 +46,18 @@ export default function PartnerSearchPage() {
         </section>
       </FadeIn>
 
-      <div className="atmosphereImage">
-        <Image
-          src="/images/nyc.jpg"
-          alt="Upper East Side, Manhattan"
-          fill
-          sizes="100vw"
-          style={{ objectFit: 'cover' }}
-        />
-        <div className="atmosphereOverlay" />
-      </div>
+      <FadeIn>
+        <div className={styles.accentWrap}>
+          <Image
+            src="/images/assessment.png"
+            alt="Partner assessment consultation"
+            width={600}
+            height={400}
+            unoptimized
+            className={styles.accentImage}
+          />
+        </div>
+      </FadeIn>
 
       <FadeIn>
         <section className={styles.methodSection}>
