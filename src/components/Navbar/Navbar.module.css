@@ -1,0 +1,235 @@
+/* ── Skip navigation ── */
+.skipLink {
+  position: absolute;
+  top: -100%;
+  left: var(--content-padding);
+  z-index: 200;
+  padding: 0.5em 1em;
+  background-color: var(--color-navy);
+  color: var(--color-warm-white);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  text-decoration: none;
+  border: 1px solid var(--color-warm-white);
+  transition: top var(--transition-fast);
+}
+
+.skipLink:focus-visible {
+  top: 12px;
+}
+
+/* ── Navbar wrapper ── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-warm-white);
+  transition: border-color var(--transition-base);
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  border-bottom-color: rgba(0, 32, 66, 0.12);
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 28px 24px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Logo ── */
+.logo {
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 18px;
+}
+
+.logoText {
+  font-family: var(--font-heading);
+  font-size: var(--fs-subheading);
+  line-height: 1;
+}
+
+.logoLetter {
+  color: var(--color-navy);
+  letter-spacing: 0.35em;
+}
+
+.logoPunctuation {
+  color: var(--color-burgundy);
+  letter-spacing: 0;
+}
+
+.logoFull {
+  display: inline;
+}
+
+.logoMark {
+  display: none;
+}
+
+/* ── Desktop nav ── */
+.desktopNav {
+  display: flex;
+  gap: 32px;
+  padding-bottom: 20px;
+}
+
+.navLink {
+  font-size: var(--fs-body);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color var(--transition-fast);
+}
+
+.navLink:hover {
+  border-bottom-color: rgba(107, 28, 35, 0.4);
+}
+
+.active {
+  border-bottom-color: var(--color-burgundy);
+}
+
+.navLink:visited {
+  color: #4A2D3A;
+}
+
+/* ── Hamburger ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  min-width: 44px;
+  min-height: 44px;
+  position: absolute;
+  right: 20px;
+  top: 22px;
+}
+
+.hamburgerLine {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background-color: var(--color-navy);
+  border-radius: 1px;
+}
+
+/* ── Mobile overlay ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background-color: var(--color-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+
+.overlayOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+}
+
+.closeLine {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26px;
+  height: 1.5px;
+  background-color: var(--color-warm-white);
+  border-radius: 1px;
+}
+
+.closeLine:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.closeLine:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.overlayNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+.overlayLink {
+  font-size: var(--fs-heading);
+  letter-spacing: 0.05em;
+  color: var(--color-warm-white);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.overlayLink:hover {
+  opacity: 0.75;
+}
+
+.overlayLink:visited {
+  color: #C8BFB8;
+}
+
+.overlayLinkActive {
+  border-bottom: 1.5px solid var(--color-burgundy);
+  padding-bottom: 2px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+  .inner {
+    flex-direction: row;
+    justify-content: center;
+    padding: 22px 24px;
+    position: relative;
+  }
+
+  .logo {
+    margin-bottom: 0;
+  }
+
+  .logoFull {
+    display: none;
+  }
+
+  .logoMark {
+    display: inline;
+  }
+
+  .desktopNav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}

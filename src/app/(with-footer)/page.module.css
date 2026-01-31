@@ -1,0 +1,18 @@
+.services {
+  padding: var(--section-padding) var(--content-padding);
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}

@@ -1,0 +1,16 @@
+.wrapper {
+  margin-bottom: var(--space-md);
+}
+
+.rule {
+  border: none;
+  border-top: 2px solid var(--color-burgundy);
+  max-width: 100%;
+  margin: 0 0 var(--space-sm) 0;
+}
+
+.title {
+  font-size: var(--fs-subheading);
+  color: var(--color-burgundy);
+  margin: 0;
+}

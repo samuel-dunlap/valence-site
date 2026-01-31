@@ -1,0 +1,64 @@
+.header {
+  padding: var(--section-padding) var(--content-padding) 0;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.name {
+  font-size: var(--fs-heading);
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle {
+  font-family: var(--font-heading);
+  font-size: var(--fs-body);
+  color: var(--color-burgundy);
+  margin-bottom: var(--space-lg);
+}
+
+.photoWrapper {
+  max-width: 450px;
+  margin-bottom: var(--space-lg);
+}
+
+.photo {
+  border-radius: var(--radius-image);
+  width: 100%;
+  height: auto;
+}
+
+.bio {
+  max-width: var(--text-max-width);
+  line-height: 1.7;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid var(--color-burgundy);
+  margin: 0;
+}
+
+.accordionSection {
+  padding: var(--space-md) var(--content-padding) var(--section-padding);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.list {
+  list-style: disc;
+  padding-left: 1.25em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  line-height: 1.7;
+}
+
+.accordionIntro {
+  margin-bottom: var(--space-sm);
+  line-height: 1.7;
+}
+
+.accordionClosing {
+  margin-top: var(--space-sm);
+  line-height: 1.7;
+}
