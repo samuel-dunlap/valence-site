@@ -29,14 +29,15 @@
   max-width: var(--max-width);
   margin: 0 auto;
   padding: var(--space-lg) var(--content-padding);
-  text-align: center;
 }
 
 .accentImage {
+  display: block;
   border-radius: var(--radius-image);
   width: 100%;
   height: auto;
   max-width: 600px;
+  margin: 0 auto;
 }
 
 .methodSection {
