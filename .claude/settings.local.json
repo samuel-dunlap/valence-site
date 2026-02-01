@@ -52,7 +52,9 @@
       "Bash(git -C /Users/samueldunlap/Downloads/Website show 77d4b3c:CNAME)",
       "Bash(source ~/.zshrc)",
       "Bash(source ~/.bashrc)",
-      "Bash(/usr/local/bin/npm install --save-dev sharp)"
+      "Bash(/usr/local/bin/npm install --save-dev sharp)",
+      "Bash(npx tsc:*)",
+      "Bash(chmod:*)"
     ]
   }
 }

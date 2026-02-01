@@ -1,0 +1,76 @@
+name: Post-Deployment Verification
+
+on:
+  schedule:
+    # Run every 6 hours to detect issues
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: Production Health Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check site is reachable
+        run: |
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://valenceprivate.com)
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "❌ Site returned HTTP $HTTP_CODE"
+            exit 1
+          fi
+          echo "✅ Site is reachable (HTTP 200)"
+
+      - name: Check security headers
+        run: |
+          HEADERS=$(curl -I -s https://valenceprivate.com)
+
+          if ! echo "$HEADERS" | grep -q "X-Frame-Options: DENY"; then
+            echo "❌ Missing X-Frame-Options header"
+            exit 1
+          fi
+
+          if ! echo "$HEADERS" | grep -q "Content-Security-Policy"; then
+            echo "❌ Missing Content-Security-Policy header"
+            exit 1
+          fi
+
+          if ! echo "$HEADERS" | grep -q "Strict-Transport-Security"; then
+            echo "❌ Missing HSTS header"
+            exit 1
+          fi
+
+          echo "✅ All security headers present"
+
+      - name: Check critical pages
+        run: |
+          PAGES=("/" "/about/" "/couples-retreat/" "/partner-search/" "/inquire/")
+
+          for page in "${PAGES[@]}"; do
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://valenceprivate.com$page")
+            if [ "$HTTP_CODE" != "200" ]; then
+              echo "❌ Page $page returned HTTP $HTTP_CODE"
+              exit 1
+            fi
+            echo "✅ Page $page is reachable"
+          done
+
+      - name: Check CSP header does not contain unsafe-inline for scripts
+        run: |
+          CSP=$(curl -I -s https://valenceprivate.com | grep "Content-Security-Policy" || true)
+
+          if echo "$CSP" | grep -q "script-src.*'unsafe-inline'"; then
+            echo "❌ CSP contains script-src 'unsafe-inline' (should be removed)"
+            exit 1
+          fi
+
+          echo "✅ CSP does not contain script-src 'unsafe-inline'"
+
+      - name: Check cache headers
+        run: |
+          # Check images
+          IMAGE_CACHE=$(curl -I -s https://valenceprivate.com/images/home.webp | grep "Cache-Control" || true)
+          if echo "$IMAGE_CACHE" | grep -q "max-age"; then
+            echo "✅ Images have cache headers"
+          else
+            echo "⚠️ Image cache may not be optimal"
+          fi

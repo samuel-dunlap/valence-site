@@ -5,7 +5,8 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  lint:
+    name: Lint & Format Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,5 +15,71 @@ jobs:
           node-version: "20"
           cache: npm
       - run: npm ci
-      - run: npx tsc --noEmit
-      - run: npx next build
+      - run: npm run lint
+      - run: npm run format:check
+
+  typecheck:
+    name: TypeScript Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci
+      - run: npm run test
+
+  build:
+    name: Build Next.js
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci
+      - name: Restore Next.js cache
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-
+      - run: npm run build
+      - name: Check build output size
+        run: |
+          BUILD_SIZE=$(du -sh out/ | awk '{print $1}')
+          echo "::notice::Build output size: $BUILD_SIZE"
+
+  bundle-analysis:
+    name: Bundle Size Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Analyze bundle
+        run: |
+          echo "📦 Build Output Analysis:"
+          du -sh out/
+          echo ""
+          echo "📄 Top 10 Largest JavaScript Files:"
+          find out/_next/static -type f -name "*.js" -exec du -h {} \; | sort -rh | head -10
