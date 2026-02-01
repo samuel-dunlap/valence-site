@@ -1,8 +1,5 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
-import typescriptEslint from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-import prettier from "eslint-plugin-prettier";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -17,12 +14,12 @@ const compat = new FlatCompat({
 export default [
   {
     ignores: [
-      "node_modules",
-      ".next",
-      "out",
-      "*.config.js",
-      "*.config.ts",
-      "*.config.mjs",
+      "**/node_modules/**",
+      "**/.next/**",
+      "**/out/**",
+      "**/*.config.js",
+      "**/*.config.ts",
+      "**/*.config.mjs",
     ],
   },
   ...compat.extends(
@@ -31,17 +28,6 @@ export default [
     "prettier"
   ),
   {
-    plugins: {
-      "@typescript-eslint": typescriptEslint,
-      prettier,
-    },
-
-    languageOptions: {
-      parser: tsParser,
-      ecmaVersion: "latest",
-      sourceType: "module",
-    },
-
     rules: {
       "no-console": [
         "warn",
@@ -49,7 +35,6 @@ export default [
           allow: ["warn", "error"],
         },
       ],
-
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
@@ -57,7 +42,6 @@ export default [
           varsIgnorePattern: "^_",
         },
       ],
-
       "@typescript-eslint/explicit-function-return-type": "off",
       "react/no-unescaped-entities": "off",
     },
