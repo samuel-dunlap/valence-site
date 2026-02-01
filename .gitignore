@@ -42,3 +42,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Prevent accidental re-addition of unoptimized source images
+public/images/*.jpg
+!public/images/profile.jpeg
