@@ -24,3 +24,7 @@ export const NAV_LINKS = [
 ] as const;
 
 export const FOOTER_HREFS = new Set(["/", "/about", "/inquire"]);
+
+export const CTA = {
+  requestIntroduction: "Request an Introduction",
+} as const;

@@ -1,0 +1,34 @@
+/* Shared header styles for service pages */
+.header {
+  padding: var(--section-padding) var(--content-padding);
+}
+
+.headerContent {
+  position: relative;
+  z-index: 1;
+  max-width: var(--text-max-width);
+}
+
+.title {
+  font-size: var(--fs-heading);
+  margin-bottom: var(--space-md);
+}
+
+.intro {
+  margin-bottom: var(--space-md);
+}
+
+.accentWrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--content-padding);
+}
+
+.accentImage {
+  display: block;
+  border-radius: var(--radius-image);
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  margin: 0 auto;
+}
