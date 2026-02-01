@@ -4,6 +4,10 @@ import FadeIn from "@/components/FadeIn/FadeIn";
 import ArrowLink from "@/components/ArrowLink/ArrowLink";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
 import PhaseCard from "@/components/PhaseCard/PhaseCard";
+import StructuredData from "@/components/StructuredData/StructuredData";
+import { CTA } from "@/lib/constants";
+import { getServiceSchema } from "@/lib/schema";
+import sharedStyles from "@/styles/page-header.module.css";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -16,30 +20,18 @@ export const metadata: Metadata = {
 export default function PartnerSearchPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            name: "The Partner Search",
-            description:
-              "Psychologically curated matchmaking and rigorous screening for lifetime partnership. Headhunting for your personal life.",
-            provider: {
-              "@type": "ProfessionalService",
-              name: "Valence",
-              url: "https://valenceprivate.com",
-            },
-            areaServed: ["New York City", "Aspen"],
-            url: "https://valenceprivate.com/partner-search/",
-          }),
-        }}
+      <StructuredData
+        data={getServiceSchema(
+          "The Partner Search",
+          "Psychologically curated matchmaking and rigorous screening for lifetime partnership. Headhunting for your personal life.",
+          "/partner-search/"
+        )}
       />
       <FadeIn>
-        <section className={`navySection ${styles.header}`}>
-          <div className={styles.headerContent}>
-            <h1 className={styles.title}>The Partner Search</h1>
-            <p className={styles.intro}>
+        <section className={`navySection ${sharedStyles.header}`}>
+          <div className={sharedStyles.headerContent}>
+            <h1 className={sharedStyles.title}>The Partner Search</h1>
+            <p className={sharedStyles.intro}>
               You are successful, discerning, and ready for a serious
               commitment, but the open dating market is inefficient. Most men in
               your position currently:
@@ -66,14 +58,15 @@ export default function PartnerSearchPage() {
       </FadeIn>
 
       <FadeIn>
-        <div className={styles.accentWrap}>
+        <div className={sharedStyles.accentWrap}>
           <Image
             src="/images/assessment.webp"
             alt="Partner assessment consultation"
             width={1074}
             height={669}
             unoptimized
-            className={styles.accentImage}
+            loading="lazy"
+            className={sharedStyles.accentImage}
           />
         </div>
       </FadeIn>
@@ -119,7 +112,7 @@ export default function PartnerSearchPage() {
       <FadeIn>
         <section className={styles.cta}>
           <ArrowLink
-            text="Request an Introduction"
+            text={CTA.requestIntroduction}
             href="/inquire"
             variant="dark"
           />

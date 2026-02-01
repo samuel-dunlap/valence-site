@@ -4,6 +4,10 @@ import FadeIn from "@/components/FadeIn/FadeIn";
 import ArrowLink from "@/components/ArrowLink/ArrowLink";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
 import ComparisonColumns from "@/components/ComparisonColumns/ComparisonColumns";
+import StructuredData from "@/components/StructuredData/StructuredData";
+import { CTA } from "@/lib/constants";
+import { getServiceSchema } from "@/lib/schema";
+import sharedStyles from "@/styles/page-header.module.css";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -16,30 +20,18 @@ export const metadata: Metadata = {
 export default function CouplesRetreatPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            name: "The Couples Retreat",
-            description:
-              "Multi-day private training program for driven couples to develop advanced relational skills, preserve family legacy, and deepen partnership mastery.",
-            provider: {
-              "@type": "ProfessionalService",
-              name: "Valence",
-              url: "https://valenceprivate.com",
-            },
-            areaServed: ["New York City", "Aspen"],
-            url: "https://valenceprivate.com/couples-retreat/",
-          }),
-        }}
+      <StructuredData
+        data={getServiceSchema(
+          "The Couples Retreat",
+          "Multi-day private training program for driven couples to develop advanced relational skills, preserve family legacy, and deepen partnership mastery.",
+          "/couples-retreat/"
+        )}
       />
       <FadeIn>
-        <section className={`navySection ${styles.header}`}>
-          <div className={styles.headerContent}>
-            <h1 className={styles.title}>The Couples Retreat</h1>
-            <p className={styles.intro}>
+        <section className={`navySection ${sharedStyles.header}`}>
+          <div className={sharedStyles.headerContent}>
+            <h1 className={sharedStyles.title}>The Couples Retreat</h1>
+            <p className={sharedStyles.intro}>
               Your family legacy is the ultimate expression of your
               relationship&rsquo;s value. Yet the unique pressures from growing
               and preserving your legacy threaten your relationship. When your
@@ -109,14 +101,15 @@ export default function CouplesRetreatPage() {
       </FadeIn>
 
       <FadeIn>
-        <div className={styles.accentWrap}>
+        <div className={sharedStyles.accentWrap}>
           <Image
             src="/images/retreat.webp"
             alt="Luxury retreat with mountain views"
             width={1018}
             height={661}
             unoptimized
-            className={styles.accentImage}
+            loading="lazy"
+            className={sharedStyles.accentImage}
           />
         </div>
       </FadeIn>
@@ -143,7 +136,7 @@ export default function CouplesRetreatPage() {
 
       <section className={`navySection ${styles.cta}`}>
         <ArrowLink
-          text="Request an Introduction"
+          text={CTA.requestIntroduction}
           href="/inquire"
           variant="light"
         />

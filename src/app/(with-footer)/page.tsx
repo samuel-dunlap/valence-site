@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Hero from "@/components/Hero/Hero";
 import ServiceCard from "@/components/ServiceCard/ServiceCard";
 import FadeIn from "@/components/FadeIn/FadeIn";
+import { CTA } from "@/lib/constants";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function HomePage() {
           "Relationship Advisory for High-Net-Worth Men.",
           "NYC + Aspen.",
         ]}
-        ctaText="Request an Introduction"
+        ctaText={CTA.requestIntroduction}
         ctaHref="/inquire"
         imageSrc="/images/home.webp"
         imageAlt="Couple in New York City"
