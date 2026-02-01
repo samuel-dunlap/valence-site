@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Inquire",
   description:
     "Request a confidential introduction to Valence Private Relationship Advisory. Response within 24 hours.",
-  alternates: { canonical: "/inquire" },
+  alternates: { canonical: "/inquire/" },
 };
 
 export default function InquirePage() {

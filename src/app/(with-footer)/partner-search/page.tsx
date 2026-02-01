@@ -4,13 +4,14 @@ import FadeIn from "@/components/FadeIn/FadeIn";
 import ArrowLink from "@/components/ArrowLink/ArrowLink";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
 import PhaseCard from "@/components/PhaseCard/PhaseCard";
+import { SITE } from "@/lib/constants";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Partner Search",
   description:
     "Psychologically curated matchmaking and rigorous screening for lifetime partnership. Headhunting for your personal life.",
-  alternates: { canonical: "/partner-search" },
+  alternates: { canonical: "/partner-search/" },
 };
 
 const jsonLd = {
@@ -22,10 +23,10 @@ const jsonLd = {
   provider: {
     "@type": "ProfessionalService",
     name: "Valence",
-    url: "https://valenceprivate.com",
+    url: SITE.url,
   },
   areaServed: ["New York City", "Aspen"],
-  url: "https://valenceprivate.com/partner-search",
+  url: `${SITE.url}/partner-search/`,
 };
 
 export default function PartnerSearchPage() {
@@ -70,8 +71,8 @@ export default function PartnerSearchPage() {
           <Image
             src="/images/assessment.webp"
             alt="Partner assessment consultation"
-            width={600}
-            height={400}
+            width={1074}
+            height={669}
             unoptimized
             className={styles.accentImage}
           />

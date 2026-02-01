@@ -4,13 +4,14 @@ import FadeIn from "@/components/FadeIn/FadeIn";
 import ArrowLink from "@/components/ArrowLink/ArrowLink";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
 import ComparisonColumns from "@/components/ComparisonColumns/ComparisonColumns";
+import { SITE } from "@/lib/constants";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Couples Retreat",
   description:
     "Multi-day private training program for driven couples to develop advanced relational skills, preserve family legacy, and deepen partnership mastery.",
-  alternates: { canonical: "/couples-retreat" },
+  alternates: { canonical: "/couples-retreat/" },
 };
 
 const jsonLd = {
@@ -22,10 +23,10 @@ const jsonLd = {
   provider: {
     "@type": "ProfessionalService",
     name: "Valence",
-    url: "https://valenceprivate.com",
+    url: SITE.url,
   },
   areaServed: ["New York City", "Aspen"],
-  url: "https://valenceprivate.com/couples-retreat",
+  url: `${SITE.url}/couples-retreat/`,
 };
 
 export default function CouplesRetreatPage() {
@@ -113,8 +114,8 @@ export default function CouplesRetreatPage() {
           <Image
             src="/images/retreat.webp"
             alt="Luxury retreat with mountain views"
-            width={600}
-            height={400}
+            width={1018}
+            height={661}
             unoptimized
             className={styles.accentImage}
           />

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Samuel Dunlap — Relationship Advisor & Researcher. Ranked #1 therapist on Google in NYC. 10,000+ hours advising 300+ high-performing clients.",
-  alternates: { canonical: "/about" },
+  alternates: { canonical: "/about/" },
 };
 
 export default function AboutPage() {
