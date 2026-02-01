@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { usePathname } from 'next/navigation';
-import { useState, useEffect, useCallback, useRef } from 'react';
-import Link from 'next/link';
-import { SITE, NAV_LINKS } from '@/lib/constants';
-import styles from './Navbar.module.css';
+import { usePathname } from "next/navigation";
+import { useState, useEffect, useCallback, useRef } from "react";
+import Link from "next/link";
+import { SITE, NAV_LINKS } from "@/lib/constants";
+import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -16,37 +16,37 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 0);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
       if (menuRef.current) {
-        const closeBtn = menuRef.current.querySelector('button');
+        const closeBtn = menuRef.current.querySelector("button");
         closeBtn?.focus();
       }
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [menuOpen]);
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
-  const renderLogo = (variant: 'full' | 'mark') => {
-    const text = variant === 'full' ? SITE.logoFull : SITE.logoMark;
+  const renderLogo = (variant: "full" | "mark") => {
+    const text = variant === "full" ? SITE.logoFull : SITE.logoMark;
     return (
       <span className={styles.logoText}>
-        {text.split('').map((char, i) => (
+        {text.split("").map((char, i) => (
           <span
             key={`${char}-${i}`}
             className={
-              char === ':' || char === '.'
+              char === ":" || char === "."
                 ? styles.logoPunctuation
                 : styles.logoLetter
             }
@@ -63,13 +63,11 @@ export default function Navbar() {
       <a href="#main-content" className={styles.skipLink}>
         Skip to main content
       </a>
-      <header
-        className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}
-      >
+      <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
         <div className={styles.inner}>
           <Link href="/" className={styles.logo} aria-label="Valence Home">
-            <span className={styles.logoFull}>{renderLogo('full')}</span>
-            <span className={styles.logoMark}>{renderLogo('mark')}</span>
+            <span className={styles.logoFull}>{renderLogo("full")}</span>
+            <span className={styles.logoMark}>{renderLogo("mark")}</span>
           </Link>
 
           <nav className={styles.desktopNav} aria-label="Main navigation">
@@ -78,7 +76,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`${styles.navLink} ${
-                  pathname === link.href ? styles.active : ''
+                  pathname === link.href ? styles.active : ""
                 }`}
               >
                 {link.label}
@@ -101,7 +99,7 @@ export default function Navbar() {
 
       <div
         ref={menuRef}
-        className={`${styles.overlay} ${menuOpen ? styles.overlayOpen : ''}`}
+        className={`${styles.overlay} ${menuOpen ? styles.overlayOpen : ""}`}
         role="dialog"
         aria-modal="true"
         aria-hidden={!menuOpen}
@@ -123,7 +121,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={`${styles.overlayLink} ${
-                pathname === link.href ? styles.overlayLinkActive : ''
+                pathname === link.href ? styles.overlayLinkActive : ""
               }`}
               onClick={closeMenu}
               tabIndex={menuOpen ? 0 : -1}

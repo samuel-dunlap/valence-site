@@ -1,15 +1,6 @@
-import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
+import nextConfig from "eslint-config-next/core-web-vitals";
+import tseslint from "typescript-eslint";
+import prettierConfig from "eslint-config-prettier";
 
 export default [
   {
@@ -22,11 +13,9 @@ export default [
       "**/*.config.mjs",
     ],
   },
-  ...compat.extends(
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ),
+  ...nextConfig,
+  ...tseslint.configs.recommended,
+  prettierConfig,
   {
     rules: {
       "no-console": [

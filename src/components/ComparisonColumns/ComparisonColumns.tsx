@@ -1,4 +1,4 @@
-import styles from './ComparisonColumns.module.css';
+import styles from "./ComparisonColumns.module.css";
 
 interface ComparisonColumnsProps {
   leftTitle: string;
@@ -21,7 +21,10 @@ export default function ComparisonColumns({
             <h3 className={styles.columnTitle}>{leftTitle}</h3>
             <ul className={styles.list}>
               {leftItems.map((item, i) => (
-                <li key={`left-${i}-${item.slice(0, 30)}`} className={styles.item}>
+                <li
+                  key={`left-${i}-${item.slice(0, 30)}`}
+                  className={styles.item}
+                >
                   {item}
                 </li>
               ))}
@@ -31,7 +34,10 @@ export default function ComparisonColumns({
             <h3 className={styles.columnTitle}>{rightTitle}</h3>
             <ul className={styles.list}>
               {rightItems.map((item, i) => (
-                <li key={`right-${i}-${item.slice(0, 30)}`} className={styles.item}>
+                <li
+                  key={`right-${i}-${item.slice(0, 30)}`}
+                  className={styles.item}
+                >
                   {item}
                 </li>
               ))}

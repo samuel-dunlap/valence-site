@@ -4,7 +4,6 @@ import FadeIn from "@/components/FadeIn/FadeIn";
 import ArrowLink from "@/components/ArrowLink/ArrowLink";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
 import PhaseCard from "@/components/PhaseCard/PhaseCard";
-import { SITE } from "@/lib/constants";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -17,7 +16,25 @@ export const metadata: Metadata = {
 export default function PartnerSearchPage() {
   return (
     <>
-      <script type="application/ld+json" src="/schema/partner-search.json" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "The Partner Search",
+            description:
+              "Psychologically curated matchmaking and rigorous screening for lifetime partnership. Headhunting for your personal life.",
+            provider: {
+              "@type": "ProfessionalService",
+              name: "Valence",
+              url: "https://valenceprivate.com",
+            },
+            areaServed: ["New York City", "Aspen"],
+            url: "https://valenceprivate.com/partner-search/",
+          }),
+        }}
+      />
       <FadeIn>
         <section className={`navySection ${styles.header}`}>
           <div className={styles.headerContent}>

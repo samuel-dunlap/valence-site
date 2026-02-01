@@ -23,4 +23,4 @@ export const NAV_LINKS = [
   { href: "/inquire", label: "Inquire" },
 ] as const;
 
-export const FOOTER_HREFS = new Set(['/', '/about', '/inquire']);
+export const FOOTER_HREFS = new Set(["/", "/about", "/inquire"]);

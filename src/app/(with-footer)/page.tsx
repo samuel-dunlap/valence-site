@@ -15,7 +15,13 @@ export default function HomePage() {
   return (
     <>
       <Hero
-        headline={<>Finding and Mastering<br />Lifelong Partnership</>}
+        headline={
+          <>
+            Finding and Mastering
+            <br />
+            Lifelong Partnership
+          </>
+        }
         subtitleLines={[
           "Relationship Advisory for High-Net-Worth Men.",
           "NYC + Aspen.",

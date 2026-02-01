@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useRef, useEffect, useCallback } from 'react';
-import styles from './Accordion.module.css';
+import { useState, useRef, useEffect, useCallback } from "react";
+import styles from "./Accordion.module.css";
 
 interface AccordionSection {
   title: string;
@@ -26,9 +26,7 @@ export default function Accordion({ sections }: AccordionProps) {
   const [heights, setHeights] = useState<number[]>([]);
 
   const measureHeights = useCallback(() => {
-    const measured = contentRefs.current.map(
-      (ref) => ref?.scrollHeight ?? 0
-    );
+    const measured = contentRefs.current.map((ref) => ref?.scrollHeight ?? 0);
     setHeights(measured);
   }, []);
 
@@ -75,7 +73,7 @@ export default function Accordion({ sections }: AccordionProps) {
             >
               <span className={styles.title}>{section.title}</span>
               <span
-                className={`${styles.indicator} ${isOpen ? styles.indicatorOpen : ''}`}
+                className={`${styles.indicator} ${isOpen ? styles.indicatorOpen : ""}`}
                 aria-hidden="true"
               >
                 +
@@ -85,12 +83,14 @@ export default function Accordion({ sections }: AccordionProps) {
             <div
               className={styles.contentWrapper}
               style={{
-                maxHeight: isOpen ? `${heights[i] ?? 0}px` : '0px',
+                maxHeight: isOpen ? `${heights[i] ?? 0}px` : "0px",
               }}
             >
               <div
                 className={styles.content}
-                ref={(el) => { contentRefs.current[i] = el; }}
+                ref={(el) => {
+                  contentRefs.current[i] = el;
+                }}
               >
                 {section.content}
               </div>

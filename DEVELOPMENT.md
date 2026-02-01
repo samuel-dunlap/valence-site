@@ -32,12 +32,14 @@ Open http://localhost:3000
 ## Pre-commit Hooks
 
 Husky runs lint-staged before each commit:
+
 - Auto-formats TypeScript/TSX files with Prettier
 - Runs ESLint with auto-fix
 - Formats JSON, Markdown, and CSS files
 - Blocks commit if linting errors remain
 
 To bypass hooks (not recommended):
+
 ```bash
 git commit --no-verify
 ```
@@ -131,11 +133,13 @@ npm run test:coverage
 ### Before Pushing
 
 Always run validation before creating a PR:
+
 ```bash
 npm run validate
 ```
 
 This runs:
+
 1. TypeScript type checking
 2. ESLint (code quality)
 3. Prettier (formatting check)
@@ -143,6 +147,7 @@ This runs:
 ### CI Checks
 
 Pull requests trigger these checks in parallel:
+
 - ✅ Lint & Format Check
 - ✅ TypeScript Type Check
 - ✅ Unit Tests
@@ -154,6 +159,7 @@ All must pass before merging.
 ## Deployment
 
 ### Production
+
 1. Push to `main` branch
 2. Cloudflare Pages auto-detects push
 3. Runs `npm ci && npm run build`
@@ -161,6 +167,7 @@ All must pass before merging.
 5. Site live at https://valenceprivate.com
 
 ### Preview Deployments
+
 - Every PR gets automatic preview URL
 - Format: `https://[commit-hash].valence-site.pages.dev`
 - Updated on each push to PR branch
@@ -169,6 +176,7 @@ All must pass before merging.
 ## Troubleshooting
 
 ### Build fails locally but works in CI
+
 ```bash
 # Clear Next.js cache
 rm -rf .next
@@ -179,6 +187,7 @@ npm install
 ```
 
 ### Pre-commit hook not running
+
 ```bash
 # Reinstall Husky hooks
 npx husky init
@@ -186,6 +195,7 @@ chmod +x .husky/pre-commit
 ```
 
 ### Tests fail with module resolution errors
+
 ```bash
 # Clear Vitest cache
 npx vitest --clearCache
@@ -195,6 +205,7 @@ node -v
 ```
 
 ### TypeScript errors in IDE but not CLI
+
 ```bash
 # Restart TypeScript server in VS Code
 # Command Palette (Cmd+Shift+P) → "TypeScript: Restart TS Server"
@@ -203,6 +214,7 @@ node -v
 ```
 
 ### Build succeeds but site broken
+
 ```bash
 # Test production build locally
 npm run build
@@ -214,12 +226,14 @@ python3 -m http.server 8000
 ## Image Optimization
 
 All images should be:
+
 - **Format:** WebP (smaller file size, better quality)
 - **Optimization:** Use Sharp or similar tools before adding to repo
 - **Location:** `public/images/`
 - **Naming:** Descriptive, lowercase, hyphens (e.g., `home-hero.webp`)
 
 To convert and optimize images:
+
 ```bash
 # Install sharp-cli
 npm install -g sharp-cli
@@ -231,11 +245,13 @@ sharp -i input.jpg -o output.webp -f webp -q 80
 ## SEO & Structured Data
 
 JSON-LD schemas are stored in `public/schema/` and loaded via external `<script>` tags. This approach:
+
 - Strengthens CSP (no inline scripts)
 - Makes schemas easy to validate and update
 - Keeps component code clean
 
 Update schemas when:
+
 - Business information changes
 - Service offerings change
 - SEO requirements evolve
@@ -247,6 +263,7 @@ Validate with: https://search.google.com/test/rich-results
 Currently none required (static site).
 
 If you need to add environment variables:
+
 1. Add to Cloudflare Pages dashboard (Settings → Environment variables)
 2. Set scope (Production / Preview)
 3. Redeploy for changes to take effect
@@ -255,12 +272,15 @@ If you need to add environment variables:
 ## Performance Monitoring
 
 ### Build Output Size
+
 CI reports build size on every PR. Target: < 3MB total.
 
 ### Bundle Analysis
+
 CI shows top 10 largest JavaScript files. Investigate if any single file > 500KB.
 
 ### Lighthouse CI (future)
+
 Consider adding Lighthouse CI for automated performance/accessibility audits.
 
 ## Contributing
@@ -276,6 +296,7 @@ Consider adding Lighthouse CI for automated performance/accessibility audits.
 ## Support
 
 For questions or issues:
+
 - Check this guide first
 - Review the [plan file](/.claude/plans/) for architectural decisions
 - Check GitHub Issues

@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { SITE, NAV_LINKS, FOOTER_HREFS } from '@/lib/constants';
-import styles from './Footer.module.css';
+import Image from "next/image";
+import Link from "next/link";
+import { SITE, NAV_LINKS, FOOTER_HREFS } from "@/lib/constants";
+import styles from "./Footer.module.css";
 
 const FOOTER_LINKS = NAV_LINKS.filter((l) => FOOTER_HREFS.has(l.href));
 
@@ -19,11 +19,13 @@ export default function Footer() {
           />
           <p className={styles.text}>{SITE.copyright}</p>
           <p className={styles.text}>
-            {SITE.address.street}, {SITE.address.city}, {SITE.address.state}{' '}
+            {SITE.address.street}, {SITE.address.city}, {SITE.address.state}{" "}
             {SITE.address.zip}
           </p>
           <p className={styles.text}>
-            <a href={`tel:${SITE.phone.replace(/[^\d+]/g, '')}`}>{SITE.phone}</a>
+            <a href={`tel:${SITE.phone.replace(/[^\d+]/g, "")}`}>
+              {SITE.phone}
+            </a>
           </p>
         </div>
         <nav className={styles.nav}>

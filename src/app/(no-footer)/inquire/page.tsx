@@ -15,7 +15,8 @@ export default function InquirePage() {
       <div className={styles.content}>
         <h1 className={styles.heading}>Inquire</h1>
         <p className={styles.subtitle}>
-          Please tell us about yourself, your current priorities, and how you discovered us.
+          Please tell us about yourself, your current priorities, and how you
+          discovered us.
           <br />
           Confidential by default. Response within 24 hours.
         </p>

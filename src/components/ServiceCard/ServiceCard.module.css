@@ -33,7 +33,9 @@
   padding: 0.5em 1.25em;
   border: 1px solid var(--color-navy);
   align-self: flex-start;
-  transition: background-color var(--transition-fast), color var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .card:hover .ctaLabel {

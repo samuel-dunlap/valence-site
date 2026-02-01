@@ -31,9 +31,9 @@ export default function AboutPage() {
             />
           </div>
           <p className={styles.bio}>
-            After years of practicing as a clinical couples therapist, Samuel has
-            transitioned exclusively to private advisory for high-net-worth men
-            in New York City and Aspen, CO.
+            After years of practicing as a clinical couples therapist, Samuel
+            has transitioned exclusively to private advisory for high-net-worth
+            men in New York City and Aspen, CO.
           </p>
         </section>
       </FadeIn>
@@ -48,9 +48,7 @@ export default function AboutPage() {
                 defaultOpen: true,
                 content: (
                   <ul className={styles.list}>
-                    <li>
-                      Ranked #1 therapist on Google in New York City.
-                    </li>
+                    <li>Ranked #1 therapist on Google in New York City.</li>
                     <li>
                       Advises a diverse range of high-performing clients, from
                       Olympic athletes to executives at organizations including
@@ -98,20 +96,16 @@ export default function AboutPage() {
                         Psychoanalytic (Depth) &amp; Existential-Humanistic
                         psychology
                       </li>
-                      <li>
-                        Developmental &amp; Transpersonal psychology
-                      </li>
+                      <li>Developmental &amp; Transpersonal psychology</li>
                       <li>Social &amp; Evolutionary psychology</li>
-                      <li>
-                        Psychology of marriage and intimate relationships
-                      </li>
+                      <li>Psychology of marriage and intimate relationships</li>
                       <li>
                         Complexity science &amp; Bayesian math (as modeling
                         systems)
                       </li>
                       <li>
-                        Metaphysics and Non-dual wisdom traditions (as ontological
-                        tools)
+                        Metaphysics and Non-dual wisdom traditions (as
+                        ontological tools)
                       </li>
                     </ul>
                     <p className={styles.accordionClosing}>

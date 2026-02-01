@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import styles from './IntroOverlay.module.css';
+import { useState, useEffect } from "react";
+import styles from "./IntroOverlay.module.css";
 
-const INTRO_KEY = 'valence-intro-seen';
-const EXPAND_LETTERS = ['A', 'L', 'E', 'N', 'C', 'E'];
+const INTRO_KEY = "valence-intro-seen";
+const EXPAND_LETTERS = ["A", "L", "E", "N", "C", "E"];
 
 const TIMING = {
   SHOW_MARK: 35,
@@ -13,23 +13,29 @@ const TIMING = {
   COMPLETE: 1575,
 } as const;
 
-type Phase = 'initial' | 'mark' | 'expand' | 'exit' | 'done';
+type Phase = "initial" | "mark" | "expand" | "exit" | "done";
 
 export default function IntroOverlay() {
-  const [phase, setPhase] = useState<Phase>('initial');
+  const [phase, setPhase] = useState<Phase>(() => {
+    // Initialize state based on sessionStorage (client-side only)
+    if (typeof window !== "undefined" && sessionStorage.getItem(INTRO_KEY)) {
+      return "done";
+    }
+    return "initial";
+  });
 
   useEffect(() => {
-    if (sessionStorage.getItem(INTRO_KEY)) {
-      setPhase('done');
+    // Skip animation if already seen
+    if (phase === "done") {
       return;
     }
 
-    const t1 = setTimeout(() => setPhase('mark'), TIMING.SHOW_MARK);
-    const t2 = setTimeout(() => setPhase('expand'), TIMING.START_EXPAND);
-    const t3 = setTimeout(() => setPhase('exit'), TIMING.START_EXIT);
+    const t1 = setTimeout(() => setPhase("mark"), TIMING.SHOW_MARK);
+    const t2 = setTimeout(() => setPhase("expand"), TIMING.START_EXPAND);
+    const t3 = setTimeout(() => setPhase("exit"), TIMING.START_EXIT);
     const t4 = setTimeout(() => {
-      setPhase('done');
-      sessionStorage.setItem(INTRO_KEY, '1');
+      setPhase("done");
+      sessionStorage.setItem(INTRO_KEY, "1");
     }, TIMING.COMPLETE);
 
     return () => {
@@ -38,36 +44,44 @@ export default function IntroOverlay() {
       clearTimeout(t3);
       clearTimeout(t4);
     };
-  }, []);
+  }, [phase]);
 
-  if (phase === 'done') return null;
+  if (phase === "done") return null;
 
-  const showMark = phase !== 'initial';
-  const expanded = phase === 'expand' || phase === 'exit';
-  const exiting = phase === 'exit';
+  const showMark = phase !== "initial";
+  const expanded = phase === "expand" || phase === "exit";
+  const exiting = phase === "exit";
 
   return (
     <div
-      className={`${styles.overlay} ${exiting ? styles.exiting : ''}`}
+      className={`${styles.overlay} ${exiting ? styles.exiting : ""}`}
       aria-hidden="true"
     >
-      <div className={`${styles.wordmark} ${showMark ? styles.visible : ''}`}>
-        <span className={`${styles.colon} ${expanded ? styles.punctuationVisible : ''}`}>:</span>
+      <div className={`${styles.wordmark} ${showMark ? styles.visible : ""}`}>
+        <span
+          className={`${styles.colon} ${expanded ? styles.punctuationVisible : ""}`}
+        >
+          :
+        </span>
         <span className={styles.letter}>V</span>
         <span
-          className={`${styles.expandGroup} ${expanded ? styles.expanded : ''}`}
+          className={`${styles.expandGroup} ${expanded ? styles.expanded : ""}`}
         >
           {EXPAND_LETTERS.map((char, i) => (
             <span
               key={`letter-${char}-${i}`}
               className={styles.expandLetter}
-              style={{ transitionDelay: expanded ? `${i * 60}ms` : '0ms' }}
+              style={{ transitionDelay: expanded ? `${i * 60}ms` : "0ms" }}
             >
               {char}
             </span>
           ))}
         </span>
-        <span className={`${styles.period} ${expanded ? styles.punctuationVisible : ''}`}>.</span>
+        <span
+          className={`${styles.period} ${expanded ? styles.punctuationVisible : ""}`}
+        >
+          .
+        </span>
       </div>
     </div>
   );

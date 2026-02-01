@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import styles from './ServiceCard.module.css';
+import Link from "next/link";
+import styles from "./ServiceCard.module.css";
 
 interface ServiceCardProps {
   title: string;
@@ -9,7 +9,13 @@ interface ServiceCardProps {
   ctaText?: string;
 }
 
-export default function ServiceCard({ title, tagline, description, href, ctaText = "Learn more" }: ServiceCardProps) {
+export default function ServiceCard({
+  title,
+  tagline,
+  description,
+  href,
+  ctaText = "Learn more",
+}: ServiceCardProps) {
   return (
     <Link href={href} className={styles.card}>
       <h2 className={styles.title}>{title}</h2>

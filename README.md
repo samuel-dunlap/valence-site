@@ -14,13 +14,13 @@ Marketing website for [Valence](https://valenceprivate.com), a private relations
 
 ## Pages
 
-| Route | Description |
-|-------|-------------|
-| `/` | Home — service overview and hero |
-| `/about` | About — founder bio, track record, and research background |
-| `/couples-retreat` | Couples Retreat — multi-day training program details |
-| `/partner-search` | Partner Search — matchmaking methodology and process |
-| `/inquire` | Inquire — contact information |
+| Route              | Description                                                |
+| ------------------ | ---------------------------------------------------------- |
+| `/`                | Home — service overview and hero                           |
+| `/about`           | About — founder bio, track record, and research background |
+| `/couples-retreat` | Couples Retreat — multi-day training program details       |
+| `/partner-search`  | Partner Search — matchmaking methodology and process       |
+| `/inquire`         | Inquire — contact information                              |
 
 ## Development
 
@@ -115,6 +115,7 @@ All checks must pass before merging.
 The `public/_headers` file defines security and cache headers. Cloudflare Pages **automatically applies** these headers (no manual configuration needed).
 
 **Security headers:**
+
 - `X-Frame-Options: DENY` — Prevents clickjacking
 - `Content-Security-Policy` — Strict CSP with **no `unsafe-inline` for scripts**
 - `Strict-Transport-Security` — HSTS with 1-year max-age and preload
@@ -123,6 +124,7 @@ The `public/_headers` file defines security and cache headers. Cloudflare Pages 
 - `Permissions-Policy` — Disables unnecessary browser features
 
 **Verify headers:**
+
 ```bash
 curl -I https://valenceprivate.com | grep "X-Frame-Options"
 # Expected: X-Frame-Options: DENY
@@ -132,16 +134,17 @@ curl -I https://valenceprivate.com | grep "X-Frame-Options"
 
 Tiered cache policy defined in `_headers`:
 
-| Path | Cache Duration | Notes |
-|------|---------------|-------|
-| `/_next/static/*` | 1 year, immutable | Hashed filenames — safe to cache indefinitely |
-| `/images/*` | 30 days | Optimized WebP images |
-| `/site.webmanifest` | 1 week | PWA manifest |
-| `/robots.txt`, `/sitemap.xml` | 1 hour | May update frequently |
+| Path                          | Cache Duration    | Notes                                         |
+| ----------------------------- | ----------------- | --------------------------------------------- |
+| `/_next/static/*`             | 1 year, immutable | Hashed filenames — safe to cache indefinitely |
+| `/images/*`                   | 30 days           | Optimized WebP images                         |
+| `/site.webmanifest`           | 1 week            | PWA manifest                                  |
+| `/robots.txt`, `/sitemap.xml` | 1 hour            | May update frequently                         |
 
 ### Cloudflare Web Analytics
 
 Cloudflare automatically injects its analytics beacon script. The CSP explicitly allows:
+
 - `https://static.cloudflareinsights.com` (script source)
 - `https://cloudflareinsights.com` (analytics endpoint)
 
@@ -157,6 +160,7 @@ Cloudflare automatically injects its analytics beacon script. The CSP explicitly
 - **sitemap.xml** — Dynamic sitemap covering all 5 public pages
 
 **Why external JSON-LD?**
+
 - Strengthens CSP (no inline scripts, eliminates `script-src 'unsafe-inline'`)
 - Easy to validate and update schemas
 - Keeps component code clean
@@ -174,19 +178,24 @@ npm run test:coverage  # Coverage report
 ```
 
 Example tests:
-- [src/components/__tests__/Navbar.test.tsx](src/components/__tests__/Navbar.test.tsx)
-- [src/lib/__tests__/constants.test.ts](src/lib/__tests__/constants.test.ts)
+
+- [src/components/**tests**/Navbar.test.tsx](src/components/__tests__/Navbar.test.tsx)
+- [src/lib/**tests**/constants.test.ts](src/lib/__tests__/constants.test.ts)
 
 ## Code Quality
 
 ### Pre-commit Hooks
+
 Husky + lint-staged auto-format code before each commit:
+
 - Runs ESLint with auto-fix
 - Formats with Prettier
 - Blocks commit if errors remain
 
 ### Validation
+
 Before pushing, run:
+
 ```bash
 npm run validate
 ```

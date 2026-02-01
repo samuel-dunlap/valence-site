@@ -4,7 +4,6 @@ import FadeIn from "@/components/FadeIn/FadeIn";
 import ArrowLink from "@/components/ArrowLink/ArrowLink";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
 import ComparisonColumns from "@/components/ComparisonColumns/ComparisonColumns";
-import { SITE } from "@/lib/constants";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -17,7 +16,25 @@ export const metadata: Metadata = {
 export default function CouplesRetreatPage() {
   return (
     <>
-      <script type="application/ld+json" src="/schema/couples-retreat.json" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "The Couples Retreat",
+            description:
+              "Multi-day private training program for driven couples to develop advanced relational skills, preserve family legacy, and deepen partnership mastery.",
+            provider: {
+              "@type": "ProfessionalService",
+              name: "Valence",
+              url: "https://valenceprivate.com",
+            },
+            areaServed: ["New York City", "Aspen"],
+            url: "https://valenceprivate.com/couples-retreat/",
+          }),
+        }}
+      />
       <FadeIn>
         <section className={`navySection ${styles.header}`}>
           <div className={styles.headerContent}>
@@ -61,9 +78,9 @@ export default function CouplesRetreatPage() {
               High net-worth partners are often well resourced in tax and estate
               advice, family governance tools, succession planning, and
               philanthropic giving. These available services are not sufficient
-              for developing the{" "}
-              <strong>advanced relational skills</strong> required to more
-              effectively preserve and potentiate family legacies.
+              for developing the <strong>advanced relational skills</strong>{" "}
+              required to more effectively preserve and potentiate family
+              legacies.
             </p>
           </div>
         </section>
@@ -84,8 +101,8 @@ export default function CouplesRetreatPage() {
           <p className={styles.bodyText}>
             We partner with the world&rsquo;s most exclusive properties that
             provide the clean container designed for clarity, rest, and
-            physiological reset. Outside of our sessions, you will have space for
-            high-quality time together&mdash;moving your bodies, engaging in
+            physiological reset. Outside of our sessions, you will have space
+            for high-quality time together&mdash;moving your bodies, engaging in
             wellness activities, and simply enjoying the beauty of the setting.
           </p>
         </section>

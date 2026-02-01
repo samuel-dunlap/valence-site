@@ -29,6 +29,7 @@ curl -I https://valenceprivate.com
 ```
 
 **Expected headers:**
+
 ```
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
@@ -42,6 +43,7 @@ Content-Security-Policy: default-src 'none'; script-src 'self' https://static.cl
 ### Content Security Policy (CSP)
 
 **Current policy:**
+
 - `default-src 'none'` - Block everything by default
 - `script-src 'self' https://static.cloudflareinsights.com` - Only allow scripts from same origin and Cloudflare Analytics (NO unsafe-inline)
 - `style-src 'self' 'unsafe-inline'` - Allow CSS Modules (Next.js requirement)
@@ -55,24 +57,26 @@ Content-Security-Policy: default-src 'none'; script-src 'self' https://static.cl
 
 Defined in `public/_headers`:
 
-| Path | Cache Duration | Rationale |
-|------|----------------|-----------|
-| `/_next/static/*` | 1 year (immutable) | Hashed filenames, safe to cache indefinitely |
-| `/images/*` | 30 days | WebP images, rarely change |
-| `/site.webmanifest` | 1 week | PWA manifest, stable |
-| `/robots.txt` | 1 hour | May update for SEO changes |
-| `/sitemap.xml` | 1 hour | Dynamic sitemap, updates with content |
+| Path                | Cache Duration     | Rationale                                    |
+| ------------------- | ------------------ | -------------------------------------------- |
+| `/_next/static/*`   | 1 year (immutable) | Hashed filenames, safe to cache indefinitely |
+| `/images/*`         | 30 days            | WebP images, rarely change                   |
+| `/site.webmanifest` | 1 week             | PWA manifest, stable                         |
+| `/robots.txt`       | 1 hour             | May update for SEO changes                   |
+| `/sitemap.xml`      | 1 hour             | Dynamic sitemap, updates with content        |
 
 ## Preview Deployments
 
 Every pull request automatically gets a preview URL.
 
 ### Preview URL Format
+
 ```
 https://[SHORT-COMMIT-HASH].valence-site.pages.dev
 ```
 
 ### Preview Features
+
 - Automatically created when PR is opened
 - Updated on each push to PR branch
 - Shares same build config as production
@@ -80,6 +84,7 @@ https://[SHORT-COMMIT-HASH].valence-site.pages.dev
 - Perfect for testing before production
 
 ### Finding Preview URLs
+
 1. Go to Cloudflare Dashboard → Pages → valence-site
 2. Click "View build" on the deployment
 3. Or check PR comments (Cloudflare bot posts preview URL)
@@ -87,6 +92,7 @@ https://[SHORT-COMMIT-HASH].valence-site.pages.dev
 ## Build Logs
 
 ### Viewing Logs
+
 1. Cloudflare Dashboard → Pages → valence-site
 2. Click on deployment
 3. View "Build logs" tab
@@ -94,15 +100,18 @@ https://[SHORT-COMMIT-HASH].valence-site.pages.dev
 ### Common Build Issues
 
 **Error: `npm ci` fails**
+
 - Check `package.json` and `package-lock.json` are in sync
 - Ensure Node version is 20
 
 **Error: `npm run build` fails**
+
 - Check TypeScript errors locally first: `npm run typecheck`
 - Ensure all dependencies installed: `npm ci`
 - Check build succeeds locally: `npm run build`
 
 **Error: Build succeeds but site broken**
+
 - Check `out/` directory exists and contains files
 - Verify `_headers` file is in `out/` directory
 - Check browser console for CSP violations
@@ -110,6 +119,7 @@ https://[SHORT-COMMIT-HASH].valence-site.pages.dev
 ## Deployment Process
 
 ### Automatic Deployment (Main Branch)
+
 1. Developer pushes to `main` branch
 2. Cloudflare detects push via GitHub webhook
 3. Clones repository
@@ -124,6 +134,7 @@ https://[SHORT-COMMIT-HASH].valence-site.pages.dev
 **Deployment time:** ~2-3 minutes
 
 ### Manual Deployment
+
 1. Cloudflare Dashboard → Pages → valence-site
 2. Click "Create deployment"
 3. Select branch
@@ -134,6 +145,7 @@ https://[SHORT-COMMIT-HASH].valence-site.pages.dev
 If a deployment breaks production:
 
 ### Option 1: Rollback via Dashboard (Fastest)
+
 1. Dashboard → Pages → valence-site → Deployments
 2. Find previous successful deployment
 3. Click "..." → "Rollback to this deployment"
@@ -142,6 +154,7 @@ If a deployment breaks production:
 **Rollback time:** ~30 seconds
 
 ### Option 2: Revert Git Commit
+
 ```bash
 git revert HEAD
 git push origin main
@@ -167,11 +180,13 @@ Currently **none required** (static site with no secrets).
 6. Trigger redeploy for changes to take effect
 
 **Example use cases:**
+
 - API keys (e.g., analytics, CMS)
 - Feature flags
 - Build-time configuration
 
 **Security:**
+
 - Never commit `.env` files to Git
 - Use Cloudflare dashboard for sensitive values
 - Use different values for preview vs production
@@ -181,11 +196,13 @@ Currently **none required** (static site with no secrets).
 Cloudflare Web Analytics is enabled and automatically injected.
 
 ### Accessing Analytics
+
 1. Dashboard → Pages → valence-site → Analytics
 2. View traffic, page views, unique visitors
 3. Filter by date range
 
 ### Analytics Impact on CSP
+
 - CSP allows `https://static.cloudflareinsights.com` for analytics beacon script
 - CSP allows `https://cloudflareinsights.com` for analytics data endpoint
 - Analytics script is injected automatically, no code changes needed
@@ -193,11 +210,13 @@ Cloudflare Web Analytics is enabled and automatically injected.
 ## DNS Configuration
 
 ### Current Setup
+
 - **Domain:** valenceprivate.com
 - **Proxy status:** Proxied (orange cloud)
 - **SSL/TLS mode:** Full (strict)
 
 ### DNS Records (Managed by Cloudflare)
+
 ```
 CNAME valenceprivate.com → [cloudflare-pages-url]
 ```
@@ -205,6 +224,7 @@ CNAME valenceprivate.com → [cloudflare-pages-url]
 Cloudflare automatically configures this when you add a custom domain to Pages.
 
 ### Changing DNS
+
 1. Dashboard → DNS → Records
 2. Modify as needed
 3. Keep proxy enabled (orange cloud) for CDN benefits
@@ -212,6 +232,7 @@ Cloudflare automatically configures this when you add a custom domain to Pages.
 ## Performance Optimization
 
 ### Current Optimizations
+
 - ✅ Brotli compression (automatic)
 - ✅ HTTP/2 and HTTP/3 (automatic)
 - ✅ Global CDN with 200+ edge locations
@@ -220,11 +241,13 @@ Cloudflare automatically configures this when you add a custom domain to Pages.
 - ✅ Minification (Next.js build process)
 
 ### Build Output Size
+
 - **Target:** < 3MB total
 - **Current:** ~2.9MB
 - **Monitored by:** CI bundle analysis job
 
 ### Cache Hit Ratio
+
 Check in Dashboard → Analytics → Performance to see cache effectiveness.
 
 **Target:** > 90% cache hit ratio
@@ -232,7 +255,9 @@ Check in Dashboard → Analytics → Performance to see cache effectiveness.
 ## Monitoring & Alerts
 
 ### Automated Health Checks
+
 GitHub Actions workflow runs every 6 hours:
+
 - Checks site is reachable (HTTP 200)
 - Verifies security headers present
 - Checks all critical pages load
@@ -242,6 +267,7 @@ GitHub Actions workflow runs every 6 hours:
 **Workflow:** `.github/workflows/post-deploy-check.yml`
 
 ### Manual Health Check
+
 ```bash
 # Site reachability
 curl -I https://valenceprivate.com
@@ -259,12 +285,15 @@ done
 ## Troubleshooting
 
 ### Headers Not Appearing
+
 **Possible causes:**
+
 1. `_headers` file not in `out/` directory after build
 2. Syntax error in `_headers` file
 3. Cloudflare Pages not applying file (check build logs)
 
 **Solutions:**
+
 ```bash
 # Verify _headers in build output
 npm run build
@@ -278,9 +307,11 @@ cat public/_headers
 ```
 
 ### CSP Violations
+
 **Symptoms:** Browser console shows CSP errors
 
 **Debug:**
+
 1. Open DevTools → Console
 2. Look for CSP violation messages
 3. Check what resources are being blocked
@@ -288,12 +319,15 @@ cat public/_headers
 5. Redeploy
 
 **Common violations:**
+
 - Third-party scripts (analytics, tracking)
 - Inline styles/scripts
 - External fonts or images
 
 ### Site Slow to Load
+
 **Debug checklist:**
+
 1. Check Cloudflare Analytics → Performance
 2. Verify cache hit ratio > 90%
 3. Check build output size < 3MB
@@ -301,17 +335,20 @@ cat public/_headers
 5. Run Lighthouse audit
 
 **Common issues:**
+
 - Large JavaScript bundles
 - Unoptimized images
 - Too many network requests
 - Cache headers not working
 
 ### Build Failures
+
 See [Build Logs](#build-logs) section above.
 
 ## Cost
 
 Cloudflare Pages Free Plan:
+
 - ✅ Unlimited bandwidth
 - ✅ Unlimited requests
 - ✅ 500 builds per month
@@ -323,29 +360,35 @@ Cloudflare Pages Free Plan:
 ## Migration Notes
 
 ### Migrated From
+
 - **Previous:** GitHub Pages
 - **Migration date:** [Date of Cloudflare Pages setup]
 - **Reason:** Native `_headers` file support for better security header management
 
 ### Benefits of Migration
+
 1. ✅ `_headers` file automatically applied (no manual Cloudflare Transform Rules)
 2. ✅ Better preview deployments for PRs
 3. ✅ Single platform for hosting + CDN + headers
 4. ✅ Simpler architecture and maintenance
 
 ### Breaking Changes
+
 - None - same URLs, same content, better infrastructure
 
 ## Support
 
 **Cloudflare Documentation:**
+
 - https://developers.cloudflare.com/pages/
 
 **Cloudflare Support:**
+
 - Community: https://community.cloudflare.com/
 - Enterprise: Dashboard → Support
 
 **Project-Specific:**
+
 - Check DEVELOPMENT.md for dev workflow
 - Check README.md for project overview
 - Review `.claude/plans/` for architectural decisions

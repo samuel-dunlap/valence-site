@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import styles from './FadeIn.module.css';
+import { useEffect, useRef, useState } from "react";
+import styles from "./FadeIn.module.css";
 
 interface FadeInProps {
   children: React.ReactNode;
@@ -33,7 +33,7 @@ export default function FadeIn({ children }: FadeInProps) {
   return (
     <div
       ref={ref}
-      className={`${styles.wrapper} ${visible ? styles.visible : ''}`}
+      className={`${styles.wrapper} ${visible ? styles.visible : ""}`}
     >
       {children}
     </div>

@@ -1,4 +1,4 @@
-import styles from './PhaseCard.module.css';
+import styles from "./PhaseCard.module.css";
 
 interface PhaseCardProps {
   phaseNumber: number;
@@ -6,7 +6,11 @@ interface PhaseCardProps {
   description: string;
 }
 
-export default function PhaseCard({ phaseNumber, title, description }: PhaseCardProps) {
+export default function PhaseCard({
+  phaseNumber,
+  title,
+  description,
+}: PhaseCardProps) {
   return (
     <div className={styles.card}>
       <span className={styles.label}>phase {phaseNumber}:</span>

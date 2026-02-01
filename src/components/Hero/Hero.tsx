@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import ArrowLink from '@/components/ArrowLink/ArrowLink';
-import styles from './Hero.module.css';
+import Image from "next/image";
+import ArrowLink from "@/components/ArrowLink/ArrowLink";
+import styles from "./Hero.module.css";
 
 interface HeroProps {
   headline: React.ReactNode;
@@ -11,7 +11,14 @@ interface HeroProps {
   imageAlt?: string;
 }
 
-export default function Hero({ headline, subtitleLines, ctaText, ctaHref, imageSrc, imageAlt }: HeroProps) {
+export default function Hero({
+  headline,
+  subtitleLines,
+  ctaText,
+  ctaHref,
+  imageSrc,
+  imageAlt,
+}: HeroProps) {
   return (
     <section className={`navySection ${styles.hero}`}>
       <div className={imageSrc ? styles.splitContainer : styles.container}>
@@ -20,7 +27,12 @@ export default function Hero({ headline, subtitleLines, ctaText, ctaHref, imageS
 
           <div className={styles.subtitles}>
             {subtitleLines.map((line, i) => (
-              <p key={`subtitle-${i}-${line.slice(0, 20)}`} className={styles.subtitle}>{line}</p>
+              <p
+                key={`subtitle-${i}-${line.slice(0, 20)}`}
+                className={styles.subtitle}
+              >
+                {line}
+              </p>
             ))}
           </div>
 
@@ -35,7 +47,7 @@ export default function Hero({ headline, subtitleLines, ctaText, ctaHref, imageS
           <div className={styles.imageWrap}>
             <Image
               src={imageSrc}
-              alt={imageAlt ?? 'Decorative image'}
+              alt={imageAlt ?? "Decorative image"}
               width={540}
               height={670}
               unoptimized

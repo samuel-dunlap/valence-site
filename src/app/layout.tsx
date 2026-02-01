@@ -39,7 +39,9 @@ export const metadata: Metadata = {
     "Private relationship advisory for high-net-worth men. Expert matchmaking, couples retreats, and relational coaching in New York City and Aspen.",
   robots: { index: true, follow: true },
   icons: {
-    icon: [{ url: "/images/favicon-32.png", sizes: "32x32", type: "image/png" }],
+    icon: [
+      { url: "/images/favicon-32.png", sizes: "32x32", type: "image/png" },
+    ],
     apple: [{ url: "/images/apple-touch-icon.png", sizes: "180x180" }],
   },
   manifest: "/site.webmanifest",
@@ -74,7 +76,36 @@ export default function RootLayout({
       className={`${libreBaskerville.variable} ${ibmPlexSans.variable}`}
     >
       <body>
-        <script type="application/ld+json" src="/schema/organization.json" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              name: "Valence",
+              description:
+                "Private Relationship Advisory for High-Net-Worth Men",
+              url: "https://valenceprivate.com",
+              telephone: "(212) 263-0000",
+              email: "contact@samueldunlap.org",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "654 Madison Avenue",
+                addressLocality: "New York",
+                addressRegion: "NY",
+                postalCode: "10065",
+                addressCountry: "US",
+              },
+              founder: {
+                "@type": "Person",
+                name: "Samuel Dunlap",
+                jobTitle: "Relationship Advisor & Researcher",
+              },
+              areaServed: ["New York City", "Aspen"],
+              priceRange: "$$$",
+            }),
+          }}
+        />
         <ErrorBoundary>
           <IntroOverlay />
           <Navbar />
