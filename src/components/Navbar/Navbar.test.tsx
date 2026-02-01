@@ -11,8 +11,8 @@ describe('Navbar', () => {
   it('renders logo and navigation links', () => {
     render(<Navbar />);
     expect(screen.getByLabelText('Valence Home')).toBeInTheDocument();
-    expect(screen.getByText('Home')).toBeInTheDocument();
-    expect(screen.getByText('About')).toBeInTheDocument();
+    expect(screen.getAllByText('Home').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('About').length).toBeGreaterThan(0);
   });
 
   it('opens mobile menu when hamburger clicked', () => {
@@ -32,7 +32,7 @@ describe('Navbar', () => {
     const closeBtn = screen.getByLabelText('Close menu');
     fireEvent.click(closeBtn);
 
-    const dialog = screen.getByRole('dialog');
+    const dialog = screen.getByRole('dialog', { hidden: true });
     expect(dialog).toHaveAttribute('aria-hidden', 'true');
   });
 

@@ -17,7 +17,8 @@
     "test:coverage": "vitest run --coverage",
     "test:links": "npm run build && linkinator ./out --recurse --skip node_modules",
     "test:a11y": "npm run build && axe ./out/**/*.html",
-    "validate": "npm run typecheck && npm run lint && npm run format:check"
+    "validate": "npm run typecheck && npm run lint && npm run format:check",
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
