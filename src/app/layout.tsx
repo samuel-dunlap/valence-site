@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Libre_Baskerville, IBM_Plex_Sans } from "next/font/google";
 import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
-// import IntroOverlay from "@/components/IntroOverlay/IntroOverlay"; // TEMPORARILY DISABLED - blue screen bug
+import IntroOverlay from "@/components/IntroOverlay/IntroOverlay";
 import Navbar from "@/components/Navbar/Navbar";
 import StructuredData from "@/components/StructuredData/StructuredData";
 import { SITE } from "@/lib/constants";
@@ -80,7 +80,7 @@ export default function RootLayout({
       <body>
         <StructuredData data={getOrganizationSchema()} />
         <ErrorBoundary>
-          {/* <IntroOverlay /> */}
+          <IntroOverlay />
           <Navbar />
           <main id="main-content">{children}</main>
         </ErrorBoundary>
