@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Libre_Baskerville, IBM_Plex_Sans } from "next/font/google";
 import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
-import IntroOverlay from "@/components/IntroOverlay/IntroOverlay";
+// import IntroOverlay from "@/components/IntroOverlay/IntroOverlay"; // TEMPORARILY DISABLED - blue screen bug
 import Navbar from "@/components/Navbar/Navbar";
+import StructuredData from "@/components/StructuredData/StructuredData";
 import { SITE } from "@/lib/constants";
+import { getOrganizationSchema } from "@/lib/schema";
 import "./globals.css";
 
 const libreBaskerville = Libre_Baskerville({
@@ -76,38 +78,9 @@ export default function RootLayout({
       className={`${libreBaskerville.variable} ${ibmPlexSans.variable}`}
     >
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              name: "Valence",
-              description:
-                "Private Relationship Advisory for High-Net-Worth Men",
-              url: "https://valenceprivate.com",
-              telephone: "(212) 263-0000",
-              email: "contact@samueldunlap.org",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "654 Madison Avenue",
-                addressLocality: "New York",
-                addressRegion: "NY",
-                postalCode: "10065",
-                addressCountry: "US",
-              },
-              founder: {
-                "@type": "Person",
-                name: "Samuel Dunlap",
-                jobTitle: "Relationship Advisor & Researcher",
-              },
-              areaServed: ["New York City", "Aspen"],
-              priceRange: "$$$",
-            }),
-          }}
-        />
+        <StructuredData data={getOrganizationSchema()} />
         <ErrorBoundary>
-          <IntroOverlay />
+          {/* <IntroOverlay /> */}
           <Navbar />
           <main id="main-content">{children}</main>
         </ErrorBoundary>
