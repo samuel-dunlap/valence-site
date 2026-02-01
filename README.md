@@ -8,7 +8,9 @@ Marketing website for [Valence](https://valenceprivate.com), a private relations
 - **Language:** TypeScript (strict mode)
 - **Styling:** CSS Modules + CSS custom properties
 - **Fonts:** Libre Baskerville (headings), IBM Plex Sans (body)
-- **Deployment:** GitHub Pages via GitHub Actions
+- **Testing:** Vitest + React Testing Library
+- **Linting:** ESLint + Prettier
+- **Deployment:** Cloudflare Pages
 
 ## Pages
 
@@ -24,16 +26,32 @@ Marketing website for [Valence](https://valenceprivate.com), a private relations
 
 ```bash
 npm install
-npm run dev
+npm run dev          # Start development server
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
+### Available Scripts
+
+```bash
+npm run dev          # Development server
+npm run build        # Production build → ./out/
+npm run typecheck    # TypeScript validation
+npm run lint         # Check linting
+npm run lint:fix     # Auto-fix linting issues
+npm run format       # Format all files
+npm run test         # Run unit tests
+npm run test:watch   # Run tests in watch mode
+npm run validate     # Run all checks (typecheck + lint + format)
+```
+
+See [DEVELOPMENT.md](./DEVELOPMENT.md) for complete development guide.
+
 ## Build & Preview
 
 ```bash
-npm run build        # produces static export in ./out/
-npx serve out        # preview locally
+npm run build        # Produces static export in ./out/
+npx serve out        # Preview locally
 ```
 
 ## Project Structure
@@ -58,51 +76,129 @@ public/
 
 ## Infrastructure & Deployment
 
-The site is served through a three-layer stack: **Next.js** (build) -> **GitHub Pages** (hosting) -> **Cloudflare** (CDN/DNS).
+The site is deployed to **Cloudflare Pages** and served at `valenceprivate.com`.
 
 ### Next.js Static Export
 
 `next.config.ts` sets `output: "export"`, which produces a flat directory of HTML, CSS, JS, and images in `./out/`. There is no server runtime, no SSR, and no API routes. All images use `unoptimized: true` in the Next.js `Image` component because there is no server to optimize images at request time — hero images are pre-optimized to WebP before build.
 
-### GitHub Actions
+### Cloudflare Pages Deployment
 
-On every push to `main`, the workflow in `.github/workflows/deploy.yml` runs:
+On every push to `main`:
 
-1. `npm ci` — clean install of dependencies
-2. `next build` — generates static export in `./out/`
-3. Uploads `./out/` as a GitHub Pages artifact
-4. Deploys via `actions/deploy-pages@v4`
+1. Cloudflare Pages detects the push via GitHub integration
+2. Runs `npm ci` — clean install of dependencies
+3. Runs `npm run build` — generates static export in `./out/`
+4. Deploys `./out/` to production at `valenceprivate.com`
+5. Automatically applies security headers from `public/_headers`
 
-### GitHub Pages
+**Deployment time:** ~2-3 minutes
 
-Hosts the static files at the custom domain `valenceprivate.com`, configured via the `CNAME` file at repo root and the repository's Pages settings. GitHub provides HTTPS for the custom domain.
+**Preview deployments:** Every pull request gets an automatic preview URL for testing.
 
-### Cloudflare (DNS + CDN + Analytics)
+See [CLOUDFLARE.md](./CLOUDFLARE.md) for complete Cloudflare configuration.
 
-The domain's DNS is managed through Cloudflare, which proxies requests to GitHub Pages. This provides:
+### CI/CD Pipeline
 
-- **CDN caching** — Cloudflare edge nodes cache static assets in front of GitHub Pages.
-- **Cloudflare Web Analytics** — Cloudflare automatically injects its analytics beacon script when proxying requests. This is why the Content-Security-Policy in `_headers` explicitly allows `https://static.cloudflareinsights.com` (script-src) and `https://cloudflareinsights.com` (connect-src).
-- **SSL/TLS termination** at the Cloudflare edge.
+Pull requests trigger `.github/workflows/ci.yml` with these parallel checks:
 
-### `_headers` File Caveat
+- ✅ **Lint & Format Check** — ESLint + Prettier
+- ✅ **TypeScript Type Check** — `tsc --noEmit`
+- ✅ **Unit Tests** — Vitest with React Testing Library
+- ✅ **Build Validation** — `npm run build`
+- ✅ **Bundle Size Analysis** — Reports build output size
 
-The `public/_headers` file defines security headers (HSTS, CSP, X-Frame-Options, etc.) and cache-control rules. This file format is natively supported by **Cloudflare Pages** and **Netlify**, but **not** by GitHub Pages. Since the site is deployed to GitHub Pages (not Cloudflare Pages), these headers are only applied if **Cloudflare Transform Rules** or **Page Rules** are configured in the Cloudflare dashboard to enforce them.
+All checks must pass before merging.
+
+### Security Headers
+
+The `public/_headers` file defines security and cache headers. Cloudflare Pages **automatically applies** these headers (no manual configuration needed).
+
+**Security headers:**
+- `X-Frame-Options: DENY` — Prevents clickjacking
+- `Content-Security-Policy` — Strict CSP with **no `unsafe-inline` for scripts**
+- `Strict-Transport-Security` — HSTS with 1-year max-age and preload
+- `X-Content-Type-Options: nosniff` — Prevents MIME sniffing
+- `Referrer-Policy` — Limits referrer information
+- `Permissions-Policy` — Disables unnecessary browser features
+
+**Verify headers:**
+```bash
+curl -I https://valenceprivate.com | grep "X-Frame-Options"
+# Expected: X-Frame-Options: DENY
+```
 
 ### Cache Strategy
 
-The `_headers` file defines a tiered cache policy (applied via Cloudflare):
+Tiered cache policy defined in `_headers`:
 
 | Path | Cache Duration | Notes |
 |------|---------------|-------|
 | `/_next/static/*` | 1 year, immutable | Hashed filenames — safe to cache indefinitely |
-| `/images/*` | 1 week | Hero images and logos |
+| `/images/*` | 30 days | Optimized WebP images |
 | `/site.webmanifest` | 1 week | PWA manifest |
+| `/robots.txt`, `/sitemap.xml` | 1 hour | May update frequently |
 
-## SEO
+### Cloudflare Web Analytics
 
-- **Per-page metadata** — Each page exports unique `title`, `description`, and `canonical` URL.
-- **OpenGraph + Twitter Card** — Social sharing image at `public/images/og-image.png` (1200x630). Twitter uses `summary_large_image`.
-- **JSON-LD structured data** — `ProfessionalService` schema on all pages (root layout) with contact info, founder, and areas served. `Service` schema on Couples Retreat and Partner Search pages.
-- **robots.txt** — Allows all crawlers and references `sitemap.xml`.
-- **sitemap.xml** — Covers all 5 public pages at `valenceprivate.com`.
+Cloudflare automatically injects its analytics beacon script. The CSP explicitly allows:
+- `https://static.cloudflareinsights.com` (script source)
+- `https://cloudflareinsights.com` (analytics endpoint)
+
+## SEO & Structured Data
+
+- **Per-page metadata** — Each page exports unique `title`, `description`, and `canonical` URL
+- **OpenGraph + Twitter Card** — Social sharing image at `public/images/og-image.png` (1200x630)
+- **JSON-LD structured data** — External JSON files in `public/schema/`:
+  - `organization.json` — `ProfessionalService` schema (loaded on all pages)
+  - `couples-retreat.json` — `Service` schema for retreat offering
+  - `partner-search.json` — `Service` schema for matchmaking service
+- **robots.txt** — Allows all crawlers and references `sitemap.xml`
+- **sitemap.xml** — Dynamic sitemap covering all 5 public pages
+
+**Why external JSON-LD?**
+- Strengthens CSP (no inline scripts, eliminates `script-src 'unsafe-inline'`)
+- Easy to validate and update schemas
+- Keeps component code clean
+
+**Validate:** https://search.google.com/test/rich-results
+
+## Testing
+
+Unit tests use **Vitest** + **React Testing Library**:
+
+```bash
+npm run test           # Run tests once
+npm run test:watch     # Watch mode
+npm run test:coverage  # Coverage report
+```
+
+Example tests:
+- [src/components/__tests__/Navbar.test.tsx](src/components/__tests__/Navbar.test.tsx)
+- [src/lib/__tests__/constants.test.ts](src/lib/__tests__/constants.test.ts)
+
+## Code Quality
+
+### Pre-commit Hooks
+Husky + lint-staged auto-format code before each commit:
+- Runs ESLint with auto-fix
+- Formats with Prettier
+- Blocks commit if errors remain
+
+### Validation
+Before pushing, run:
+```bash
+npm run validate
+```
+
+This runs TypeScript type checking, ESLint, and Prettier checks.
+
+## Documentation
+
+- [README.md](./README.md) (this file) — Project overview
+- [DEVELOPMENT.md](./DEVELOPMENT.md) — Complete development guide
+- [CLOUDFLARE.md](./CLOUDFLARE.md) — Cloudflare Pages configuration
+
+## License
+
+Private repository. All rights reserved.

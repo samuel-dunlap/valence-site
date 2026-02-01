@@ -54,7 +54,8 @@
       "Bash(source ~/.bashrc)",
       "Bash(/usr/local/bin/npm install --save-dev sharp)",
       "Bash(npx tsc:*)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(npx vitest:*)"
     ]
   }
 }

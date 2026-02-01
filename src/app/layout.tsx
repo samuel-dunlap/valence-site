@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Libre_Baskerville, IBM_Plex_Sans } from "next/font/google";
+import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
 import IntroOverlay from "@/components/IntroOverlay/IntroOverlay";
 import Navbar from "@/components/Navbar/Navbar";
 import { SITE } from "@/lib/constants";
@@ -74,9 +75,11 @@ export default function RootLayout({
     >
       <body>
         <script type="application/ld+json" src="/schema/organization.json" />
-        <IntroOverlay />
-        <Navbar />
-        <main id="main-content">{children}</main>
+        <ErrorBoundary>
+          <IntroOverlay />
+          <Navbar />
+          <main id="main-content">{children}</main>
+        </ErrorBoundary>
       </body>
     </html>
   );

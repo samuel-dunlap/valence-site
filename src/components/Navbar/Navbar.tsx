@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { SITE, NAV_LINKS } from '@/lib/constants';
 import styles from './Navbar.module.css';
@@ -10,6 +10,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +24,10 @@ export default function Navbar() {
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
+      if (menuRef.current) {
+        const closeBtn = menuRef.current.querySelector('button');
+        closeBtn?.focus();
+      }
     } else {
       document.body.style.overflow = '';
     }
@@ -95,10 +100,12 @@ export default function Navbar() {
       </header>
 
       <div
+        ref={menuRef}
         className={`${styles.overlay} ${menuOpen ? styles.overlayOpen : ''}`}
         role="dialog"
         aria-modal="true"
         aria-hidden={!menuOpen}
+        aria-label="Mobile navigation menu"
       >
         <button
           className={styles.closeBtn}
