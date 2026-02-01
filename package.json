@@ -6,7 +6,27 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md,css}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,json,md,css}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "test:links": "npm run build && linkinator ./out --recurse --skip node_modules",
+    "test:a11y": "npm run build && axe ./out/**/*.html",
+    "validate": "npm run typecheck && npm run lint && npm run format:check"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "next": "16.1.6",
@@ -14,11 +34,27 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "@axe-core/cli": "^4.10.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^16.1.6",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.7",
+    "jsdom": "^25.0.1",
+    "linkinator": "^6.1.2",
+    "lint-staged": "^15.2.11",
+    "prettier": "^3.4.2",
     "sharp": "^0.34.5",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.1.3"
   },
   "browserslist": [
     "Chrome >= 100",

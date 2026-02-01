@@ -14,10 +14,10 @@ interface AccordionProps {
 }
 
 export default function Accordion({ sections }: AccordionProps) {
-  const [openSections, setOpenSections] = useState<Set<number>>(() => {
-    const initial = new Set<number>();
-    sections.forEach((section, i) => {
-      if (section.defaultOpen) initial.add(i);
+  const [openSections, setOpenSections] = useState<Set<string>>(() => {
+    const initial = new Set<string>();
+    sections.forEach((section) => {
+      if (section.defaultOpen) initial.add(section.title);
     });
     return initial;
   });
@@ -48,13 +48,13 @@ export default function Accordion({ sections }: AccordionProps) {
     return () => observer.disconnect();
   }, [measureHeights, sections]);
 
-  const toggle = (index: number) => {
+  const toggle = (title: string) => {
     setOpenSections((prev) => {
       const next = new Set(prev);
-      if (next.has(index)) {
-        next.delete(index);
+      if (next.has(title)) {
+        next.delete(title);
       } else {
-        next.add(index);
+        next.add(title);
       }
       return next;
     });
@@ -63,14 +63,14 @@ export default function Accordion({ sections }: AccordionProps) {
   return (
     <div className={styles.accordion}>
       {sections.map((section, i) => {
-        const isOpen = openSections.has(i);
+        const isOpen = openSections.has(section.title);
 
         return (
-          <div key={i} className={styles.section}>
+          <div key={section.title} className={styles.section}>
             <button
               type="button"
               className={styles.header}
-              onClick={() => toggle(i)}
+              onClick={() => toggle(section.title)}
               aria-expanded={isOpen}
             >
               <span className={styles.title}>{section.title}</span>
