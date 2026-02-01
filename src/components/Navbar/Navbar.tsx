@@ -39,7 +39,7 @@ export default function Navbar() {
       <span className={styles.logoText}>
         {text.split('').map((char, i) => (
           <span
-            key={i}
+            key={`${char}-${i}`}
             className={
               char === ':' || char === '.'
                 ? styles.logoPunctuation

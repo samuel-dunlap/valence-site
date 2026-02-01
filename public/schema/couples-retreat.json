@@ -1,0 +1,13 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "The Couples Retreat",
+  "description": "Multi-day private training program for driven couples to develop advanced relational skills, preserve family legacy, and deepen partnership mastery.",
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "Valence",
+    "url": "https://valenceprivate.com"
+  },
+  "areaServed": ["New York City", "Aspen"],
+  "url": "https://valenceprivate.com/couples-retreat/"
+}

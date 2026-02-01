@@ -62,31 +62,6 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: SITE.name,
-  description: "Private Relationship Advisory for High-Net-Worth Men",
-  url: SITE.url,
-  telephone: SITE.phone,
-  email: SITE.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: SITE.address.street,
-    addressLocality: SITE.address.city,
-    addressRegion: SITE.address.state,
-    postalCode: SITE.address.zip,
-    addressCountry: "US",
-  },
-  founder: {
-    "@type": "Person",
-    name: "Samuel Dunlap",
-    jobTitle: "Relationship Advisor & Researcher",
-  },
-  areaServed: ["New York City", "Aspen"],
-  priceRange: "$$$",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -98,10 +73,7 @@ export default function RootLayout({
       className={`${libreBaskerville.variable} ${ibmPlexSans.variable}`}
     >
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script type="application/ld+json" src="/schema/organization.json" />
         <IntroOverlay />
         <Navbar />
         <main id="main-content">{children}</main>

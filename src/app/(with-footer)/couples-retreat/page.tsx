@@ -14,28 +14,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/couples-retreat/" },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "The Couples Retreat",
-  description:
-    "Multi-day private training program for driven couples to develop advanced relational skills, preserve family legacy, and deepen partnership mastery.",
-  provider: {
-    "@type": "ProfessionalService",
-    name: "Valence",
-    url: SITE.url,
-  },
-  areaServed: ["New York City", "Aspen"],
-  url: `${SITE.url}/couples-retreat/`,
-};
-
 export default function CouplesRetreatPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" src="/schema/couples-retreat.json" />
       <FadeIn>
         <section className={`navySection ${styles.header}`}>
           <div className={styles.headerContent}>

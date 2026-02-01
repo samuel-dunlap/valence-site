@@ -22,7 +22,7 @@ export default function AboutPage() {
           </p>
           <div className={styles.photoWrapper}>
             <Image
-              src="/images/profile.jpeg"
+              src="/images/profile.webp"
               alt="Samuel Dunlap"
               width={450}
               height={450}
@@ -110,8 +110,8 @@ export default function AboutPage() {
                         systems)
                       </li>
                       <li>
-                        Metaphysics and Non-dual wisdom traditions (as symbolic
-                        systems)
+                        Metaphysics and Non-dual wisdom traditions (as ontological
+                        tools)
                       </li>
                     </ul>
                     <p className={styles.accordionClosing}>

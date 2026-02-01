@@ -59,7 +59,7 @@ export default function IntroOverlay() {
         >
           {EXPAND_LETTERS.map((char, i) => (
             <span
-              key={i}
+              key={`letter-${char}-${i}`}
               className={styles.expandLetter}
               style={{ transitionDelay: expanded ? `${i * 60}ms` : '0ms' }}
             >

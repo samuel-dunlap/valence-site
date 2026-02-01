@@ -20,7 +20,7 @@ export default function Hero({ headline, subtitleLines, ctaText, ctaHref, imageS
 
           <div className={styles.subtitles}>
             {subtitleLines.map((line, i) => (
-              <p key={i} className={styles.subtitle}>{line}</p>
+              <p key={`subtitle-${i}-${line.slice(0, 20)}`} className={styles.subtitle}>{line}</p>
             ))}
           </div>
 
@@ -35,7 +35,7 @@ export default function Hero({ headline, subtitleLines, ctaText, ctaHref, imageS
           <div className={styles.imageWrap}>
             <Image
               src={imageSrc}
-              alt={imageAlt ?? ''}
+              alt={imageAlt ?? 'Decorative image'}
               width={540}
               height={670}
               unoptimized

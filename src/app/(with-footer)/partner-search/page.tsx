@@ -14,28 +14,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/partner-search/" },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "The Partner Search",
-  description:
-    "Psychologically curated matchmaking and rigorous screening for lifetime partnership. Headhunting for your personal life.",
-  provider: {
-    "@type": "ProfessionalService",
-    name: "Valence",
-    url: SITE.url,
-  },
-  areaServed: ["New York City", "Aspen"],
-  url: `${SITE.url}/partner-search/`,
-};
-
 export default function PartnerSearchPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" src="/schema/partner-search.json" />
       <FadeIn>
         <section className={`navySection ${styles.header}`}>
           <div className={styles.headerContent}>
