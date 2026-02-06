@@ -6,6 +6,7 @@ import styles from "./ErrorBoundary.module.css";
 interface Props {
   children: ReactNode;
   fallback?: ReactNode;
+  onError?: (error: Error, errorInfo: React.ErrorInfo) => void;
 }
 
 interface State {
@@ -25,6 +26,25 @@ export default class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error("ErrorBoundary caught:", error, errorInfo);
+
+    // Call optional error reporting callback
+    if (this.props.onError) {
+      this.props.onError(error, errorInfo);
+    }
+
+    // Report to Sentry in production
+    if (typeof window !== "undefined") {
+      // Dynamically import Sentry to avoid SSR issues
+      import("@sentry/nextjs").then((Sentry) => {
+        Sentry.captureException(error, {
+          contexts: {
+            react: {
+              componentStack: errorInfo.componentStack,
+            },
+          },
+        });
+      });
+    }
   }
 
   render() {

@@ -13,7 +13,7 @@ interface AccordionProps {
   sections: AccordionSection[];
 }
 
-export default function Accordion({ sections }: AccordionProps) {
+export default function Accordion({ sections }: AccordionProps): React.ReactElement {
   const [openSections, setOpenSections] = useState<Set<string>>(() => {
     const initial = new Set<string>();
     sections.forEach((section) => {
@@ -24,6 +24,7 @@ export default function Accordion({ sections }: AccordionProps) {
 
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [heights, setHeights] = useState<number[]>([]);
+  const observerRef = useRef<ResizeObserver | null>(null);
 
   const measureHeights = useCallback(() => {
     const measured = contentRefs.current.map((ref) => ref?.scrollHeight ?? 0);
@@ -35,15 +36,32 @@ export default function Accordion({ sections }: AccordionProps) {
   }, [measureHeights, sections]);
 
   useEffect(() => {
-    const observer = new ResizeObserver(() => {
-      measureHeights();
-    });
+    // Create observer once if it doesn't exist
+    if (!observerRef.current) {
+      observerRef.current = new ResizeObserver(() => {
+        measureHeights();
+      });
+    }
 
-    contentRefs.current.forEach((ref) => {
+    const observer = observerRef.current;
+    const currentRefs = contentRefs.current; // Capture current refs for cleanup
+
+    // Observe all content elements
+    currentRefs.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      // Unobserve all elements using captured refs
+      currentRefs.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+      // Disconnect to release observer and prevent memory leak
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+    };
   }, [measureHeights, sections]);
 
   const toggle = (title: string) => {

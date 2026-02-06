@@ -78,6 +78,7 @@ body::after {
   pointer-events: none;
   opacity: 0.4;
   z-index: 0;
+  transform: translateZ(0); /* Force GPU layer for better performance */
 }
 
 /* ── Headings: Libre Baskerville, never bold ── */
@@ -155,6 +156,7 @@ ol {
   mix-blend-mode: soft-light;
   pointer-events: none;
   opacity: 0.3;
+  transform: translateZ(0); /* Force GPU layer for better performance */
 }
 
 .navySection h1,

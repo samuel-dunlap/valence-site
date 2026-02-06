@@ -7,7 +7,7 @@ interface FadeInProps {
   children: React.ReactNode;
 }
 
-export default function FadeIn({ children }: FadeInProps) {
+export default function FadeIn({ children }: FadeInProps): React.ReactElement {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -15,9 +15,11 @@ export default function FadeIn({ children }: FadeInProps) {
     const element = ref.current;
     if (!element) return;
 
+    let isMounted = true;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && isMounted) {
           setVisible(true);
           observer.disconnect();
         }
@@ -27,7 +29,10 @@ export default function FadeIn({ children }: FadeInProps) {
 
     observer.observe(element);
 
-    return () => observer.disconnect();
+    return () => {
+      isMounted = false;
+      observer.disconnect();
+    };
   }, []);
 
   return (

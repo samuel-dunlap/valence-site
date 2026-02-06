@@ -4,36 +4,44 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { SITE, NAV_LINKS } from "@/lib/constants";
+import { throttle } from "@/lib/utils";
+import { createFocusTrap } from "@/lib/focus-trap";
 import styles from "./Navbar.module.css";
 
-export default function Navbar() {
+export default function Navbar(): React.ReactElement {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
-    };
+    const handleScroll = throttle(() => {
+      const isScrolled = window.scrollY > 0;
+      // Only update state if value actually changed to prevent unnecessary re-renders
+      setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
+    }, 100); // Throttle to max once per 100ms
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    if (menuOpen) {
+    if (menuOpen && menuRef.current) {
       document.body.style.overflow = "hidden";
-      if (menuRef.current) {
-        const closeBtn = menuRef.current.querySelector("button");
-        closeBtn?.focus();
-      }
+      const closeBtn = menuRef.current.querySelector("button");
+      closeBtn?.focus();
+
+      // Add focus trap
+      const cleanup = createFocusTrap(menuRef.current);
+
+      return () => {
+        cleanup();
+        document.body.style.overflow = "";
+      };
     } else {
       document.body.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [menuOpen]);
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
@@ -42,7 +50,7 @@ export default function Navbar() {
     const text = variant === "full" ? SITE.logoFull : SITE.logoMark;
     return (
       <span className={styles.logoText}>
-        {text.split("").map((char, i) => (
+        {text.split("").map((char: string, i: number) => (
           <span
             key={`${char}-${i}`}
             className={

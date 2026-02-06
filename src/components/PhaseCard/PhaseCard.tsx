@@ -10,7 +10,7 @@ export default function PhaseCard({
   phaseNumber,
   title,
   description,
-}: PhaseCardProps) {
+}: PhaseCardProps): React.ReactElement {
   return (
     <div className={styles.card}>
       <span className={styles.label}>phase {phaseNumber}:</span>

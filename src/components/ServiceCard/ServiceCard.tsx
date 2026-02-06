@@ -15,7 +15,7 @@ export default function ServiceCard({
   description,
   href,
   ctaText = "Learn more",
-}: ServiceCardProps) {
+}: ServiceCardProps): React.ReactElement {
   return (
     <Link href={href} className={styles.card}>
       <h2 className={styles.title}>{title}</h2>

@@ -37,35 +37,6 @@ export default function CouplesRetreatPage() {
               and preserving your legacy threaten your relationship. When your
               core relationship is compromised, your family legacy is at risk.
             </p>
-            <div className={styles.statsGrid}>
-              <div className={styles.statCell}>
-                <span className={styles.statNumber}>90%</span>
-                <p className={styles.statDescription}>
-                  of wealthy families have lost their assets by the third
-                  generation
-                </p>
-              </div>
-              <div className={styles.statCell}>
-                <span className={styles.statNumber}>60%</span>
-                <p className={styles.statDescription}>
-                  of asset loss from breakdowns in family communication and
-                  trust
-                </p>
-              </div>
-              <div className={styles.statCell}>
-                <span className={styles.statNumber}>#1</span>
-                <p className={styles.statDescription}>
-                  cause of divorce: arguments around money
-                </p>
-              </div>
-              <div className={styles.statCell}>
-                <span className={styles.statNumber}>40%</span>
-                <p className={styles.statDescription}>
-                  of marriages end in divorce, with 50&ndash;77% loss of net
-                  worth
-                </p>
-              </div>
-            </div>
             <p>
               High net-worth partners are often well resourced in tax and estate
               advice, family governance tools, succession planning, and
@@ -110,18 +81,22 @@ export default function CouplesRetreatPage() {
             unoptimized
             loading="lazy"
             className={sharedStyles.accentImage}
+            style={{ margin: 0 }}
           />
         </div>
       </FadeIn>
 
       <FadeIn>
         <ComparisonColumns
+          stacked
           leftTitle="Unmitigated Costs & Risks"
           leftItems={[
             "Continued or protracted power struggles that degrade trust and respect",
             "Critical misalignments on decisions about parenting, finances, and family legacy",
             "Chronic imbalances in time, energy, and resource allocations",
             "Fragilities in family wealth and intergenerational well-being",
+            <><strong>90%</strong> of wealthy families have lost their assets by the third generation, with <strong>60%</strong> of that loss stemming from breakdowns in family communication and trust</>,
+            <>The <strong>#1</strong> cause of divorce is arguments around money, and <strong>40%</strong> of marriages end in divorce, with <strong>50&ndash;77%</strong> loss of net worth</>,
           ]}
           rightTitle="Benefits of Couples Retreats"
           rightItems={[

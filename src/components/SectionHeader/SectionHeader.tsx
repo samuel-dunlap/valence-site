@@ -4,7 +4,7 @@ interface SectionHeaderProps {
   title: string;
 }
 
-export default function SectionHeader({ title }: SectionHeaderProps) {
+export default function SectionHeader({ title }: SectionHeaderProps): React.ReactElement {
   return (
     <div className={styles.wrapper}>
       <hr className={styles.rule} />

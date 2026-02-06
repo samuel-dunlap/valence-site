@@ -11,7 +11,7 @@ export default function ArrowLink({
   text,
   href,
   variant = "dark",
-}: ArrowLinkProps) {
+}: ArrowLinkProps): React.ReactElement {
   return (
     <Link
       href={href}

@@ -18,33 +18,26 @@ const TIMING = {
 type Phase = "initial" | "mark" | "expand" | "exit" | "done";
 
 export default function IntroOverlay(): React.ReactElement | null {
-  const [phase, setPhase] = useState<Phase>(() => {
-    // During SSR, skip animation entirely
-    if (typeof window === "undefined") {
-      return "done";
-    }
-
-    // Skip animation if already seen
-    if (safeSessionGet(INTRO_KEY)) {
-      return "done";
-    }
-
-    // Skip animation if user prefers reduced motion
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      safeSessionSet(INTRO_KEY, "1");
-      return "done";
-    }
-
-    // Set flag immediately when starting animation to prevent replays
-    safeSessionSet(INTRO_KEY, "1");
-
-    return "initial";
-  });
+  // Start as "done" to match SSR output (null) and avoid hydration mismatch.
+  // The mount effect below will initialise the real phase on the client.
+  const [phase, setPhase] = useState<Phase>("done");
 
   useEffect(() => {
-    if (phase === "done") return; // Already done, no need to set timers
+    // Skip if already seen this session
+    if (safeSessionGet(INTRO_KEY)) return;
 
-    // Set up animation timeline (runs once on mount)
+    // Respect prefers-reduced-motion
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      safeSessionSet(INTRO_KEY, "1");
+      return;
+    }
+
+    // Mark as seen immediately to prevent replays on back-navigation
+    safeSessionSet(INTRO_KEY, "1");
+
+    // Kick off the animation timeline
+    setPhase("initial");
+
     const t1 = setTimeout(() => setPhase("mark"), TIMING.SHOW_MARK);
     const t2 = setTimeout(() => setPhase("expand"), TIMING.START_EXPAND);
     const t3 = setTimeout(() => setPhase("exit"), TIMING.START_EXIT);

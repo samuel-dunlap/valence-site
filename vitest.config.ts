@@ -8,6 +8,25 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./vitest.setup.ts"],
     globals: true,
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "html", "lcov"],
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: [
+        "src/**/*.test.{ts,tsx}",
+        "src/**/*.d.ts",
+        "src/app/**/layout.tsx",
+        "src/app/**/page.tsx",
+        "src/app/**/not-found.tsx",
+        "src/app/sitemap.ts",
+      ],
+      thresholds: {
+        lines: 70,
+        functions: 70,
+        branches: 70,
+        statements: 70,
+      },
+    },
   },
   resolve: {
     alias: {

@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SITE, NAV_LINKS, FOOTER_HREFS } from "@/lib/constants";
+import { formatPhoneForLink } from "@/lib/utils";
 import styles from "./Footer.module.css";
 
 const FOOTER_LINKS = NAV_LINKS.filter((l) => FOOTER_HREFS.has(l.href));
 
-export default function Footer() {
+export default function Footer(): React.ReactElement {
   return (
     <footer className={`navySection ${styles.footer}`}>
       <div className={styles.container}>
@@ -23,9 +24,7 @@ export default function Footer() {
             {SITE.address.zip}
           </p>
           <p className={styles.text}>
-            <a href={`tel:${SITE.phone.replace(/[^\d+]/g, "")}`}>
-              {SITE.phone}
-            </a>
+            <a href={`tel:${formatPhoneForLink(SITE.phone)}`}>{SITE.phone}</a>
           </p>
         </div>
         <nav className={styles.nav}>

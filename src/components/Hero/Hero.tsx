@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ArrowLink from "@/components/ArrowLink/ArrowLink";
+import { generateListKey } from "@/lib/utils";
 import styles from "./Hero.module.css";
 
 interface HeroProps {
@@ -18,7 +19,7 @@ export default function Hero({
   ctaHref,
   imageSrc,
   imageAlt,
-}: HeroProps) {
+}: HeroProps): React.ReactElement {
   return (
     <section className={`navySection ${styles.hero}`}>
       <div className={imageSrc ? styles.splitContainer : styles.container}>
@@ -26,11 +27,8 @@ export default function Hero({
           <h1 className={styles.headline}>{headline}</h1>
 
           <div className={styles.subtitles}>
-            {subtitleLines.map((line, i) => (
-              <p
-                key={`subtitle-${i}-${line.slice(0, 20)}`}
-                className={styles.subtitle}
-              >
+            {subtitleLines.map((line: string, i: number) => (
+              <p key={generateListKey("subtitle", i, line)} className={styles.subtitle}>
                 {line}
               </p>
             ))}

@@ -55,7 +55,23 @@
       "Bash(/usr/local/bin/npm install --save-dev sharp)",
       "Bash(npx tsc:*)",
       "Bash(chmod:*)",
-      "Bash(npx vitest:*)"
+      "Bash(npx vitest:*)",
+      "Bash(source:*)",
+      "Bash(grep:*)",
+      "Bash(git -C /Users/samueldunlap/Downloads/Website log --oneline --all -15)",
+      "Bash(/usr/local/bin/npm uninstall:*)",
+      "Bash(./node_modules/.bin/vitest:*)",
+      "Bash(/usr/local/bin/npm install --save-dev @vitest/coverage-v8)",
+      "Bash(git ls-tree:*)",
+      "Bash(git log:*)",
+      "Bash(brew list:*)",
+      "Bash(/opt/homebrew/bin/gh run list --workflow=\"Post-Deployment Verification\" --limit 5 --repo samuel-dunlap/valence-site)",
+      "Bash(/opt/homebrew/bin/gh run view 21762223978 --repo samuel-dunlap/valence-site)",
+      "Bash(/opt/homebrew/bin/gh run view:*)",
+      "Bash(export PATH=\"/usr/local/bin:/usr/bin:/bin:$PATH\")",
+      "Bash(export:*)",
+      "Bash(npx next dev:*)",
+      "Bash(lsof:*)"
     ]
   }
 }

@@ -152,16 +152,17 @@ Cloudflare automatically injects its analytics beacon script. The CSP explicitly
 
 - **Per-page metadata** — Each page exports unique `title`, `description`, and `canonical` URL
 - **OpenGraph + Twitter Card** — Social sharing image at `public/images/og-image.png` (1200x630)
-- **JSON-LD structured data** — External JSON files in `public/schema/`:
-  - `organization.json` — `ProfessionalService` schema (loaded on all pages)
-  - `couples-retreat.json` — `Service` schema for retreat offering
-  - `partner-search.json` — `Service` schema for matchmaking service
+- **JSON-LD structured data** — Generated programmatically via [`src/lib/schema.ts`](src/lib/schema.ts):
+  - `getOrganizationSchema()` — `ProfessionalService` schema injected in root layout
+  - `getServiceSchema()` — `Service` schemas injected in couples-retreat and partner-search pages
+  - All schemas reference single source of truth from [`src/lib/constants.ts`](src/lib/constants.ts)
 - **robots.txt** — Allows all crawlers and references `sitemap.xml`
 - **sitemap.xml** — Dynamic sitemap covering all 5 public pages
 
-**Why external JSON-LD?**
+**Why programmatic schemas?**
 
-- Strengthens CSP (no inline scripts, eliminates `script-src 'unsafe-inline'`)
+- Single source of truth for contact info (SITE constants)
+- Type-safe with TypeScript interfaces
 - Easy to validate and update schemas
 - Keeps component code clean
 

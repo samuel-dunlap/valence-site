@@ -1,20 +1,28 @@
 "use client";
 
 import { SITE } from "@/lib/constants";
+import { formatPhoneForLink } from "@/lib/utils";
 
 interface ContactInfoProps {
   className?: string;
 }
 
-export default function ContactInfo({ className }: ContactInfoProps) {
+export default function ContactInfo({ className }: ContactInfoProps): React.ReactElement | null {
   const phone = SITE.phone;
   const email = SITE.email;
-  const cleanPhone = phone.replace(/\D/g, "");
+
+  // Defensive check - return null if essential contact info is missing
+  if (!phone || !email) {
+    console.error("SITE.phone or SITE.email is not defined in constants");
+    return null;
+  }
+
+  const phoneLink = formatPhoneForLink(phone);
 
   return (
     <>
       <p className={className}>
-        c: <a href={`tel:+1${cleanPhone}`}>{phone}</a>
+        c: <a href={`tel:${phoneLink}`}>{phone}</a>
       </p>
       <p className={className}>
         e: <a href={`mailto:${email}`}>{email}</a>
