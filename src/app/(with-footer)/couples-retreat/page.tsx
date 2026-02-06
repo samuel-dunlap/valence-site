@@ -94,8 +94,7 @@ export default function CouplesRetreatPage() {
             "Continued or protracted power struggles that degrade trust and respect",
             "Critical misalignments on decisions about parenting, finances, and family legacy",
             "Chronic imbalances in time, energy, and resource allocations",
-            "Fragilities in family wealth and intergenerational well-being",
-            <><strong>90%</strong> of wealthy families have lost their assets by the third generation, with <strong>60%</strong> of that loss stemming from breakdowns in family communication and trust</>,
+<><strong>90%</strong> of wealthy families have lost their assets by the third generation, with <strong>60%</strong> of that loss stemming from breakdowns in family communication and trust</>,
             <>The <strong>#1</strong> cause of divorce is arguments around money, and <strong>40%</strong> of marriages end in divorce, with <strong>50&ndash;77%</strong> loss of net worth</>,
           ]}
           rightTitle="Benefits of Couples Retreats"
