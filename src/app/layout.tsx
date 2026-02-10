@@ -3,6 +3,7 @@ import { Libre_Baskerville, IBM_Plex_Sans } from "next/font/google";
 import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
 import IntroOverlay from "@/components/IntroOverlay/IntroOverlay";
 import Navbar from "@/components/Navbar/Navbar";
+import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import StructuredData from "@/components/StructuredData/StructuredData";
 import { SITE } from "@/lib/constants";
 import { getOrganizationSchema } from "@/lib/schema";
@@ -76,10 +77,19 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${libreBaskerville.variable} ${ibmPlexSans.variable}`}
+      suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(!sessionStorage.getItem('valence-intro-seen')&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-pending')}}catch(e){}`,
+          }}
+        />
+      </head>
       <body>
         <StructuredData data={getOrganizationSchema()} />
         <ErrorBoundary>
+          <ScrollToTop />
           <IntroOverlay />
           <Navbar />
           <main id="main-content">{children}</main>

@@ -28,9 +28,14 @@ export default function PartnerSearchPage() {
         )}
       />
       <FadeIn>
-        <section className={`navySection ${sharedStyles.header}`}>
+        <section className={sharedStyles.header}>
           <div className={sharedStyles.headerContent}>
             <h1 className={sharedStyles.title}>The Partner Search</h1>
+            <p className={sharedStyles.headerSubtitle}>
+              precision and principle
+              <br />
+              applied to life&rsquo;s most consequential decision
+            </p>
             <p className={sharedStyles.intro}>
               You are successful, discerning, and ready for a serious
               commitment, but the open dating market is inefficient. Most men in
@@ -53,58 +58,55 @@ export default function PartnerSearchPage() {
                 apps.
               </li>
             </ul>
+            <Image
+              src="/images/assessment.webp"
+              alt="Partner assessment consultation"
+              width={1074}
+              height={669}
+              unoptimized
+              loading="lazy"
+              className={styles.headerImage}
+            />
           </div>
         </section>
       </FadeIn>
 
       <FadeIn>
-        <div className={sharedStyles.accentWrap}>
-          <Image
-            src="/images/assessment.webp"
-            alt="Partner assessment consultation"
-            width={1074}
-            height={669}
-            unoptimized
-            loading="lazy"
-            className={sharedStyles.accentImage}
-          />
-        </div>
-      </FadeIn>
-
-      <FadeIn>
-        <section className={styles.methodSection}>
-          <SectionHeader title="Our Method" />
-          <div className={styles.phaseGrid}>
-            <PhaseCard
-              phaseNumber={1}
-              title="Profile"
-              description="We analyze your psychological profile and non-negotiables to define the specific partner archetype that complements your goals."
-            />
-            <PhaseCard
-              phaseNumber={2}
-              title="Search"
-              description="We do not wait for applications. We actively headhunt candidates via offline networks to build a registry of women not on dating apps."
-            />
-            <PhaseCard
-              phaseNumber={3}
-              title="Filter"
-              description="You browse qualified candidates invisibly. Once you select a profile, we perform a comprehensive character assessment. If we find red flags, we reject her on your behalf."
-            />
-            <PhaseCard
-              phaseNumber={4}
-              title="Date"
-              description="We secure the venue, manage all reservations, and synchronize calendars. We give you a short briefing on your date. You just show up."
-            />
-            <PhaseCard
-              phaseNumber={5}
-              title="Recalibrate"
-              description="We gather candid feedback from both you and the woman after the date to refine future matches or provide you with critical performance insights."
-            />
-            <PhaseCard
-              phaseNumber={6}
-              title="Commitment"
-              description="Once mutual exclusivity is established, we suspend active sourcing. We monitor the initial 90-day period to ensure relationship stability before formally closing the search."
-            />
+        <section className="navySection">
+          <div className={styles.methodSection}>
+            <SectionHeader title="Our Method" />
+            <div className={styles.phaseGrid}>
+              <PhaseCard
+                phaseNumber={1}
+                title="Profile"
+                description="We analyze your psychological profile and non-negotiables to define the specific partner archetype that complements your goals."
+              />
+              <PhaseCard
+                phaseNumber={2}
+                title="Search"
+                description="We do not wait for applications. We actively headhunt candidates via offline networks to build a selection of women not on dating apps."
+              />
+              <PhaseCard
+                phaseNumber={3}
+                title="Filter"
+                description="You browse qualified candidates invisibly. Once you select a profile, we perform a comprehensive character assessment. If we find red flags, we reject her on your behalf."
+              />
+              <PhaseCard
+                phaseNumber={4}
+                title="Date"
+                description="We secure the venue, manage all reservations, and synchronize calendars. We give you a short briefing on your date. You just show up."
+              />
+              <PhaseCard
+                phaseNumber={5}
+                title="Recalibrate"
+                description="We gather candid feedback from both you and the woman after the date to refine future matches or provide you with critical performance insights."
+              />
+              <PhaseCard
+                phaseNumber={6}
+                title="Commitment"
+                description="Once mutual exclusivity is established, we suspend active sourcing. We monitor the initial 90-day period to ensure relationship stability before formally closing the search."
+              />
+            </div>
           </div>
         </section>
       </FadeIn>

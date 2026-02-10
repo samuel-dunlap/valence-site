@@ -9,6 +9,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "lint:css:fix": "stylelint \"src/**/*.css\" --fix",
     "format": "prettier --write \"**/*.{ts,tsx,json,md,css}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,json,md,css}\"",
     "test": "vitest run",
@@ -19,7 +21,7 @@
     "test:a11y": "npm run build && axe ./out/**/*.html",
     "test:security": "npm audit --audit-level=moderate",
     "test:all": "npm run typecheck && npm run lint && npm run test:coverage && npm run build && npm run test:links",
-    "validate": "npm run typecheck && npm run lint && npm run format:check",
+    "validate": "npm run typecheck && npm run lint && npm run lint:css && npm run format:check",
     "validate-links": "npm run test:links",
     "prepare": "husky"
   },
@@ -28,7 +30,11 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "*.{json,md,css}": [
+    "*.css": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
       "prettier --write"
     ]
   },
@@ -60,6 +66,8 @@
     "linkinator": "^6.1.2",
     "lint-staged": "^15.2.11",
     "prettier": "^3.4.2",
+    "stylelint": "^17.1.1",
+    "stylelint-config-standard": "^40.0.0",
     "typescript": "^5",
     "vitest": "^3.1.3"
   },

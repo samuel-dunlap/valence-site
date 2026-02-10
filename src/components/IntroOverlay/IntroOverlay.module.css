@@ -2,7 +2,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: var(--z-intro);
   background-color: var(--color-navy);
   display: flex;
   align-items: center;
@@ -29,14 +29,14 @@
 /* ── Wordmark container ── */
 .wordmark {
   position: relative;
-  z-index: 1;
+  z-index: var(--z-content);
   display: inline-flex;
   align-items: baseline;
   font-family: var(--font-heading);
   font-size: var(--fs-heading);
-  line-height: 1;
+  line-height: var(--lh-tight);
   opacity: 0;
-  transition: opacity 400ms ease;
+  transition: opacity var(--transition-slow);
 }
 
 .visible {
@@ -68,7 +68,7 @@
 
 .letter {
   color: var(--color-warm-white);
-  letter-spacing: 0.35em;
+  letter-spacing: var(--ls-wide);
 }
 
 /* ── Expanding letter group (A L E N C E) ── */
@@ -88,7 +88,7 @@
 
 .expandLetter {
   color: var(--color-warm-white);
-  letter-spacing: 0.35em;
+  letter-spacing: var(--ls-wide);
   opacity: 0;
   transition: opacity 300ms ease;
   flex-shrink: 0;

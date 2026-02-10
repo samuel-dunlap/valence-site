@@ -1,23 +1,46 @@
 /* Page-specific styles - shared header styles moved to @/styles/page-header.module.css */
 
 .bodySection {
-  padding: var(--section-padding) var(--content-padding) var(--space-xs);
+  padding: var(--section-padding) var(--content-padding);
   max-width: var(--max-width);
   margin: 0 auto;
 }
 
+.sectionImage {
+  display: block;
+  border-radius: var(--radius-image);
+  width: 100%;
+  height: auto;
+  max-width: var(--content-medium);
+  margin-top: var(--space-lg);
+}
+
 .bodySection + .bodySection {
-  padding-top: var(--space-md);
+  padding-top: 0;
 }
 
 .bodyText {
   max-width: var(--text-max-width);
-  line-height: 1.7;
+  line-height: var(--lh-body);
+}
+
+.bodyText + .bodyText {
+  margin-top: var(--space-md);
+}
+
+.legacySection {
+  padding: var(--section-padding) 0;
+}
+
+.legacySectionContent {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
 }
 
 .cta {
-  padding: 2.5rem var(--content-padding) var(--section-padding);
+  padding: var(--section-padding) var(--content-padding);
   text-align: center;
   position: relative;
-  z-index: 1;
+  z-index: var(--z-content);
 }

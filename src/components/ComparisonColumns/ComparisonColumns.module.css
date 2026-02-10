@@ -3,7 +3,11 @@
   margin: 0 auto;
   padding: var(--section-padding) var(--content-padding);
   position: relative;
-  z-index: 1;
+  z-index: var(--z-content);
+}
+
+.bare {
+  padding: var(--space-md) var(--content-padding) 0;
 }
 
 .grid {
@@ -19,15 +23,15 @@
 }
 
 .columnTitle {
-  font-size: var(--fs-subheading);
+  font-size: var(--fs-body);
+  color: var(--color-burgundy);
 }
 
 .list {
-  list-style: disc;
   padding-left: 1.25em;
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
 }
 
 .item {
@@ -36,7 +40,7 @@
 
 .stacked {
   grid-template-columns: 1fr;
-  gap: var(--space-2xl);
+  gap: var(--space-md);
 }
 
 @media (max-width: 767px) {

@@ -1,27 +1,46 @@
 /* Shared header styles for service pages */
 .header {
-  padding: var(--section-padding) var(--content-padding);
+  padding: var(--section-padding) 0;
 }
 
 .headerContent {
   position: relative;
-  z-index: 1;
-  max-width: var(--text-max-width);
+  z-index: var(--z-content);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
 }
 
 .title {
   font-size: var(--fs-heading);
   margin-bottom: var(--space-md);
+  max-width: var(--text-max-width);
+}
+
+.headerSubtitle {
+  font-family: var(--font-heading);
+  font-size: var(--fs-body);
+  color: var(--color-burgundy);
+  margin-bottom: var(--space-md);
+  max-width: var(--text-max-width);
 }
 
 .intro {
   margin-bottom: var(--space-md);
+  max-width: var(--text-max-width);
+}
+
+.headerDivider {
+  border: none;
+  border-top: var(--border-rule) solid var(--color-burgundy);
+  margin: 0;
+  max-width: var(--content-medium);
 }
 
 .accentWrap {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-lg) var(--content-padding);
+  padding: var(--space-sm) var(--content-padding) var(--section-padding);
 }
 
 .accentImage {
@@ -29,6 +48,6 @@
   border-radius: var(--radius-image);
   width: 100%;
   height: auto;
-  max-width: 600px;
+  max-width: var(--content-medium);
   margin: 0 auto;
 }

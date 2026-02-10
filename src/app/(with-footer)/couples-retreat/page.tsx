@@ -28,91 +28,113 @@ export default function CouplesRetreatPage() {
         )}
       />
       <FadeIn>
-        <section className={`navySection ${sharedStyles.header}`}>
+        <section className={sharedStyles.header}>
           <div className={sharedStyles.headerContent}>
             <h1 className={sharedStyles.title}>The Couples Retreat</h1>
-            <p className={sharedStyles.intro}>
-              Your family legacy is the ultimate expression of your
-              relationship&rsquo;s value. Yet the unique pressures from growing
-              and preserving your legacy threaten your relationship. When your
-              core relationship is compromised, your family legacy is at risk.
+            <p className={sharedStyles.headerSubtitle}>
+              an immersive weekend
+              <br />
+              for deepening joy and intimacy
+              <br />
+              in the relationships that matter most
             </p>
-            <p>
-              High net-worth partners are often well resourced in tax and estate
-              advice, family governance tools, succession planning, and
-              philanthropic giving. These available services are not sufficient
-              for developing the <strong>advanced relational skills</strong>{" "}
-              required to more effectively preserve and potentiate family
-              legacies.
+            <p className={sharedStyles.intro}>
+              The Couples Retreat is a multi-day training program for driven
+              couples to develop the essential knowledge and advanced skills for{" "}
+              <strong>interpersonal mastery</strong>.
             </p>
           </div>
         </section>
       </FadeIn>
 
+      <div className="navySection">
+        <FadeIn>
+          <section className={styles.legacySection}>
+            <div className={styles.legacySectionContent}>
+              <SectionHeader title="What&rsquo;s at Stake" />
+              <p className={styles.bodyText}>
+                Your family legacy is the ultimate expression of your
+                relationship&rsquo;s value. Yet the unique pressures from
+                growing and preserving your legacy threaten your relationship.
+                When your core relationship is compromised, your family legacy
+                is at risk.
+              </p>
+            </div>
+            <ComparisonColumns
+              bare
+              stacked
+              leftTitle="Unmitigated Costs & Risks"
+              leftItems={[
+                "Continued or protracted power struggles that degrade trust and respect",
+                "Critical misalignments on decisions about parenting, finances, and family legacy",
+                "Chronic imbalances in time, energy, and resource allocations",
+                <>
+                  Most wealthy families lose their assets by the third
+                  generation &mdash; and in <strong>60%</strong> of these cases,
+                  the root cause is a breakdown in family communication and
+                  trust.
+                </>,
+                <>
+                  The <strong>#1</strong> cause of divorce is arguments around
+                  money, and <strong>40%</strong> of marriages end in divorce,
+                  with <strong>50&ndash;77%</strong> loss of net worth for each
+                  partner
+                </>,
+              ]}
+              rightTitle="Benefits of Couples Retreats"
+              rightItems={[
+                "Greater personal integrity and dignity",
+                "Demonstrable skills and behaviors of relational intimacy and emotional maturity",
+                "Stronger communication and deeper intimacies even when navigating conflict",
+                "Greater coherence around shared vision and legacy",
+                "Deeper joy in partnership, family, and life",
+              ]}
+            />
+            <div className={styles.legacySectionContent}>
+              <Image
+                src="/images/retreat.webp"
+                alt="Luxury retreat with mountain views"
+                width={1018}
+                height={661}
+                unoptimized
+                loading="lazy"
+                className={styles.sectionImage}
+              />
+            </div>
+          </section>
+        </FadeIn>
+      </div>
+
       <FadeIn>
         <section className={styles.bodySection}>
-          <SectionHeader title="The Method" />
+          <SectionHeader title="The Unique Value" />
           <p className={styles.bodyText}>
-            The Couples Retreat is a multi-day training program for driven
-            couples to develop the essential knowledge and advanced skills for{" "}
-            <strong>interpersonal mastery</strong>. Couples will learn more in
-            these few days than in years of therapy.
+            Couples will learn more in these few days than in years of therapy.
+            Couples therapy focuses on processing past conflicts and wounds. The
+            Couples Retreat trains you in the embodied relational skills that
+            you actually want, opening up more possibilities. The effectiveness
+            of therapy depends on the critically limited knowledge and skills of
+            the therapist. The Couples Retreat is a structured program using
+            first principles and best practices drawn from an exhaustive
+            meta-analysis of the entire body of relational research that exists
+            in the library of congress.
+          </p>
+          <p className={styles.bodyText}>
+            Advisors in high-net-worth ecosystems are often well resourced in
+            tax and estate advice, family governance tools, succession planning,
+            and philanthropic giving. These available services are not
+            sufficient for developing the{" "}
+            <strong>advanced relational skills</strong> required to more
+            effectively preserve and potentiate family legacies.
           </p>
         </section>
-        <section className={styles.bodySection}>
-          <SectionHeader title="The Setting" />
-          <p className={styles.bodyText}>
-            We partner with the world&rsquo;s most exclusive properties that
-            provide the clean container designed for clarity, rest, and
-            physiological reset. Outside of our sessions, you will have space
-            for high-quality time together&mdash;moving your bodies, engaging in
-            wellness activities, and simply enjoying the beauty of the setting.
-          </p>
-        </section>
       </FadeIn>
 
-      <FadeIn>
-        <div className={sharedStyles.accentWrap}>
-          <Image
-            src="/images/retreat.webp"
-            alt="Luxury retreat with mountain views"
-            width={1018}
-            height={661}
-            unoptimized
-            loading="lazy"
-            className={sharedStyles.accentImage}
-            style={{ margin: 0 }}
-          />
-        </div>
-      </FadeIn>
-
-      <FadeIn>
-        <ComparisonColumns
-          stacked
-          leftTitle="Unmitigated Costs & Risks"
-          leftItems={[
-            "Continued or protracted power struggles that degrade trust and respect",
-            "Critical misalignments on decisions about parenting, finances, and family legacy",
-            "Chronic imbalances in time, energy, and resource allocations",
-<><strong>90%</strong> of wealthy families have lost their assets by the third generation, with <strong>60%</strong> of that loss stemming from breakdowns in family communication and trust</>,
-            <>The <strong>#1</strong> cause of divorce is arguments around money, and <strong>40%</strong> of marriages end in divorce, with <strong>50&ndash;77%</strong> loss of net worth</>,
-          ]}
-          rightTitle="Benefits of Couples Retreats"
-          rightItems={[
-            "Greater personal integrity and dignity",
-            "Demonstrable skills and behaviors of relational intimacy and emotional maturity",
-            "Stronger communication and deeper intimacies even when navigating conflict",
-            "Greater coherence around shared vision and legacy",
-            "Deeper joy in partnership, family, and life",
-          ]}
-        />
-      </FadeIn>
-
-      <section className={`navySection ${styles.cta}`}>
+      <section className={styles.cta}>
         <ArrowLink
           text={CTA.requestIntroduction}
           href="/inquire"
-          variant="light"
+          variant="dark"
         />
       </section>
     </>

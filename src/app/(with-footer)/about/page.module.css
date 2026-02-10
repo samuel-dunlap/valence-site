@@ -17,7 +17,7 @@
 }
 
 .photoWrapper {
-  max-width: 450px;
+  max-width: var(--content-narrow);
   margin-bottom: var(--space-lg);
 }
 
@@ -29,36 +29,35 @@
 
 .bio {
   max-width: var(--text-max-width);
-  line-height: 1.7;
+  line-height: var(--lh-body);
 }
 
 .divider {
   border: none;
-  border-top: 2px solid var(--color-burgundy);
+  border-top: var(--border-rule) solid var(--color-burgundy);
   margin: 0;
 }
 
 .accordionSection {
-  padding: var(--space-md) var(--content-padding) var(--section-padding);
+  padding: var(--space-lg) var(--content-padding) var(--section-padding);
   max-width: var(--max-width);
   margin: 0 auto;
 }
 
 .list {
-  list-style: disc;
   padding-left: 1.25em;
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
-  line-height: 1.7;
+  line-height: var(--lh-body);
 }
 
 .accordionIntro {
   margin-bottom: var(--space-sm);
-  line-height: 1.7;
+  line-height: var(--lh-body);
 }
 
 .accordionClosing {
   margin-top: var(--space-sm);
-  line-height: 1.7;
+  line-height: var(--lh-body);
 }

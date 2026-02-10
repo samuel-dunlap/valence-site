@@ -3,7 +3,7 @@
 }
 
 .section {
-  border-bottom: 2px solid var(--color-burgundy);
+  border-bottom: var(--border-rule) solid var(--color-burgundy);
 }
 
 .header {
@@ -28,9 +28,9 @@
 .indicator {
   font-size: var(--fs-subheading);
   color: var(--color-burgundy);
-  line-height: 1;
+  line-height: var(--lh-tight);
   flex-shrink: 0;
-  transition: transform 400ms ease;
+  transition: transform var(--transition-slow);
   transform: rotate(0deg);
   user-select: none;
 }
@@ -42,7 +42,7 @@
 .contentWrapper {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 400ms ease;
+  transition: max-height var(--transition-slow);
 }
 
 .content {

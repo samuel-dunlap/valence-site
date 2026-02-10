@@ -1,5 +1,5 @@
 .footer {
-  padding: 48px 0 40px;
+  padding: var(--section-padding) 0;
 }
 
 .container {
@@ -35,9 +35,8 @@
 
 .navLink {
   font-size: var(--fs-body);
-  text-decoration: none;
   padding-bottom: 2px;
-  border-bottom: 1.5px solid transparent;
+  border-bottom: var(--border-link) solid transparent;
   transition: border-color var(--transition-fast);
   display: inline-block;
   align-self: flex-end;

@@ -3,14 +3,14 @@
   position: absolute;
   top: -100%;
   left: var(--content-padding);
-  z-index: 200;
-  padding: 0.5em 1em;
+  z-index: var(--z-overlay);
+  padding: var(--button-padding-y) var(--button-padding-x);
   background-color: var(--color-navy);
   color: var(--color-warm-white);
   font-family: var(--font-body);
   font-size: var(--fs-body);
   text-decoration: none;
-  border: 1px solid var(--color-warm-white);
+  border: var(--border-thin) solid var(--color-warm-white);
   transition: top var(--transition-fast);
 }
 
@@ -22,10 +22,10 @@
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: var(--z-navbar);
   background-color: var(--color-warm-white);
   transition: border-color var(--transition-base);
-  border-bottom: 1px solid transparent;
+  border-bottom: var(--border-thin) solid transparent;
 }
 
 .scrolled {
@@ -43,7 +43,6 @@
 
 /* ── Logo ── */
 .logo {
-  text-decoration: none;
   display: inline-block;
   margin-bottom: 18px;
 }
@@ -51,12 +50,12 @@
 .logoText {
   font-family: var(--font-heading);
   font-size: var(--fs-subheading);
-  line-height: 1;
+  line-height: var(--lh-tight);
 }
 
 .logoLetter {
   color: var(--color-navy);
-  letter-spacing: 0.35em;
+  letter-spacing: var(--ls-wide);
 }
 
 .logoPunctuation {
@@ -75,16 +74,15 @@
 /* ── Desktop nav ── */
 .desktopNav {
   display: flex;
-  gap: 32px;
+  gap: var(--space-md);
   padding-bottom: 20px;
 }
 
 .navLink {
   font-size: var(--fs-body);
-  letter-spacing: 0.05em;
-  text-decoration: none;
+  letter-spacing: var(--ls-open);
   padding-bottom: 4px;
-  border-bottom: 1.5px solid transparent;
+  border-bottom: var(--border-link) solid transparent;
   transition: border-color var(--transition-fast);
 }
 
@@ -97,7 +95,7 @@
 }
 
 .navLink:visited {
-  color: #4a2d3a;
+  color: var(--color-visited-light);
 }
 
 /* ── Hamburger ── */
@@ -130,7 +128,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: var(--z-overlay);
   background-color: var(--color-navy);
   display: flex;
   align-items: center;
@@ -182,14 +180,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 36px;
+  gap: var(--space-md);
 }
 
 .overlayLink {
   font-size: var(--fs-heading);
-  letter-spacing: 0.05em;
+  letter-spacing: var(--ls-open);
   color: var(--color-warm-white);
-  text-decoration: none;
   transition: opacity var(--transition-fast);
 }
 
@@ -198,11 +195,11 @@
 }
 
 .overlayLink:visited {
-  color: #c8bfb8;
+  color: var(--color-visited-dark);
 }
 
 .overlayLinkActive {
-  border-bottom: 1.5px solid var(--color-burgundy);
+  border-bottom: var(--border-link) solid var(--color-burgundy);
   padding-bottom: 2px;
 }
 

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function InquirePage() {
   return (
-    <section className={`navySection ${styles.page}`}>
+    <section className={styles.page}>
       <div className={styles.content}>
         <h1 className={styles.heading}>Inquire</h1>
         <p className={styles.subtitle}>

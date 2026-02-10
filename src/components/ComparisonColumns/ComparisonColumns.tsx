@@ -6,6 +6,8 @@ interface ComparisonColumnsProps {
   rightTitle: string;
   rightItems: React.ReactNode[];
   stacked?: boolean;
+  className?: string;
+  bare?: boolean;
 }
 
 export default function ComparisonColumns({
@@ -14,33 +16,38 @@ export default function ComparisonColumns({
   rightTitle,
   rightItems,
   stacked,
+  className,
+  bare,
 }: ComparisonColumnsProps): React.ReactElement {
-  return (
-    <section className="navySection">
-      <div className={styles.container}>
-        <div className={`${styles.grid} ${stacked ? styles.stacked : ""}`}>
-          <div className={styles.column}>
-            <h3 className={styles.columnTitle}>{leftTitle}</h3>
-            <ul className={styles.list}>
-              {leftItems.map((item, i) => (
-                <li key={i} className={styles.item}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className={styles.column}>
-            <h3 className={styles.columnTitle}>{rightTitle}</h3>
-            <ul className={styles.list}>
-              {rightItems.map((item, i) => (
-                <li key={i} className={styles.item}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+  const content = (
+    <div
+      className={`${styles.container}${bare ? ` ${styles.bare}` : ""}${className ? ` ${className}` : ""}`}
+    >
+      <div className={`${styles.grid} ${stacked ? styles.stacked : ""}`}>
+        <div className={styles.column}>
+          <h3 className={styles.columnTitle}>{leftTitle}</h3>
+          <ul className={styles.list}>
+            {leftItems.map((item, i) => (
+              <li key={i} className={styles.item}>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className={styles.column}>
+          <h3 className={styles.columnTitle}>{rightTitle}</h3>
+          <ul className={styles.list}>
+            {rightItems.map((item, i) => (
+              <li key={i} className={styles.item}>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
   );
+
+  if (bare) return content;
+  return <section className="navySection">{content}</section>;
 }

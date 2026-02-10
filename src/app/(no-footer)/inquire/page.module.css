@@ -5,7 +5,7 @@
 
 .content {
   position: relative;
-  z-index: 1;
+  z-index: var(--z-content);
   max-width: var(--text-max-width);
 }
 
@@ -15,14 +15,17 @@
 }
 
 .subtitle {
+  font-family: var(--font-heading);
+  font-size: var(--fs-body);
+  color: var(--color-burgundy);
   margin-bottom: var(--space-lg);
 }
 
 .divider {
   border: none;
-  border-top: 2px solid var(--color-burgundy);
+  border-top: var(--border-rule) solid var(--color-burgundy);
   margin-bottom: var(--space-lg);
-  max-width: 600px;
+  max-width: var(--content-medium);
 }
 
 .contactItem {

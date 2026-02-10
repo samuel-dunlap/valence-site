@@ -23,20 +23,30 @@ export default function IntroOverlay(): React.ReactElement | null {
   const [phase, setPhase] = useState<Phase>("done");
 
   useEffect(() => {
+    const removePendingClass = () =>
+      document.documentElement.classList.remove("intro-pending");
+
     // Skip if already seen this session
-    if (safeSessionGet(INTRO_KEY)) return;
+    if (safeSessionGet(INTRO_KEY)) {
+      removePendingClass();
+      return;
+    }
 
     // Respect prefers-reduced-motion
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       safeSessionSet(INTRO_KEY, "1");
+      removePendingClass();
       return;
     }
 
     // Mark as seen immediately to prevent replays on back-navigation
     safeSessionSet(INTRO_KEY, "1");
 
-    // Kick off the animation timeline
-    setPhase("initial");
+    // Kick off the animation timeline — remove the CSS cover now that React overlay is rendering
+    const t0 = setTimeout(() => {
+      setPhase("initial");
+      removePendingClass();
+    }, 0);
 
     const t1 = setTimeout(() => setPhase("mark"), TIMING.SHOW_MARK);
     const t2 = setTimeout(() => setPhase("expand"), TIMING.START_EXPAND);
@@ -49,6 +59,7 @@ export default function IntroOverlay(): React.ReactElement | null {
     }, TIMING.FAILSAFE);
 
     return () => {
+      clearTimeout(t0);
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);

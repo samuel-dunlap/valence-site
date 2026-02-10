@@ -71,7 +71,13 @@
       "Bash(export PATH=\"/usr/local/bin:/usr/bin:/bin:$PATH\")",
       "Bash(export:*)",
       "Bash(npx next dev:*)",
-      "Bash(lsof:*)"
+      "Bash(lsof:*)",
+      "Bash(npx prettier:*)",
+      "Bash(for f in /Users/samueldunlap/Downloads/Website/out/_next/static/chunks/*.css)",
+      "Bash(do if grep -q 'bare' \"$f\")",
+      "Bash(then grep -o 'bare[^}]*}' \"$f\")",
+      "Bash(fi)",
+      "Bash(done)"
     ]
   }
 }

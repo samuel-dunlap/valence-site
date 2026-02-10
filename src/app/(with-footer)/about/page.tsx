@@ -100,8 +100,8 @@ export default function AboutPage() {
                       <li>Social &amp; Evolutionary psychology</li>
                       <li>Psychology of marriage and intimate relationships</li>
                       <li>
-                        Complexity science &amp; Bayesian math (as modeling
-                        systems)
+                        Complexity science &amp; Bayesian math (as
+                        epistemological tools)
                       </li>
                       <li>
                         Metaphysics and Non-dual wisdom traditions (as

@@ -3,7 +3,6 @@
   flex-direction: column;
   gap: var(--space-sm);
   height: 100%;
-  text-decoration: none;
   color: inherit;
   cursor: pointer;
 }
@@ -28,10 +27,10 @@
 
 .ctaLabel {
   font-size: var(--fs-body);
-  letter-spacing: 0.02em;
+  letter-spacing: var(--ls-tight);
   display: inline-block;
-  padding: 0.5em 1.25em;
-  border: 1px solid var(--color-navy);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: var(--border-thin) solid var(--color-navy);
   align-self: flex-start;
   transition:
     background-color var(--transition-fast),

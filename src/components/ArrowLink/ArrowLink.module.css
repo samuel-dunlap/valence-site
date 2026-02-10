@@ -1,10 +1,9 @@
 .link {
   font-size: var(--fs-body);
-  letter-spacing: 0.02em;
-  text-decoration: none;
+  letter-spacing: var(--ls-tight);
   display: inline-block;
-  padding: 0.5em 1.25em;
-  border: 1px solid currentColor;
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: var(--border-thin) solid currentColor;
   transition:
     background-color var(--transition-fast),
     color var(--transition-fast);
