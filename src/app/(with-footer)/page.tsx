@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "Valence | Private Relationship Advisory",
   description:
-    "Finding and mastering lifelong partnership. Relationship advisory for high-net-worth men in New York City and Aspen.",
+    "Mastering lifelong partnership. Relationship advisory for high-net-worth couples in New York City and Aspen.",
   alternates: { canonical: "/" },
 };
 
@@ -18,13 +18,13 @@ export default function HomePage() {
       <Hero
         headline={
           <>
-            Finding and Mastering
+            Mastering
             <br />
             Lifelong Partnership
           </>
         }
         subtitleLines={[
-          "Relationship Advisory for High-Net-Worth Men.",
+          "Relationship Advisory for High-Net-Worth Couples.",
           "NYC + Aspen.",
         ]}
         ctaText={CTA.requestIntroduction}
@@ -42,13 +42,6 @@ export default function HomePage() {
               description="Integrating luxury hospitality, wellness, and structured relational work to revitalize partnerships, preserve legacy, and deepen relational mastery."
               href="/couples-retreat"
               ctaText="Explore the Retreat"
-            />
-            <ServiceCard
-              title="The Partner Search"
-              tagline="Headhunting for your personal life."
-              description="Psychologically curated matchmaking and rigorous screening for lifetime partnership with high-quality & high-integrity women."
-              href="/partner-search"
-              ctaText="Begin the Search"
             />
           </div>
         </section>

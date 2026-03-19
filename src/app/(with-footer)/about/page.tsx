@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Samuel Dunlap — Relationship Advisor & Researcher. Ranked #1 therapist on Google in NYC. 10,000+ hours advising 300+ high-performing clients.",
+    "Samuel Dunlap — Author & Advisor. Ranked #1 therapist on Google in NYC. 10,000+ hours advising 300+ high-performing clients.",
   alternates: { canonical: "/about/" },
 };
 
@@ -17,9 +17,7 @@ export default function AboutPage() {
       <FadeIn>
         <section className={styles.header}>
           <h1 className={styles.name}>Samuel Dunlap</h1>
-          <p className={styles.subtitle}>
-            Relationship Advisor &amp; Researcher
-          </p>
+          <p className={styles.subtitle}>Author &amp; Advisor</p>
           <div className={styles.photoWrapper}>
             <Image
               src="/images/profile.webp"
@@ -33,7 +31,7 @@ export default function AboutPage() {
           <p className={styles.bio}>
             After years of practicing as a clinical couples therapist, Samuel
             has transitioned exclusively to private advisory for high-net-worth
-            men in New York City and Aspen, CO.
+            couples in New York City and Aspen, CO.
           </p>
         </section>
       </FadeIn>

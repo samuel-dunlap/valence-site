@@ -7,7 +7,9 @@ interface ContactInfoProps {
   className?: string;
 }
 
-export default function ContactInfo({ className }: ContactInfoProps): React.ReactElement | null {
+export default function ContactInfo({
+  className,
+}: ContactInfoProps): React.ReactElement | null {
   const phone = SITE.phone;
   const email = SITE.email;
 
@@ -27,9 +29,9 @@ export default function ContactInfo({ className }: ContactInfoProps): React.Reac
       <p className={className}>
         e: <a href={`mailto:${email}`}>{email}</a>
       </p>
-      <p className={className}>{SITE.address.street}</p>
       <p className={className}>
-        {SITE.address.city}, {SITE.address.state} {SITE.address.zip}
+        {SITE.address.street}, {SITE.address.city}, {SITE.address.state}{" "}
+        {SITE.address.zip}
       </p>
     </>
   );
