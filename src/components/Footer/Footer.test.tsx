@@ -18,7 +18,6 @@ vi.mock("@/lib/constants", () => ({
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/couples-retreat", label: "Couples Retreat" },
-    { href: "/partner-search", label: "Partner Search" },
     { href: "/inquire", label: "Inquire" },
   ],
   FOOTER_HREFS: new Set(["/", "/about", "/inquire"]),
@@ -56,7 +55,6 @@ describe("Footer", () => {
     expect(screen.getByText("About")).toBeInTheDocument();
     expect(screen.getByText("Inquire")).toBeInTheDocument();
     expect(screen.queryByText("Couples Retreat")).not.toBeInTheDocument();
-    expect(screen.queryByText("Partner Search")).not.toBeInTheDocument();
   });
 
   it("renders navigation links with correct hrefs", () => {

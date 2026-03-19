@@ -43,7 +43,7 @@ jobs:
 
       - name: Check critical pages
         run: |
-          PAGES=("/" "/about/" "/couples-retreat/" "/partner-search/" "/inquire/")
+          PAGES=("/" "/about/" "/couples-retreat/" "/inquire/")
 
           for page in "${PAGES[@]}"; do
             HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://valenceprivate.com$page")
