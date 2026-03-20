@@ -6,7 +6,7 @@ import ContactInfo from "./ContactInfo";
 vi.mock("@/lib/constants", () => ({
   SITE: {
     phone: "(212) 263-0000",
-    email: "contact@samueldunlap.org",
+    email: "samuel [at] valenceprivate {dot} com",
     address: {
       street: "654 Madison Avenue",
       city: "New York",
@@ -23,12 +23,11 @@ describe("ContactInfo", () => {
     expect(phoneLink).toHaveAttribute("href", "tel:+12122630000");
   });
 
-  it("renders email link", () => {
+  it("renders email text", () => {
     render(<ContactInfo />);
-    const emailLink = screen
-      .getByText("contact@samueldunlap.org")
-      .closest("a");
-    expect(emailLink).toHaveAttribute("href", "mailto:contact@samueldunlap.org");
+    expect(
+      screen.getByText("samuel [at] valenceprivate {dot} com")
+    ).toBeInTheDocument();
   });
 
   it("renders full address", () => {

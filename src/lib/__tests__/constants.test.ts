@@ -12,8 +12,7 @@ describe("Constants", () => {
     });
 
     it("exports contact email", () => {
-      expect(SITE.email).toContain("@");
-      expect(SITE.email).toBe("contact@samueldunlap.org");
+      expect(SITE.email).toBe("samuel [at] valenceprivate {dot} com");
     });
 
     it("exports phone number", () => {

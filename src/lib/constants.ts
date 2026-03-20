@@ -5,7 +5,7 @@ export const SITE = {
   logoFull: ":  V  A  L  E  N  C  E .",
   logoMark: ":  V .",
   phone: "(212) 263-0000",
-  email: "contact@samueldunlap.org",
+  email: "samuel [at] valenceprivate {dot} com",
   address: {
     street: "654 Madison Avenue",
     city: "New York",

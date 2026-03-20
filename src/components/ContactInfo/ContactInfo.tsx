@@ -26,9 +26,7 @@ export default function ContactInfo({
       <p className={className}>
         c: <a href={`tel:${phoneLink}`}>{phone}</a>
       </p>
-      <p className={className}>
-        e: <a href={`mailto:${email}`}>{email}</a>
-      </p>
+      <p className={className}>e: {email}</p>
       <p className={className}>
         {SITE.address.street}, {SITE.address.city}, {SITE.address.state}{" "}
         {SITE.address.zip}
