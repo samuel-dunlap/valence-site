@@ -43,6 +43,14 @@ export default function CouplesRetreatPage() {
               couples to develop the essential knowledge and advanced skills for{" "}
               <strong>interpersonal mastery</strong>.
             </p>
+            <Image
+              src="/images/home.webp"
+              alt="Couple in New York City"
+              width={1018}
+              height={661}
+              unoptimized
+              className={styles.headerImage}
+            />
           </div>
         </section>
       </FadeIn>

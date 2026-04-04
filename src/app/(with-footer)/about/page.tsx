@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Samuel Dunlap — Author & Advisor. Ranked #1 therapist on Google in NYC. 10,000+ hours advising 300+ high-performing clients.",
+    "Samuel Dunlap — Author & Advisor. Advisor to high-net-worth couples and families. 10,000+ hours advising 300+ high-performing clients.",
   alternates: { canonical: "/about/" },
 };
 
@@ -29,9 +29,9 @@ export default function AboutPage() {
             />
           </div>
           <p className={styles.bio}>
-            After years of practicing as a clinical couples therapist, Samuel
-            has transitioned exclusively to private advisory for high-net-worth
-            couples in New York City and Aspen, CO.
+            Samuel Dunlap advises high-net-worth couples and families on the
+            relationships that matter most — the ones that money alone
+            can&apos;t solve.
           </p>
         </section>
       </FadeIn>
@@ -107,8 +107,15 @@ export default function AboutPage() {
                       </li>
                     </ul>
                     <p className={styles.accordionClosing}>
-                      He is currently writing a book that distills the essential
-                      principles from these bodies of theory and practice.
+                      Learn more about Samuel&apos;s writing and research at{" "}
+                      <a
+                        href="https://www.psychprinciples.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        psychprinciples.com
+                      </a>
+                      .
                     </p>
                   </>
                 ),

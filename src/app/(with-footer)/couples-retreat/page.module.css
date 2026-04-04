@@ -1,5 +1,14 @@
 /* Page-specific styles - shared header styles moved to @/styles/page-header.module.css */
 
+.headerImage {
+  display: block;
+  border-radius: var(--radius-image);
+  width: 100%;
+  height: auto;
+  max-width: var(--content-medium);
+  margin-top: var(--space-sm);
+}
+
 .bodySection {
   padding: var(--section-padding) var(--content-padding);
   max-width: var(--max-width);
