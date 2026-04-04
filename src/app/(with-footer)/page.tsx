@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "Valence | Private Relationship Advisory",
   description:
-    "Mastering lifelong partnership. Relationship advisory for high-net-worth couples and families in New York City and Aspen.",
+    "Deepening joy in the relationships that matter most. Relationship advisory for high-net-worth couples and families in New York City and Aspen.",
   alternates: { canonical: "/" },
 };
 
@@ -18,9 +18,9 @@ export default function HomePage() {
       <Hero
         headline={
           <>
-            Mastering
+            Deepening Joy in the
             <br />
-            Lifelong Partnership
+            Relationships That Matter Most
           </>
         }
         subtitleLines={[
