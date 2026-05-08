@@ -123,8 +123,11 @@ export default function Navbar(): React.ReactElement {
             >
               Inquire
             </Link>
-            <ThemeToggle />
           </nav>
+
+          <div className={styles.themeToggleWrap}>
+            <ThemeToggle />
+          </div>
 
           <button
             className={styles.hamburger}

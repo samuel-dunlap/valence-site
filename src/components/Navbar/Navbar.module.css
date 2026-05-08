@@ -39,6 +39,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 /* ── Logo ── */
@@ -162,6 +163,13 @@
 
 .dropdownLink.active {
   border-bottom-color: var(--color-text);
+}
+
+/* ── Theme toggle ── */
+.themeToggleWrap {
+  position: absolute;
+  top: var(--navbar-padding-top);
+  right: var(--navbar-padding-x);
 }
 
 /* ── Hamburger ── */
@@ -293,7 +301,6 @@
     flex-direction: row;
     justify-content: center;
     padding: var(--navbar-mobile-padding) var(--navbar-padding-x);
-    position: relative;
   }
 
   .logo {
@@ -310,6 +317,12 @@
 
   .desktopNav {
     display: none;
+  }
+
+  .themeToggleWrap {
+    top: var(--navbar-hamburger-top);
+    left: var(--navbar-hamburger-right);
+    right: auto;
   }
 
   .hamburger {
