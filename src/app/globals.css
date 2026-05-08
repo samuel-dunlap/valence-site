@@ -1,12 +1,11 @@
 :root {
   /* ── 2-Color Palette ── */
   --color-navy: #002042;
-  --color-warm-white: #faf9f7;
+  --color-warm-white: #faf9f6;
   --color-bg: var(--color-warm-white);
   --color-text: var(--color-navy);
   --color-border: rgba(0, 32, 66, 0.12);
   --color-atmosphere-overlay: rgba(0, 32, 66, 0.35);
-  --noise-blend: multiply;
 
   /* ── Typography ── */
   --font-heading:
@@ -72,17 +71,13 @@
   --navbar-skip-top: 12px;
   --navbar-underline-pb: 2px;
   --navbar-logo-ls: 0.35em;
-
-  /* ── Texture ── */
-  --texture-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
 }
 
 /* ── Dark Mode ── */
 [data-theme="dark"] {
   --color-bg: var(--color-navy);
   --color-text: var(--color-warm-white);
-  --color-border: rgba(250, 249, 247, 0.12);
-  --noise-blend: soft-light;
+  --color-border: rgba(250, 249, 246, 0.12);
 }
 
 /* ── Reset ── */
@@ -112,20 +107,6 @@ body {
   transition:
     background-color var(--transition-slow),
     color var(--transition-slow);
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: var(--texture-noise);
-  background-repeat: repeat;
-  background-size: 256px 256px;
-  mix-blend-mode: var(--noise-blend);
-  pointer-events: none;
-  opacity: 0.4;
-  z-index: var(--z-base);
-  transform: translateZ(0); /* Force GPU layer for better performance */
 }
 
 /* ── Headings: Libre Baskerville, never bold ── */

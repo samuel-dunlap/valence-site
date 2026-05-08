@@ -25,7 +25,7 @@ Next.js 16 static site for Valence (private relationship advisory). Deployed to 
 
 ### Colors: 2-color palette (navy + warm white)
 
-- `--color-navy` (#002042), `--color-warm-white` (#faf9f7)
+- `--color-navy` (#002042), `--color-warm-white` (#faf9f6)
 - `--color-bg` and `--color-text` swap in dark mode
 - `--color-border` derived via rgba
 - No other colors without explicit approval

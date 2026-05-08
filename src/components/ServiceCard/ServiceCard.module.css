@@ -21,7 +21,7 @@
 
 .description {
   font-size: var(--fs-body);
-  margin: 0;
+  margin: var(--space) 0 var(--space-section) 0;
   flex: 1;
 }
 
