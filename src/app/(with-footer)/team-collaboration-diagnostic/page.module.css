@@ -1,20 +1,7 @@
-.bodySection {
-  padding: var(--section-padding) var(--content-padding);
+.navyContent {
   max-width: var(--max-width);
   margin: 0 auto;
-}
-
-.bodySection + .bodySection {
-  padding-top: 0;
-}
-
-.bodyText {
-  max-width: var(--text-max-width);
-  line-height: var(--lh-body);
-}
-
-.bodyText + .bodyText {
-  margin-top: var(--space-md);
+  padding: var(--space-xl) var(--content-padding);
 }
 
 .bodyTextLight {
@@ -23,22 +10,11 @@
   color: var(--color-warm-white);
 }
 
-.stakesSection {
-  padding: var(--section-padding) 0;
-}
-
-.stakesSectionContent {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--content-padding);
-}
-
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-md);
-  margin-top: var(--space-lg);
-  margin-bottom: var(--space-lg);
+  margin-top: var(--space-md);
   max-width: var(--content-wide);
 }
 
@@ -67,11 +43,45 @@
   color: var(--color-warm-white);
 }
 
+.subhead {
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.list {
+  max-width: var(--text-max-width);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding-left: 1.25em;
+  color: var(--color-warm-white);
+  line-height: var(--lh-body);
+}
+
+.bodySection {
+  padding: var(--space-xl) var(--content-padding) var(--space-md);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.bodySection + .bodySection {
+  padding-top: 0;
+}
+
+.bodyText {
+  max-width: var(--text-max-width);
+  line-height: var(--lh-body);
+}
+
+.bodyText + .bodyText {
+  margin-top: var(--space-md);
+}
+
 .phasesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
-  margin-top: var(--space-lg);
+  gap: var(--space-md);
+  margin-top: var(--space-md);
 }
 
 @media (max-width: 767px) {
@@ -81,8 +91,25 @@
 }
 
 .cta {
-  padding: var(--section-padding) var(--content-padding);
+  padding: var(--space-lg) var(--content-padding);
   text-align: center;
   position: relative;
   z-index: var(--z-content);
+}
+
+.footnotes {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding) var(--space-lg);
+  font-size: 0.75rem;
+  color: var(--color-navy);
+  opacity: 0.5;
+  line-height: 1.6;
+}
+
+.footnotes ol {
+  padding-left: 1.25em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }

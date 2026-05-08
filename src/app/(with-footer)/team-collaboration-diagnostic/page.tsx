@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn/FadeIn";
 import ArrowLink from "@/components/ArrowLink/ArrowLink";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
-import ComparisonColumns from "@/components/ComparisonColumns/ComparisonColumns";
 import PhaseCard from "@/components/PhaseCard/PhaseCard";
 import StructuredData from "@/components/StructuredData/StructuredData";
 import { CTA } from "@/lib/constants";
@@ -49,93 +48,66 @@ export default function TCDPage() {
 
       <div className="navySection">
         <FadeIn>
-          <section className={styles.stakesSection}>
-            <div className={styles.stakesSectionContent}>
-              <SectionHeader title="Why It Matters" />
-              <p className={styles.bodyTextLight}>
-                <strong>80% of teams</strong> are not reaching their performance
-                potential.
-                <sup>McKinsey</sup> Organizations with high-performing teams
-                achieve better results:
-              </p>
-              <div className={styles.statsGrid}>
-                <div className={styles.stat}>
-                  <span className={styles.statNumber}>23%</span>
-                  <span className={styles.statLabel}>
-                    More profitable
-                    <sup>Gallup</sup>
-                  </span>
-                </div>
-                <div className={styles.stat}>
-                  <span className={styles.statNumber}>50%</span>
-                  <span className={styles.statLabel}>
-                    Higher customer retention
-                    <sup>Forrester</sup>
-                  </span>
-                </div>
-                <div className={styles.stat}>
-                  <span className={styles.statNumber}>30%</span>
-                  <span className={styles.statLabel}>
-                    Faster revenue growth
-                    <sup>McKinsey</sup>
-                  </span>
-                </div>
-                <div className={styles.stat}>
-                  <span className={styles.statNumber}>27%</span>
-                  <span className={styles.statLabel}>
-                    Lower employee turnover
-                    <sup>Google</sup>
-                  </span>
-                </div>
+          <section className={styles.navyContent}>
+            <SectionHeader title="Why It Matters" />
+            <p className={styles.bodyTextLight}>
+              <strong>80% of teams</strong> are not reaching their performance
+              potential.<sup>1</sup> Organizations with high-performing teams
+              achieve better results:
+            </p>
+            <div className={styles.statsGrid}>
+              <div className={styles.stat}>
+                <span className={styles.statNumber}>23%</span>
+                <span className={styles.statLabel}>
+                  More profitable<sup>2</sup>
+                </span>
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statNumber}>50%</span>
+                <span className={styles.statLabel}>
+                  Higher customer retention<sup>3</sup>
+                </span>
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statNumber}>30%</span>
+                <span className={styles.statLabel}>
+                  Faster revenue growth<sup>4</sup>
+                </span>
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statNumber}>27%</span>
+                <span className={styles.statLabel}>
+                  Lower employee turnover<sup>5</sup>
+                </span>
               </div>
             </div>
-            <ComparisonColumns
-              bare
-              stacked
-              leftTitle="Root Causes"
-              leftItems={[
-                <>
-                  <strong>Mediocre Execution</strong> &mdash; lack of
-                  prioritization, low-value habits, lack of accountability
-                </>,
-                <>
-                  <strong>Poor Collaboration</strong> &mdash; unhealthy
-                  conflict, hyper-individualism or groupthink, communication
-                  breakdowns
-                </>,
-                <>
-                  <strong>Low Engagement</strong> &mdash; low resilience,
-                  chronic stress and burnout, lack of motivation
-                </>,
-                <>
-                  <strong>Insufficient Skills</strong> &mdash; resistance to
-                  change, knowledge-transfer gaps, lack of effective training
-                </>,
-              ]}
-              rightTitle="The Impact"
-              rightItems={[
-                <>
-                  <strong>67&ndash;90%</strong> of strategic plans fail due to
-                  poor execution
-                  <sup>HBR, Norton &amp; Kaplan</sup>
-                </>,
-                <>
-                  <strong>97%</strong> of leaders say team misalignments have
-                  negatively impacted their performance
-                  <sup>NCBI</sup>
-                </>,
-                <>
-                  Only <strong>33%</strong> of employees are actually engaged at
-                  work
-                  <sup>Gallup</sup>
-                </>,
-                <>
-                  <strong>70&ndash;89%</strong> of employees don&apos;t have the
-                  skills to succeed in rapidly changing environments
-                  <sup>McKinsey, Gartner</sup>
-                </>,
-              ]}
-            />
+
+            <h3 className={styles.subhead}>Root Causes</h3>
+            <ul className={styles.list}>
+              <li>
+                <strong>Mediocre Execution</strong> &mdash; lack of
+                prioritization, low-value habits, lack of accountability.
+                67&ndash;90% of strategic plans fail due to poor execution.
+                <sup>6</sup>
+              </li>
+              <li>
+                <strong>Poor Collaboration</strong> &mdash; unhealthy conflict,
+                hyper-individualism or groupthink, communication breakdowns. 97%
+                of leaders say team misalignments have negatively impacted their
+                performance.<sup>7</sup>
+              </li>
+              <li>
+                <strong>Low Engagement</strong> &mdash; low resilience, chronic
+                stress and burnout, lack of motivation. Only 33% of employees
+                are actually engaged at work.<sup>8</sup>
+              </li>
+              <li>
+                <strong>Insufficient Skills</strong> &mdash; resistance to
+                change, knowledge-transfer gaps, lack of effective training.
+                70&ndash;89% of employees don&apos;t have the skills to succeed
+                in rapidly changing environments.<sup>9</sup>
+              </li>
+            </ul>
           </section>
         </FadeIn>
       </div>
@@ -168,10 +140,9 @@ export default function TCDPage() {
           <SectionHeader title="Change Is Hard to Implement" />
           <p className={styles.bodyText}>
             Only <strong>10%</strong> of managers know how to both create and
-            sustain behavioral change effectively.
-            <sup>IMD Business School</sup> The diagnostic is just the beginning
-            &mdash; we partner with you from recommendations through permanent
-            behavior change.
+            sustain behavioral change effectively.<sup>10</sup> The diagnostic
+            is just the beginning &mdash; we partner with you from
+            recommendations through permanent behavior change.
           </p>
         </section>
       </FadeIn>
@@ -183,6 +154,24 @@ export default function TCDPage() {
           variant="dark"
         />
       </section>
+
+      <footer className={styles.footnotes}>
+        <ol>
+          <li>McKinsey</li>
+          <li>Gallup</li>
+          <li>Forrester Research</li>
+          <li>McKinsey</li>
+          <li>Google, Project Aristotle</li>
+          <li>
+            Harvard Business Review; Norton &amp; Kaplan; Bridges Business
+            Consultancy; Brightline
+          </li>
+          <li>NCBI</li>
+          <li>Gallup</li>
+          <li>McKinsey; Gartner; The Corporate Executive Board</li>
+          <li>IMD Business School</li>
+        </ol>
+      </footer>
     </>
   );
 }
