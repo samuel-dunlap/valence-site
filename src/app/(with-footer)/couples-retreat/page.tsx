@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import FadeIn from "@/components/FadeIn/FadeIn";
 import ArrowLink from "@/components/ArrowLink/ArrowLink";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
@@ -40,26 +39,6 @@ export default function CouplesRetreatPage() {
         </section>
       </FadeIn>
 
-      <div className={styles.imagePair}>
-        <Image
-          src="/images/home.webp"
-          alt="Couple in New York City"
-          width={1018}
-          height={661}
-          unoptimized
-          className={styles.pairImage}
-        />
-        <Image
-          src="/images/retreat.webp"
-          alt="Luxury retreat with mountain views"
-          width={1018}
-          height={661}
-          unoptimized
-          loading="lazy"
-          className={styles.pairImage}
-        />
-      </div>
-
       <FadeIn>
         <section className={styles.legacySection}>
           <div className={styles.legacySectionContent}>
@@ -78,18 +57,13 @@ export default function CouplesRetreatPage() {
             leftTitle="Unmitigated Costs & Risks"
             leftItems={[
               "Continued power struggles that degrade trust and respect",
-              <>
-                Growing distance that both partners feel but neither knows how
-                to close<sup>1</sup>
-              </>,
+              "Growing distance that both partners feel but neither knows how to close",
               "Children absorbing patterns of disconnection, conflict avoidance, or resentment as normal",
               "The slow erosion of partnership into a functional arrangement — organized around logistics, not intimacy",
             ]}
             rightTitle="Benefits of Couples Retreats"
             rightItems={[
-              <>
-                A partnership your children actually want to emulate<sup>2</sup>
-              </>,
+              "A partnership your children actually want to emulate",
               "The capacity to repair, not just endure",
               "Deeper intimacy and joy — not just the absence of conflict",
               "Coming back to your family with more presence, energy, and love",
@@ -126,20 +100,6 @@ export default function CouplesRetreatPage() {
       <section className={styles.cta}>
         <ArrowLink text={CTA.requestIntroduction} href="/inquire" />
       </section>
-
-      <footer className={styles.footnotes}>
-        <ol>
-          <li>
-            Most wealthy families lose their assets by the third generation
-            &mdash; and in 60% of these cases, the root cause is a breakdown in
-            family communication and trust.
-          </li>
-          <li>
-            40% of marriages end in divorce, with 50&ndash;77% loss of net worth
-            for each partner.
-          </li>
-        </ol>
-      </footer>
     </>
   );
 }
