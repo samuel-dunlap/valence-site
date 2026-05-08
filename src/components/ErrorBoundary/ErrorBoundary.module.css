@@ -17,7 +17,7 @@
 
 .errorMessage {
   font-size: var(--fs-body);
-  margin-bottom: var(--space-section);
+  margin-bottom: var(--space);
   max-width: var(--content-medium);
   color: var(--color-text);
 }

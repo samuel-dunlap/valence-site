@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "Valence | Private Relationship Advisory",
   description:
-    "Deepening joy in the relationships that matter most. Relationship advisory for high-net-worth couples and families in New York City and Aspen.",
+    "Deepening joy in the relationships that matter most. Relationship advisory for high-net-worth couples and families in New York City, Aspen, and San Diego.",
   alternates: { canonical: "/" },
 };
 
@@ -25,7 +25,7 @@ export default function HomePage() {
         }
         subtitleLines={[
           "Relationship Advisory for High-Net-Worth Couples & Families.",
-          "NYC + Aspen.",
+          "NYC + Aspen + San Diego.",
         ]}
         ctaText={CTA.requestIntroduction}
         ctaHref="/inquire"

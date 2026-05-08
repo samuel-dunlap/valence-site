@@ -1,11 +1,11 @@
 .services {
-  padding: var(--space-section) var(--content-padding);
+  padding: var(--space-section) var(--content-padding) 0;
 }
 
 .servicesGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-section);
+  gap: var(--space);
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -13,6 +13,6 @@
 @media (max-width: 767px) {
   .servicesGrid {
     grid-template-columns: 1fr;
-    gap: var(--space-section);
+    gap: var(--space);
   }
 }

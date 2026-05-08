@@ -1,7 +1,7 @@
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-section) var(--content-padding);
+  padding: var(--space-section) var(--content-padding) 0;
   position: relative;
   z-index: var(--z-content);
 }
@@ -13,7 +13,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-section);
+  gap: var(--space);
 }
 
 .column {
@@ -46,6 +46,6 @@
 @media (max-width: 767px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: var(--space-section);
+    gap: var(--space);
   }
 }

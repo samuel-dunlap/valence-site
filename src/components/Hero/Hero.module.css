@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  padding: var(--space-section) 0;
+  padding: var(--space-section) 0 0;
 }
 
 .container {
@@ -28,7 +28,7 @@
 }
 
 .subtitles {
-  margin-top: var(--space-section);
+  margin-top: var(--space);
 }
 
 .subtitle {
@@ -41,7 +41,7 @@
 }
 
 .cta {
-  margin-top: var(--space-section);
+  margin-top: var(--space);
 }
 
 .imageWrap {
@@ -59,7 +59,7 @@
 @media (max-width: 767px) {
   .splitContainer {
     grid-template-columns: 1fr;
-    gap: var(--space-section);
+    gap: var(--space);
   }
 
   .image {

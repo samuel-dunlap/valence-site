@@ -26,7 +26,7 @@
 }
 
 .cta {
-  padding: var(--space-section) var(--content-padding);
+  padding: var(--space-section) var(--content-padding) 0;
   text-align: center;
   position: relative;
   z-index: var(--z-content);

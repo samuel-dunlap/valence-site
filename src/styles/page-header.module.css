@@ -1,6 +1,6 @@
 /* Shared header styles for service pages */
 .header {
-  padding: var(--space-section) 0;
+  padding: var(--space-section) 0 0;
 }
 
 .headerContent {
@@ -40,7 +40,7 @@
 .accentWrap {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space) var(--content-padding) var(--space-section);
+  padding: var(--space) var(--content-padding) 0;
 }
 
 .accentImage {

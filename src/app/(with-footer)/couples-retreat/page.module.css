@@ -10,7 +10,7 @@
 }
 
 .bodySection {
-  padding: var(--space-section) var(--content-padding);
+  padding: var(--space-section) var(--content-padding) 0;
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -21,7 +21,7 @@
   width: 100%;
   height: auto;
   max-width: var(--content-medium);
-  margin-top: var(--space-section);
+  margin-top: var(--space);
 }
 
 .bodySection + .bodySection {
@@ -38,7 +38,7 @@
 }
 
 .legacySection {
-  padding: var(--space-section) 0;
+  padding: var(--space-section) 0 0;
 }
 
 .legacySectionContent {
@@ -48,7 +48,7 @@
 }
 
 .cta {
-  padding: var(--space-section) var(--content-padding);
+  padding: var(--space-section) var(--content-padding) 0;
   text-align: center;
   position: relative;
   z-index: var(--z-content);
