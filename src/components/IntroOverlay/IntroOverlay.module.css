@@ -3,7 +3,7 @@
   position: fixed;
   inset: 0;
   z-index: var(--z-intro);
-  background-color: var(--color-navy);
+  background-color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,7 +45,7 @@
 
 /* ── Individual character styles ── */
 .punctuation {
-  color: var(--color-warm-white);
+  color: var(--color-bg);
 }
 
 .colon {
@@ -67,7 +67,7 @@
 }
 
 .letter {
-  color: var(--color-warm-white);
+  color: var(--color-bg);
   letter-spacing: var(--ls-wide);
 }
 
@@ -87,7 +87,7 @@
 }
 
 .expandLetter {
-  color: var(--color-warm-white);
+  color: var(--color-bg);
   letter-spacing: var(--ls-wide);
   opacity: 0;
   transition: opacity 300ms ease;

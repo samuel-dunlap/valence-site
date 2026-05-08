@@ -4,6 +4,11 @@
   --color-warm-white: #faf9f7;
   --color-burgundy: #6b1c23;
 
+  /* ── Semantic Theme Tokens ── */
+  --color-bg: var(--color-warm-white);
+  --color-text: var(--color-navy);
+  --color-accent: var(--color-burgundy);
+
   /* ── Typography ── */
   --font-heading:
     var(--font-libre-baskerville), "Baskerville", "Georgia", serif;
@@ -93,6 +98,12 @@
   /* ── Visited Link Colors (derivative) ── */
   --color-visited-light: #4a2d3a;
   --color-visited-dark: #c8bfb8;
+}
+
+[data-theme="dark"] {
+  --color-bg: var(--color-navy);
+  --color-text: var(--color-warm-white);
+  --color-accent: var(--color-warm-white);
 
   /* ── Texture ── */
   --texture-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
@@ -117,8 +128,8 @@ body {
   font-family: var(--font-body);
   font-size: var(--fs-body);
   font-weight: 400;
-  color: var(--color-navy);
-  background: var(--color-warm-white);
+  color: var(--color-text);
+  background: var(--color-bg);
   line-height: var(--lh-body);
   position: relative;
   overflow-x: hidden;
@@ -148,7 +159,7 @@ h6 {
   font-family: var(--font-heading);
   font-weight: 400;
   line-height: var(--lh-heading);
-  color: var(--color-navy);
+  color: var(--color-text);
   letter-spacing: var(--ls-tight);
 }
 
@@ -190,40 +201,7 @@ ol {
 }
 
 ::marker {
-  color: var(--color-burgundy);
-}
-
-.navySection ::marker {
-  color: var(--color-warm-white);
-}
-
-/* ── Utility: Navy section with texture ── */
-.navySection {
-  background-color: var(--color-navy);
-  color: var(--color-warm-white);
-  position: relative;
-}
-
-.navySection::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: var(--texture-noise);
-  background-repeat: repeat;
-  background-size: 256px 256px;
-  mix-blend-mode: soft-light;
-  pointer-events: none;
-  opacity: 0.3;
-  transform: translateZ(0); /* Force GPU layer for better performance */
-}
-
-.navySection h1,
-.navySection h2,
-.navySection h3,
-.navySection p,
-.navySection li,
-.navySection span {
-  color: var(--color-warm-white);
+  color: var(--color-accent);
 }
 
 /* ── Container ── */
@@ -249,7 +227,7 @@ ol {
 .atmosphereOverlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 32, 66, 0.55);
+  background-color: rgba(0, 32, 66, 0.35);
   z-index: var(--z-content);
 }
 
@@ -259,7 +237,7 @@ html.intro-pending body::before {
   position: fixed;
   inset: 0;
   z-index: var(--z-intro-cover);
-  background-color: var(--color-navy);
+  background-color: var(--color-bg);
 }
 
 /* ── Reduced motion ── */

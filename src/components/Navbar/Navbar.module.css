@@ -5,12 +5,12 @@
   left: var(--content-padding);
   z-index: var(--z-overlay);
   padding: var(--button-padding-y) var(--button-padding-x);
-  background-color: var(--color-navy);
-  color: var(--color-warm-white);
+  background-color: var(--color-text);
+  color: var(--color-bg);
   font-family: var(--font-body);
   font-size: var(--fs-body);
   text-decoration: none;
-  border: var(--border-thin) solid var(--color-warm-white);
+  border: var(--border-thin) solid var(--color-bg);
   transition: top var(--transition-fast);
 }
 
@@ -23,13 +23,13 @@
   position: sticky;
   top: 0;
   z-index: var(--z-navbar);
-  background-color: var(--color-warm-white);
+  background-color: var(--color-bg);
   transition: border-color var(--transition-base);
   border-bottom: var(--border-thin) solid transparent;
 }
 
 .scrolled {
-  border-bottom-color: rgba(0, 32, 66, 0.12);
+  border-bottom-color: color-mix(in sRGB, var(--color-text) 12%, transparent);
 }
 
 .inner {
@@ -54,12 +54,12 @@
 }
 
 .logoLetter {
-  color: var(--color-navy);
+  color: var(--color-text);
   letter-spacing: var(--ls-wide);
 }
 
 .logoPunctuation {
-  color: var(--color-burgundy);
+  color: var(--color-accent);
   letter-spacing: 0;
 }
 
@@ -87,15 +87,15 @@
 }
 
 .navLink:hover {
-  border-bottom-color: rgba(107, 28, 35, 0.4);
+  border-bottom-color: var(--color-accent);
 }
 
 .active {
-  border-bottom-color: var(--color-burgundy);
+  border-bottom-color: var(--color-accent);
 }
 
 .navLink:visited {
-  color: var(--color-visited-light);
+  color: inherit;
 }
 
 /* ── Hamburger ── */
@@ -120,7 +120,7 @@
   display: block;
   width: 24px;
   height: 1.5px;
-  background-color: var(--color-navy);
+  background-color: var(--color-text);
   border-radius: 1px;
 }
 
@@ -129,7 +129,7 @@
   position: fixed;
   inset: 0;
   z-index: var(--z-overlay);
-  background-color: var(--color-navy);
+  background-color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,7 +164,7 @@
   left: 50%;
   width: 26px;
   height: 1.5px;
-  background-color: var(--color-warm-white);
+  background-color: var(--color-bg);
   border-radius: 1px;
 }
 
@@ -186,7 +186,7 @@
 .overlayLink {
   font-size: var(--fs-heading);
   letter-spacing: var(--ls-open);
-  color: var(--color-warm-white);
+  color: var(--color-bg);
   transition: opacity var(--transition-fast);
 }
 
@@ -195,11 +195,11 @@
 }
 
 .overlayLink:visited {
-  color: var(--color-visited-dark);
+  color: inherit;
 }
 
 .overlayLinkActive {
-  border-bottom: var(--border-link) solid var(--color-burgundy);
+  border-bottom: var(--border-link) solid var(--color-accent);
   padding-bottom: 2px;
 }
 

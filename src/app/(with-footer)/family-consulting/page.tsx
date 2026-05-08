@@ -33,11 +33,7 @@ export default function FamilyConsultingPage() {
       </FadeIn>
 
       <section className={styles.cta}>
-        <ArrowLink
-          text={CTA.requestIntroduction}
-          href="/inquire"
-          variant="dark"
-        />
+        <ArrowLink text={CTA.requestIntroduction} href="/inquire" />
       </section>
     </>
   );

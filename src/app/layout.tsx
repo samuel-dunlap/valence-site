@@ -29,7 +29,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#002042",
+  themeColor: "#faf9f7",
 };
 
 export const metadata: Metadata = {
@@ -80,6 +80,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('valence-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}catch(e){}`,
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `try{if(!sessionStorage.getItem('valence-intro-seen')&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-pending')}}catch(e){}`,

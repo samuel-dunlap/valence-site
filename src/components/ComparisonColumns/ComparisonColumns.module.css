@@ -24,7 +24,7 @@
 
 .columnTitle {
   font-size: var(--fs-body);
-  color: var(--color-burgundy);
+  color: var(--color-accent);
 }
 
 .list {

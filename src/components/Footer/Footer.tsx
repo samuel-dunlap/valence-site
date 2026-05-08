@@ -8,7 +8,7 @@ const FOOTER_LINKS = NAV_LINKS.filter((l) => FOOTER_HREFS.has(l.href));
 
 export default function Footer(): React.ReactElement {
   return (
-    <footer className={`navySection ${styles.footer}`}>
+    <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.left}>
           <Image

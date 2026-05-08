@@ -26,11 +26,11 @@
   font-family: var(--font-heading);
   font-size: var(--fs-body);
   letter-spacing: var(--ls-open);
-  border-bottom: var(--border-thin) solid var(--color-burgundy);
+  border-bottom: var(--border-thin) solid var(--color-accent);
   padding-bottom: 2px;
   transition: border-color var(--transition-fast);
 }
 
 .link:hover {
-  border-color: var(--color-warm-white);
+  border-color: var(--color-bg);
 }

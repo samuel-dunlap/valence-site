@@ -3,7 +3,7 @@ import styles from "./not-found.module.css";
 
 export default function NotFound() {
   return (
-    <section className={`navySection ${styles.page}`}>
+    <section className={styles.page}>
       <div className={styles.content}>
         <h1 className={styles.heading}>Page Not Found</h1>
         <p className={styles.subtitle}>

@@ -44,71 +44,69 @@ export default function TeamCollaborationLabPage() {
         </section>
       </FadeIn>
 
-      <div className="navySection">
-        <FadeIn>
-          <section className={styles.navyContent}>
-            <SectionHeader title="Why It Matters" />
-            <p className={styles.bodyTextLight}>
-              <strong>80% of teams</strong> are not reaching their performance
-              potential.<sup>1</sup> Organizations with high-performing teams
-              achieve better results:
-            </p>
-            <div className={styles.statsGrid}>
-              <div className={styles.stat}>
-                <span className={styles.statNumber}>23%</span>
-                <span className={styles.statLabel}>
-                  More profitable<sup>2</sup>
-                </span>
-              </div>
-              <div className={styles.stat}>
-                <span className={styles.statNumber}>50%</span>
-                <span className={styles.statLabel}>
-                  Higher customer retention<sup>3</sup>
-                </span>
-              </div>
-              <div className={styles.stat}>
-                <span className={styles.statNumber}>30%</span>
-                <span className={styles.statLabel}>
-                  Faster revenue growth<sup>4</sup>
-                </span>
-              </div>
-              <div className={styles.stat}>
-                <span className={styles.statNumber}>27%</span>
-                <span className={styles.statLabel}>
-                  Lower employee turnover<sup>5</sup>
-                </span>
-              </div>
+      <FadeIn>
+        <section className={styles.section}>
+          <SectionHeader title="Why It Matters" />
+          <p className={styles.bodyTextIntro}>
+            <strong>80% of teams</strong> are not reaching their performance
+            potential.<sup>1</sup> Organizations with high-performing teams
+            achieve better results:
+          </p>
+          <div className={styles.statsGrid}>
+            <div className={styles.stat}>
+              <span className={styles.statNumber}>23%</span>
+              <span className={styles.statLabel}>
+                More profitable<sup>2</sup>
+              </span>
             </div>
+            <div className={styles.stat}>
+              <span className={styles.statNumber}>50%</span>
+              <span className={styles.statLabel}>
+                Higher customer retention<sup>3</sup>
+              </span>
+            </div>
+            <div className={styles.stat}>
+              <span className={styles.statNumber}>30%</span>
+              <span className={styles.statLabel}>
+                Faster revenue growth<sup>4</sup>
+              </span>
+            </div>
+            <div className={styles.stat}>
+              <span className={styles.statNumber}>27%</span>
+              <span className={styles.statLabel}>
+                Lower employee turnover<sup>5</sup>
+              </span>
+            </div>
+          </div>
 
-            <h3 className={styles.subhead}>Root Causes</h3>
-            <ul className={styles.list}>
-              <li>
-                <strong>Mediocre Execution</strong> &mdash; lack of
-                prioritization, low-value habits, lack of accountability.
-                67&ndash;90% of strategic plans fail due to poor execution.
-                <sup>6</sup>
-              </li>
-              <li>
-                <strong>Poor Collaboration</strong> &mdash; unhealthy conflict,
-                hyper-individualism or groupthink, communication breakdowns. 97%
-                of leaders say team misalignments have negatively impacted their
-                performance.<sup>7</sup>
-              </li>
-              <li>
-                <strong>Low Engagement</strong> &mdash; low resilience, chronic
-                stress and burnout, lack of motivation. Only 33% of employees
-                are actually engaged at work.<sup>8</sup>
-              </li>
-              <li>
-                <strong>Insufficient Skills</strong> &mdash; resistance to
-                change, knowledge-transfer gaps, lack of effective training.
-                70&ndash;89% of employees don&apos;t have the skills to succeed
-                in rapidly changing environments.<sup>9</sup>
-              </li>
-            </ul>
-          </section>
-        </FadeIn>
-      </div>
+          <h3 className={styles.subhead}>Root Causes</h3>
+          <ul className={styles.list}>
+            <li>
+              <strong>Mediocre Execution</strong> &mdash; lack of
+              prioritization, low-value habits, lack of accountability.
+              67&ndash;90% of strategic plans fail due to poor execution.
+              <sup>6</sup>
+            </li>
+            <li>
+              <strong>Poor Collaboration</strong> &mdash; unhealthy conflict,
+              hyper-individualism or groupthink, communication breakdowns. 97%
+              of leaders say team misalignments have negatively impacted their
+              performance.<sup>7</sup>
+            </li>
+            <li>
+              <strong>Low Engagement</strong> &mdash; low resilience, chronic
+              stress and burnout, lack of motivation. Only 33% of employees are
+              actually engaged at work.<sup>8</sup>
+            </li>
+            <li>
+              <strong>Insufficient Skills</strong> &mdash; resistance to change,
+              knowledge-transfer gaps, lack of effective training. 70&ndash;89%
+              of employees don&apos;t have the skills to succeed in rapidly
+              changing environments.<sup>9</sup>
+            </li>
+          </ul>
+        </section>
+      </FadeIn>
 
       <FadeIn>
         <section className={styles.bodySection}>
@@ -146,11 +144,7 @@ export default function TeamCollaborationLabPage() {
       </FadeIn>
 
       <section className={styles.cta}>
-        <ArrowLink
-          text={CTA.requestIntroduction}
-          href="/inquire"
-          variant="dark"
-        />
+        <ArrowLink text={CTA.requestIntroduction} href="/inquire" />
       </section>
 
       <footer className={styles.footnotes}>

@@ -35,12 +35,27 @@ export default function DepthPerformanceTrainingPage() {
         </section>
       </FadeIn>
 
+      <FadeIn>
+        <section className={styles.bodySection}>
+          <ul className={styles.pillars}>
+            <li>
+              <strong>Learning:</strong> How do I more effectively deepen,
+              broaden, and refine my skills and knowledge?
+            </li>
+            <li>
+              <strong>Communication:</strong> How do I ask better questions and
+              give better responses?
+            </li>
+            <li>
+              <strong>Choice:</strong> How do I more effectively create what I
+              want?
+            </li>
+          </ul>
+        </section>
+      </FadeIn>
+
       <section className={styles.cta}>
-        <ArrowLink
-          text={CTA.requestIntroduction}
-          href="/inquire"
-          variant="dark"
-        />
+        <ArrowLink text={CTA.requestIntroduction} href="/inquire" />
       </section>
     </>
   );

@@ -17,6 +17,14 @@
   margin-top: var(--space-md);
 }
 
+.pillars {
+  max-width: var(--text-max-width);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  line-height: var(--lh-body);
+}
+
 .cta {
   padding: var(--space-lg) var(--content-padding);
   text-align: center;

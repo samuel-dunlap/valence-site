@@ -1,0 +1,17 @@
+.toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  transition: opacity var(--transition-fast);
+}
+
+.toggle:hover {
+  opacity: 0.6;
+}

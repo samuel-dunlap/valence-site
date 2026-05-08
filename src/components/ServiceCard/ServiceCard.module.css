@@ -15,7 +15,7 @@
 .tagline {
   font-family: var(--font-heading);
   font-size: var(--fs-body);
-  color: var(--color-burgundy);
+  color: var(--color-accent);
   margin: 0;
 }
 
@@ -30,7 +30,7 @@
   letter-spacing: var(--ls-tight);
   display: inline-block;
   padding: var(--button-padding-y) var(--button-padding-x);
-  border: var(--border-thin) solid var(--color-navy);
+  border: var(--border-thin) solid var(--color-text);
   align-self: flex-start;
   transition:
     background-color var(--transition-fast),
@@ -38,6 +38,6 @@
 }
 
 .card:hover .ctaLabel {
-  background-color: var(--color-navy);
-  color: var(--color-warm-white);
+  background-color: var(--color-text);
+  color: var(--color-bg);
 }

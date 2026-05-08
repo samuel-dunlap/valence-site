@@ -14,25 +14,9 @@ describe("ArrowLink", () => {
     expect(link).toHaveAttribute("href", "/test-path");
   });
 
-  it("applies dark variant by default", () => {
+  it("applies link class", () => {
     const { container } = render(<ArrowLink text="Test" href="/test" />);
     const link = container.querySelector("a");
-    expect(link?.className).toContain("dark");
-  });
-
-  it("applies light variant when specified", () => {
-    const { container } = render(
-      <ArrowLink text="Test" href="/test" variant="light" />
-    );
-    const link = container.querySelector("a");
-    expect(link?.className).toContain("light");
-  });
-
-  it("applies dark variant explicitly", () => {
-    const { container } = render(
-      <ArrowLink text="Test" href="/test" variant="dark" />
-    );
-    const link = container.querySelector("a");
-    expect(link?.className).toContain("dark");
+    expect(link?.className).toContain("link");
   });
 });

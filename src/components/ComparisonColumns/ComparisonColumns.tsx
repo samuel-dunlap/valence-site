@@ -49,5 +49,5 @@ export default function ComparisonColumns({
   );
 
   if (bare) return content;
-  return <section className="navySection">{content}</section>;
+  return <section>{content}</section>;
 }

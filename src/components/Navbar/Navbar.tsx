@@ -6,6 +6,7 @@ import Link from "next/link";
 import { SITE, NAV_LINKS } from "@/lib/constants";
 import { throttle } from "@/lib/utils";
 import { createFocusTrap } from "@/lib/focus-trap";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 import styles from "./Navbar.module.css";
 
 export default function Navbar(): React.ReactElement {
@@ -90,6 +91,7 @@ export default function Navbar(): React.ReactElement {
                 {link.label}
               </Link>
             ))}
+            <ThemeToggle />
           </nav>
 
           <button

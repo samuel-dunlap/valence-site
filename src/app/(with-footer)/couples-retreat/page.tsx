@@ -52,63 +52,59 @@ export default function CouplesRetreatPage() {
         </section>
       </FadeIn>
 
-      <div className="navySection">
-        <FadeIn>
-          <section className={styles.legacySection}>
-            <div className={styles.legacySectionContent}>
-              <SectionHeader title="What&rsquo;s at Stake" />
-              <p className={styles.bodyText}>
-                Your family legacy is the ultimate expression of your
-                relationship&rsquo;s value. Yet the unique pressures from
-                growing and preserving your legacy threaten your relationship.
-                When your core relationship is compromised, your family legacy
-                is at risk.
-              </p>
-            </div>
-            <ComparisonColumns
-              bare
-              stacked
-              leftTitle="Unmitigated Costs & Risks"
-              leftItems={[
-                "Continued or protracted power struggles that degrade trust and respect",
-                "Critical misalignments on decisions about parenting, finances, and family legacy",
-                "Chronic imbalances in time, energy, and resource allocations",
-                <>
-                  Most wealthy families lose their assets by the third
-                  generation &mdash; and in <strong>60%</strong> of these cases,
-                  the root cause is a breakdown in family communication and
-                  trust.
-                </>,
-                <>
-                  The <strong>#1</strong> cause of divorce is arguments around
-                  money, and <strong>40%</strong> of marriages end in divorce,
-                  with <strong>50&ndash;77%</strong> loss of net worth for each
-                  partner
-                </>,
-              ]}
-              rightTitle="Benefits of Couples Retreats"
-              rightItems={[
-                "Greater personal integrity and dignity",
-                "Demonstrable skills and behaviors of relational intimacy and emotional maturity",
-                "Stronger communication and deeper intimacies even when navigating conflict",
-                "Greater coherence around shared vision and legacy",
-                "Deeper joy in partnership, family, and life",
-              ]}
+      <FadeIn>
+        <section className={styles.legacySection}>
+          <div className={styles.legacySectionContent}>
+            <SectionHeader title="What&rsquo;s at Stake" />
+            <p className={styles.bodyText}>
+              Your family legacy is the ultimate expression of your
+              relationship&rsquo;s value. Yet the unique pressures from growing
+              and preserving your legacy threaten your relationship. When your
+              core relationship is compromised, your family legacy is at risk.
+            </p>
+          </div>
+          <ComparisonColumns
+            bare
+            stacked
+            leftTitle="Unmitigated Costs & Risks"
+            leftItems={[
+              "Continued or protracted power struggles that degrade trust and respect",
+              "Critical misalignments on decisions about parenting, finances, and family legacy",
+              "Chronic imbalances in time, energy, and resource allocations",
+              <>
+                Most wealthy families lose their assets by the third generation
+                &mdash; and in <strong>60%</strong> of these cases, the root
+                cause is a breakdown in family communication and trust.
+              </>,
+              <>
+                The <strong>#1</strong> cause of divorce is arguments around
+                money, and <strong>40%</strong> of marriages end in divorce,
+                with <strong>50&ndash;77%</strong> loss of net worth for each
+                partner
+              </>,
+            ]}
+            rightTitle="Benefits of Couples Retreats"
+            rightItems={[
+              "Greater personal integrity and dignity",
+              "Demonstrable skills and behaviors of relational intimacy and emotional maturity",
+              "Stronger communication and deeper intimacies even when navigating conflict",
+              "Greater coherence around shared vision and legacy",
+              "Deeper joy in partnership, family, and life",
+            ]}
+          />
+          <div className={styles.legacySectionContent}>
+            <Image
+              src="/images/retreat.webp"
+              alt="Luxury retreat with mountain views"
+              width={1018}
+              height={661}
+              unoptimized
+              loading="lazy"
+              className={styles.sectionImage}
             />
-            <div className={styles.legacySectionContent}>
-              <Image
-                src="/images/retreat.webp"
-                alt="Luxury retreat with mountain views"
-                width={1018}
-                height={661}
-                unoptimized
-                loading="lazy"
-                className={styles.sectionImage}
-              />
-            </div>
-          </section>
-        </FadeIn>
-      </div>
+          </div>
+        </section>
+      </FadeIn>
 
       <FadeIn>
         <section className={styles.bodySection}>
@@ -136,11 +132,7 @@ export default function CouplesRetreatPage() {
       </FadeIn>
 
       <section className={styles.cta}>
-        <ArrowLink
-          text={CTA.requestIntroduction}
-          href="/inquire"
-          variant="dark"
-        />
+        <ArrowLink text={CTA.requestIntroduction} href="/inquire" />
       </section>
     </>
   );

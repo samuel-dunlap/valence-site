@@ -4,25 +4,13 @@
   display: inline-block;
   padding: var(--button-padding-y) var(--button-padding-x);
   border: var(--border-thin) solid currentColor;
+  color: var(--color-text);
   transition:
     background-color var(--transition-fast),
     color var(--transition-fast);
 }
 
-.dark {
-  color: var(--color-navy);
-}
-
-.dark:hover {
-  background-color: var(--color-navy);
-  color: var(--color-warm-white);
-}
-
-.light {
-  color: var(--color-warm-white);
-}
-
-.light:hover {
-  background-color: var(--color-warm-white);
-  color: var(--color-navy);
+.link:hover {
+  background-color: var(--color-text);
+  color: var(--color-bg);
 }

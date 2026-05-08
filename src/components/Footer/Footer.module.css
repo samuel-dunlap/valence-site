@@ -1,5 +1,7 @@
 .footer {
   padding: var(--section-padding) 0;
+  border-top: var(--border-thin) solid
+    color-mix(in sRGB, var(--color-text) 12%, transparent);
 }
 
 .container {
@@ -43,7 +45,7 @@
 }
 
 .navLink:hover {
-  border-bottom-color: var(--color-burgundy);
+  border-bottom-color: var(--color-accent);
 }
 
 @media (max-width: 767px) {

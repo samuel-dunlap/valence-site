@@ -6,26 +6,26 @@
   min-height: 100dvh;
   padding: var(--content-padding);
   text-align: center;
-  background: var(--color-warm-white);
+  background: var(--color-bg);
 }
 
 .errorHeading {
   font-size: var(--fs-heading);
   margin-bottom: var(--space-md);
-  color: var(--color-navy);
+  color: var(--color-text);
 }
 
 .errorMessage {
   font-size: var(--fs-body);
   margin-bottom: var(--space-lg);
   max-width: var(--content-medium);
-  color: var(--color-navy);
+  color: var(--color-text);
 }
 
 .errorButton {
   padding: var(--space-sm) var(--space-md);
-  background-color: var(--color-burgundy);
-  color: var(--color-warm-white);
+  background-color: var(--color-accent);
+  color: var(--color-bg);
   border: none;
   border-radius: 4px;
   font-size: var(--fs-body);

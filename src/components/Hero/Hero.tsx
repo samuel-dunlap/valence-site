@@ -21,14 +21,17 @@ export default function Hero({
   imageAlt,
 }: HeroProps): React.ReactElement {
   return (
-    <section className={`navySection ${styles.hero}`}>
+    <section className={styles.hero}>
       <div className={imageSrc ? styles.splitContainer : styles.container}>
         <div className={styles.content}>
           <h1 className={styles.headline}>{headline}</h1>
 
           <div className={styles.subtitles}>
             {subtitleLines.map((line: string, i: number) => (
-              <p key={generateListKey("subtitle", i, line)} className={styles.subtitle}>
+              <p
+                key={generateListKey("subtitle", i, line)}
+                className={styles.subtitle}
+              >
                 {line}
               </p>
             ))}
@@ -36,7 +39,7 @@ export default function Hero({
 
           {ctaText && ctaHref && (
             <div className={styles.cta}>
-              <ArrowLink text={ctaText} href={ctaHref} variant="light" />
+              <ArrowLink text={ctaText} href={ctaHref} />
             </div>
           )}
         </div>
