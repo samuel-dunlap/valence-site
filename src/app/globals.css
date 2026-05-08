@@ -6,6 +6,7 @@
   --color-text: var(--color-navy);
   --color-border: rgba(0, 32, 66, 0.12);
   --color-atmosphere-overlay: rgba(0, 32, 66, 0.35);
+  --noise-blend: multiply;
 
   /* ── Typography ── */
   --font-heading:
@@ -71,15 +72,17 @@
   --navbar-skip-top: 12px;
   --navbar-underline-pb: 2px;
   --navbar-logo-ls: 0.35em;
+
+  /* ── Texture ── */
+  --texture-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
 }
 
+/* ── Dark Mode ── */
 [data-theme="dark"] {
   --color-bg: var(--color-navy);
   --color-text: var(--color-warm-white);
   --color-border: rgba(250, 249, 247, 0.12);
-
-  /* ── Texture ── */
-  --texture-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+  --noise-blend: soft-light;
 }
 
 /* ── Reset ── */
@@ -106,6 +109,9 @@ body {
   line-height: var(--lh-body);
   position: relative;
   overflow-x: hidden;
+  transition:
+    background-color var(--transition-slow),
+    color var(--transition-slow);
 }
 
 body::after {
@@ -115,7 +121,7 @@ body::after {
   background-image: var(--texture-noise);
   background-repeat: repeat;
   background-size: 256px 256px;
-  mix-blend-mode: multiply;
+  mix-blend-mode: var(--noise-blend);
   pointer-events: none;
   opacity: 0.4;
   z-index: var(--z-base);
