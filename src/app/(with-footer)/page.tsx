@@ -45,7 +45,7 @@ export default function HomePage() {
             />
             <ServiceCard
               title="Family Consulting"
-              tagline="Deepening joy and capability across generations."
+              tagline="Growing intergenerational relationships, skills, and legacies."
               description="Communication breakdown, parenting effectiveness, children's motivation and readiness for independence, and knowing when to step in and when to step back."
               href="/family-consulting"
               ctaText="Learn More"

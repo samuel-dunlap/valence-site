@@ -10,7 +10,7 @@ import styles from "@/styles/service-page.module.css";
 export const metadata: Metadata = {
   title: "Family Consulting",
   description:
-    "Deepening joy and capability across generations. Private consulting for families navigating communication, parenting, and the transition to independence.",
+    "A learning community for committed families to grow intergenerational relationships, skills, and legacies.",
   alternates: { canonical: "/family-consulting/" },
 };
 
@@ -20,7 +20,7 @@ export default function FamilyConsultingPage() {
       <StructuredData
         data={getServiceSchema(
           "Family Consulting",
-          "Deepening joy and capability across generations. Private consulting for families navigating communication, parenting, and the transition to independence.",
+          "A learning community for committed families to grow intergenerational relationships, skills, and legacies.",
           "/family-consulting/"
         )}
       />
@@ -29,7 +29,8 @@ export default function FamilyConsultingPage() {
           <div className={sharedStyles.headerContent}>
             <h1 className={sharedStyles.title}>Family Consulting</h1>
             <p className={sharedStyles.headerSubtitle}>
-              Deepening joy and capability across generations
+              A learning community for committed families to grow
+              intergenerational relationships, skills, and legacies
             </p>
           </div>
         </section>
