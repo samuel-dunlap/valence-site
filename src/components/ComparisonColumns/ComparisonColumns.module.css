@@ -7,7 +7,7 @@
 }
 
 .bare {
-  padding: var(--space) var(--content-padding) 0;
+  padding: var(--space-section) var(--content-padding) 0;
 }
 
 .grid {
