@@ -43,6 +43,13 @@ export default function HomePage() {
               href="/couples-retreat"
               ctaText="Explore the Retreat"
             />
+            <ServiceCard
+              title="Team Collaboration Diagnostic"
+              tagline="Unlock peak team effectiveness."
+              description="A 3-hour diagnostic that pinpoints opportunities for team performance improvement. Designed for senior leadership teams of 3-10 people."
+              href="/team-collaboration-diagnostic"
+              ctaText="Learn About TCD"
+            />
           </div>
         </section>
       </FadeIn>

@@ -29,9 +29,12 @@ export default function AboutPage() {
             />
           </div>
           <p className={styles.bio}>
-            Samuel Dunlap advises high-net-worth couples and families on the
-            relationships that matter most — the ones that money alone
-            can&apos;t solve.
+            After years of practicing as a clinical couples therapist, I have
+            transitioned exclusively to my writing and private advisory for
+            high-net-worth couples and families in New York City, San Diego, and
+            Aspen, CO. My research focuses on the question: How can we make more
+            effective choices in building healthier relationships with
+            ourselves, our work, and the people we most care about?
           </p>
         </section>
       </FadeIn>
