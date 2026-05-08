@@ -65,10 +65,11 @@ export default function CouplesRetreatPage() {
           <div className={styles.legacySectionContent}>
             <SectionHeader title="What&rsquo;s at Stake" />
             <p className={styles.bodyText}>
-              Your family legacy is the ultimate expression of your
-              relationship&rsquo;s value. Yet the unique pressures from growing
-              and preserving your legacy threaten your relationship. When your
-              core relationship is compromised, your family legacy is at risk.
+              Your children are watching your relationship. What they absorb
+              becomes their template for love, conflict, and intimacy. When your
+              partnership is struggling, what&rsquo;s at risk isn&rsquo;t just
+              your connection to each other &mdash; it&rsquo;s what gets passed
+              down.
             </p>
           </div>
           <ComparisonColumns
@@ -76,28 +77,22 @@ export default function CouplesRetreatPage() {
             stacked
             leftTitle="Unmitigated Costs & Risks"
             leftItems={[
-              "Continued or protracted power struggles that degrade trust and respect",
-              "Critical misalignments on decisions about parenting, finances, and family legacy",
-              "Chronic imbalances in time, energy, and resource allocations",
+              "Continued power struggles that degrade trust and respect",
               <>
-                Most wealthy families lose their assets by the third generation
-                &mdash; and in <strong>60%</strong> of these cases, the root
-                cause is a breakdown in family communication and trust.
+                Growing distance that both partners feel but neither knows how
+                to close<sup>1</sup>
               </>,
-              <>
-                The <strong>#1</strong> cause of divorce is arguments around
-                money, and <strong>40%</strong> of marriages end in divorce,
-                with <strong>50&ndash;77%</strong> loss of net worth for each
-                partner
-              </>,
+              "Children absorbing patterns of disconnection, conflict avoidance, or resentment as normal",
+              "The slow erosion of partnership into a functional arrangement — organized around logistics, not intimacy",
             ]}
             rightTitle="Benefits of Couples Retreats"
             rightItems={[
-              "Greater personal integrity and dignity",
-              "Demonstrable skills and behaviors of relational intimacy and emotional maturity",
-              "Stronger communication and deeper intimacies even when navigating conflict",
-              "Greater coherence around shared vision and legacy",
-              "Deeper joy in partnership, family, and life",
+              <>
+                A partnership your children actually want to emulate<sup>2</sup>
+              </>,
+              "The capacity to repair, not just endure",
+              "Deeper intimacy and joy — not just the absence of conflict",
+              "Coming back to your family with more presence, energy, and love",
             ]}
           />
         </section>
@@ -131,6 +126,20 @@ export default function CouplesRetreatPage() {
       <section className={styles.cta}>
         <ArrowLink text={CTA.requestIntroduction} href="/inquire" />
       </section>
+
+      <footer className={styles.footnotes}>
+        <ol>
+          <li>
+            Most wealthy families lose their assets by the third generation
+            &mdash; and in 60% of these cases, the root cause is a breakdown in
+            family communication and trust.
+          </li>
+          <li>
+            40% of marriages end in divorce, with 50&ndash;77% loss of net worth
+            for each partner.
+          </li>
+        </ol>
+      </footer>
     </>
   );
 }
