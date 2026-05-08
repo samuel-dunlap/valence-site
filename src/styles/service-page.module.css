@@ -1,5 +1,5 @@
 .bodySection {
-  padding: var(--space-xl) var(--content-padding) var(--space-md);
+  padding: var(--space-section) var(--content-padding) var(--space);
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -14,19 +14,19 @@
 }
 
 .bodyText + .bodyText {
-  margin-top: var(--space-md);
+  margin-top: var(--space);
 }
 
 .pillars {
   max-width: var(--text-max-width);
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space);
   line-height: var(--lh-body);
 }
 
 .cta {
-  padding: var(--space-lg) var(--content-padding);
+  padding: var(--space-section) var(--content-padding);
   text-align: center;
   position: relative;
   z-index: var(--z-content);

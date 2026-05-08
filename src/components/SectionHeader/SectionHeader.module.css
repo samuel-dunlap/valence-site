@@ -1,12 +1,12 @@
 .wrapper {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space);
 }
 
 .rule {
   border: none;
-  border-top: var(--border-rule) solid var(--color-accent);
+  border-top: var(--border) solid var(--color-text);
   max-width: 100%;
-  margin: 0 0 var(--space-sm) 0;
+  margin: 0 0 var(--space) 0;
 }
 
 .title {

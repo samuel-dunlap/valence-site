@@ -1,6 +1,6 @@
 .footer {
-  padding: var(--section-padding) 0;
-  border-top: var(--border-thin) solid
+  padding: var(--space-section) 0;
+  border-top: var(--border) solid
     color-mix(in sRGB, var(--color-text) 12%, transparent);
 }
 
@@ -10,7 +10,7 @@
   padding: 0 var(--content-padding);
   display: flex;
   align-items: flex-start;
-  gap: var(--space-xl);
+  gap: var(--space-section);
 }
 
 .left {
@@ -19,8 +19,8 @@
 }
 
 .logo {
-  border-radius: var(--radius-small);
-  margin-bottom: var(--space-sm);
+  border-radius: var(--radius);
+  margin-bottom: var(--space);
 }
 
 .text {
@@ -31,32 +31,32 @@
 .nav {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space);
   margin-left: auto;
 }
 
 .navLink {
   font-size: var(--fs-body);
   padding-bottom: var(--navbar-underline-pb);
-  border-bottom: var(--border-link) solid transparent;
+  border-bottom: var(--border) solid transparent;
   transition: border-color var(--transition-fast);
   display: inline-block;
   align-self: flex-end;
 }
 
 .navLink:hover {
-  border-bottom-color: var(--color-accent);
+  border-bottom-color: var(--color-text);
 }
 
 @media (max-width: 767px) {
   .container {
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space);
   }
 
   .nav {
     margin-left: 0;
-    gap: var(--space-sm);
+    gap: var(--space);
   }
 
   .navLink {

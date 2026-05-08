@@ -1,6 +1,6 @@
 .page {
   min-height: 100dvh;
-  padding: var(--section-padding) var(--content-padding);
+  padding: var(--space-section) var(--content-padding);
 }
 
 .content {
@@ -11,29 +11,29 @@
 
 .heading {
   font-size: var(--fs-heading);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space);
 }
 
 .subtitle {
   font-family: var(--font-heading);
   font-size: var(--fs-body);
-  color: var(--color-accent);
-  margin-bottom: var(--space-lg);
+  color: var(--color-text);
+  margin-bottom: var(--space-section);
 }
 
 .divider {
   border: none;
-  border-top: var(--border-rule) solid var(--color-accent);
-  margin-bottom: var(--space-lg);
+  border-top: var(--border) solid var(--color-text);
+  margin-bottom: var(--space-section);
   max-width: var(--content-medium);
 }
 
 .contactItem {
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space);
   font-size: var(--fs-body);
 }
 
 .contactItem a:hover {
   text-decoration: underline;
-  text-decoration-color: var(--color-accent);
+  text-decoration-color: var(--color-text);
 }

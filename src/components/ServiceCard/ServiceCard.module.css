@@ -1,7 +1,7 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space);
   height: 100%;
   color: inherit;
   cursor: pointer;
@@ -15,7 +15,7 @@
 .tagline {
   font-family: var(--font-heading);
   font-size: var(--fs-body);
-  color: var(--color-accent);
+  color: var(--color-text);
   margin: 0;
 }
 
@@ -27,10 +27,10 @@
 
 .ctaLabel {
   font-size: var(--fs-body);
-  letter-spacing: var(--ls-tight);
+  letter-spacing: var(--ls);
   display: inline-block;
   padding: var(--button-padding-y) var(--button-padding-x);
-  border: var(--border-thin) solid var(--color-text);
+  border: var(--border) solid var(--color-text);
   align-self: flex-start;
   transition:
     background-color var(--transition-fast),

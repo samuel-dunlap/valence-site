@@ -1,7 +1,7 @@
 .section {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-xl) var(--content-padding);
+  padding: var(--space-section) var(--content-padding);
 }
 
 .bodyTextIntro {
@@ -12,8 +12,8 @@
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-md);
-  margin-top: var(--space-md);
+  gap: var(--space);
+  margin-top: var(--space);
   max-width: var(--content-wide);
 }
 
@@ -28,13 +28,13 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--space-xs);
+  gap: var(--space);
 }
 
 .statNumber {
   font-family: var(--font-heading);
   font-size: var(--fs-heading);
-  color: var(--color-accent);
+  color: var(--color-text);
 }
 
 .statLabel {
@@ -42,21 +42,21 @@
 }
 
 .subhead {
-  margin-top: var(--space-md);
-  margin-bottom: var(--space-sm);
+  margin-top: var(--space);
+  margin-bottom: var(--space);
 }
 
 .list {
   max-width: var(--text-max-width);
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space);
   padding-left: 1.25em;
   line-height: var(--lh-body);
 }
 
 .bodySection {
-  padding: var(--space-xl) var(--content-padding) var(--space-md);
+  padding: var(--space-section) var(--content-padding) var(--space);
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -71,14 +71,14 @@
 }
 
 .bodyText + .bodyText {
-  margin-top: var(--space-md);
+  margin-top: var(--space);
 }
 
 .phasesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-  margin-top: var(--space-md);
+  gap: var(--space);
+  margin-top: var(--space);
 }
 
 @media (max-width: 767px) {
@@ -88,7 +88,7 @@
 }
 
 .cta {
-  padding: var(--space-lg) var(--content-padding);
+  padding: var(--space-section) var(--content-padding);
   text-align: center;
   position: relative;
   z-index: var(--z-content);
@@ -97,7 +97,7 @@
 .footnotes {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--content-padding) var(--space-lg);
+  padding: 0 var(--content-padding) var(--space-section);
   font-size: var(--fs-body);
   color: var(--color-text);
   opacity: 0.5;
@@ -108,5 +108,5 @@
   padding-left: 1.25em;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space);
 }

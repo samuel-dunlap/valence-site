@@ -3,7 +3,7 @@
   border: none;
   cursor: pointer;
   color: var(--color-text);
-  padding: var(--space-xs);
+  padding: var(--space);
   display: flex;
   align-items: center;
   justify-content: center;

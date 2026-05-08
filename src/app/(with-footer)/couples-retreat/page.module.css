@@ -2,26 +2,26 @@
 
 .headerImage {
   display: block;
-  border-radius: var(--radius-image);
+  border-radius: var(--radius);
   width: 100%;
   height: auto;
   max-width: var(--content-medium);
-  margin-top: var(--space-sm);
+  margin-top: var(--space);
 }
 
 .bodySection {
-  padding: var(--section-padding) var(--content-padding);
+  padding: var(--space-section) var(--content-padding);
   max-width: var(--max-width);
   margin: 0 auto;
 }
 
 .sectionImage {
   display: block;
-  border-radius: var(--radius-image);
+  border-radius: var(--radius);
   width: 100%;
   height: auto;
   max-width: var(--content-medium);
-  margin-top: var(--space-lg);
+  margin-top: var(--space-section);
 }
 
 .bodySection + .bodySection {
@@ -34,11 +34,11 @@
 }
 
 .bodyText + .bodyText {
-  margin-top: var(--space-md);
+  margin-top: var(--space);
 }
 
 .legacySection {
-  padding: var(--section-padding) 0;
+  padding: var(--space-section) 0;
 }
 
 .legacySectionContent {
@@ -48,7 +48,7 @@
 }
 
 .cta {
-  padding: var(--section-padding) var(--content-padding);
+  padding: var(--space-section) var(--content-padding);
   text-align: center;
   position: relative;
   z-index: var(--z-content);

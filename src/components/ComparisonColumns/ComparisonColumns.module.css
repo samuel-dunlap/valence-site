@@ -1,37 +1,37 @@
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--section-padding) var(--content-padding);
+  padding: var(--space-section) var(--content-padding);
   position: relative;
   z-index: var(--z-content);
 }
 
 .bare {
-  padding: var(--space-md) var(--content-padding) 0;
+  padding: var(--space) var(--content-padding) 0;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl);
+  gap: var(--space-section);
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space);
 }
 
 .columnTitle {
   font-size: var(--fs-body);
-  color: var(--color-accent);
+  color: var(--color-text);
 }
 
 .list {
   padding-left: 1.25em;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space);
 }
 
 .item {
@@ -40,12 +40,12 @@
 
 .stacked {
   grid-template-columns: 1fr;
-  gap: var(--space-md);
+  gap: var(--space);
 }
 
 @media (max-width: 767px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-section);
   }
 }

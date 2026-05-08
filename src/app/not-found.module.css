@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--section-padding) var(--content-padding);
+  padding: var(--space-section) var(--content-padding);
 }
 
 .content {
@@ -15,18 +15,18 @@
 
 .heading {
   font-size: var(--fs-heading);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space);
 }
 
 .subtitle {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-section);
 }
 
 .link {
   font-family: var(--font-heading);
   font-size: var(--fs-body);
-  letter-spacing: var(--ls-open);
-  border-bottom: var(--border-thin) solid var(--color-accent);
+  letter-spacing: var(--ls);
+  border-bottom: var(--border) solid var(--color-text);
   padding-bottom: var(--navbar-underline-pb);
   transition: border-color var(--transition-fast);
 }

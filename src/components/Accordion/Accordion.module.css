@@ -3,7 +3,7 @@
 }
 
 .section {
-  border-bottom: var(--border-rule) solid var(--color-accent);
+  border-bottom: var(--border) solid var(--color-text);
 }
 
 .header {
@@ -11,24 +11,24 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: var(--space-sm) 0;
+  padding: var(--space) 0;
   background: none;
   border: none;
   cursor: pointer;
   text-align: left;
-  gap: var(--space-sm);
+  gap: var(--space);
 }
 
 .title {
   font-family: var(--font-heading);
   font-size: var(--fs-subheading);
-  color: var(--color-accent);
+  color: var(--color-text);
 }
 
 .indicator {
   font-size: var(--fs-subheading);
-  color: var(--color-accent);
-  line-height: var(--lh-tight);
+  color: var(--color-text);
+  line-height: 1;
   flex-shrink: 0;
   transition: transform var(--transition-slow);
   transform: rotate(0deg);
@@ -46,5 +46,5 @@
 }
 
 .content {
-  padding-bottom: var(--space-lg);
+  padding-bottom: var(--space-section);
 }

@@ -1,28 +1,28 @@
 .header {
-  padding: var(--section-padding) var(--content-padding) 0;
+  padding: var(--space-section) var(--content-padding) 0;
   max-width: var(--max-width);
   margin: 0 auto;
 }
 
 .name {
   font-size: var(--fs-heading);
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space);
 }
 
 .subtitle {
   font-family: var(--font-heading);
   font-size: var(--fs-body);
-  color: var(--color-accent);
-  margin-bottom: var(--space-lg);
+  color: var(--color-text);
+  margin-bottom: var(--space-section);
 }
 
 .photoWrapper {
   max-width: var(--content-narrow);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-section);
 }
 
 .photo {
-  border-radius: var(--radius-image);
+  border-radius: var(--radius);
   width: 100%;
   height: auto;
 }
@@ -34,12 +34,12 @@
 
 .divider {
   border: none;
-  border-top: var(--border-rule) solid var(--color-accent);
+  border-top: var(--border) solid var(--color-text);
   margin: 0;
 }
 
 .accordionSection {
-  padding: var(--space-lg) var(--content-padding) var(--section-padding);
+  padding: var(--space-section) var(--content-padding) var(--space-section);
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -48,16 +48,16 @@
   padding-left: 1.25em;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space);
   line-height: var(--lh-body);
 }
 
 .accordionIntro {
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space);
   line-height: var(--lh-body);
 }
 
 .accordionClosing {
-  margin-top: var(--space-sm);
+  margin-top: var(--space);
   line-height: var(--lh-body);
 }

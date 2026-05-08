@@ -10,7 +10,7 @@
   font-family: var(--font-body);
   font-size: var(--fs-body);
   text-decoration: none;
-  border: var(--border-thin) solid var(--color-bg);
+  border: var(--border) solid var(--color-bg);
   transition: top var(--transition-fast);
 }
 
@@ -24,8 +24,8 @@
   top: 0;
   z-index: var(--z-navbar);
   background-color: var(--color-bg);
-  transition: border-color var(--transition-base);
-  border-bottom: var(--border-thin) solid transparent;
+  transition: border-color var(--transition-slow);
+  border-bottom: var(--border) solid transparent;
 }
 
 .scrolled {
@@ -50,16 +50,16 @@
 .logoText {
   font-family: var(--font-heading);
   font-size: var(--fs-subheading);
-  line-height: var(--lh-tight);
+  line-height: 1;
 }
 
 .logoLetter {
   color: var(--color-text);
-  letter-spacing: var(--ls-wide);
+  letter-spacing: var(--navbar-logo-ls);
 }
 
 .logoPunctuation {
-  color: var(--color-accent);
+  color: var(--color-text);
   letter-spacing: normal;
 }
 
@@ -74,24 +74,24 @@
 /* ── Desktop nav ── */
 .desktopNav {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space);
   padding-bottom: var(--navbar-nav-pb);
 }
 
 .navLink {
   font-size: var(--fs-body);
-  letter-spacing: var(--ls-open);
+  letter-spacing: var(--ls);
   padding-bottom: var(--navbar-link-pb);
-  border-bottom: var(--border-link) solid transparent;
+  border-bottom: var(--border) solid transparent;
   transition: border-color var(--transition-fast);
 }
 
 .navLink:hover {
-  border-bottom-color: var(--color-accent);
+  border-bottom-color: var(--color-text);
 }
 
 .active {
-  border-bottom-color: var(--color-accent);
+  border-bottom-color: var(--color-text);
 }
 
 .navLink:visited {
@@ -117,7 +117,7 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  padding-top: var(--space-xs);
+  padding-top: var(--space);
   opacity: 0;
   visibility: hidden;
   transition:
@@ -137,17 +137,17 @@
   top: 0;
   left: 0;
   right: 0;
-  height: var(--space-xs);
+  height: var(--space);
 }
 
 .dropdownMenu > a {
   display: block;
   white-space: nowrap;
   background-color: var(--color-bg);
-  padding: var(--space-xs) var(--space-sm);
+  padding: var(--space) var(--space);
   font-size: var(--fs-body);
-  letter-spacing: var(--ls-open);
-  border-bottom: var(--border-thin) solid
+  letter-spacing: var(--ls);
+  border-bottom: var(--border) solid
     color-mix(in sRGB, var(--color-text) 8%, transparent);
   transition: opacity var(--transition-fast);
 }
@@ -161,7 +161,7 @@
 }
 
 .dropdownLink.active {
-  border-bottom-color: var(--color-accent);
+  border-bottom-color: var(--color-text);
 }
 
 /* ── Hamburger ── */
@@ -202,8 +202,8 @@
   opacity: 0;
   visibility: hidden;
   transition:
-    opacity var(--transition-base),
-    visibility var(--transition-base);
+    opacity var(--transition-slow),
+    visibility var(--transition-slow);
 }
 
 .overlayOpen {
@@ -246,12 +246,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space);
 }
 
 .overlayLink {
   font-size: var(--fs-heading);
-  letter-spacing: var(--ls-open);
+  letter-spacing: var(--ls);
   color: var(--color-bg);
   transition: opacity var(--transition-fast);
 }
@@ -265,7 +265,7 @@
 }
 
 .overlayLinkActive {
-  border-bottom: var(--border-link) solid var(--color-accent);
+  border-bottom: var(--border) solid var(--color-text);
   padding-bottom: var(--navbar-underline-pb);
 }
 
@@ -273,12 +273,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space);
 }
 
 .overlayGroupLabel {
   font-size: var(--fs-body);
-  letter-spacing: var(--ls-open);
+  letter-spacing: var(--ls);
   color: var(--color-bg);
   opacity: 0.5;
 }

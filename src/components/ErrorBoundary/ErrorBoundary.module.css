@@ -11,23 +11,23 @@
 
 .errorHeading {
   font-size: var(--fs-heading);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space);
   color: var(--color-text);
 }
 
 .errorMessage {
   font-size: var(--fs-body);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-section);
   max-width: var(--content-medium);
   color: var(--color-text);
 }
 
 .errorButton {
-  padding: var(--space-sm) var(--space-md);
-  background-color: var(--color-accent);
+  padding: var(--space) var(--space);
+  background-color: var(--color-text);
   color: var(--color-bg);
   border: none;
-  border-radius: var(--radius-button);
+  border-radius: var(--radius);
   font-size: var(--fs-body);
   cursor: pointer;
   transition: opacity var(--transition-fast);

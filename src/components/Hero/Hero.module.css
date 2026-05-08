@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  padding: var(--section-padding) 0;
+  padding: var(--space-section) 0;
 }
 
 .container {
@@ -15,7 +15,7 @@
   z-index: var(--z-content);
   display: grid;
   grid-template-columns: 1fr 0.8fr;
-  gap: var(--space-xl);
+  gap: var(--space-section);
   align-items: center;
   max-width: var(--max-width);
   padding: 0 var(--content-padding);
@@ -23,12 +23,12 @@
 
 .headline {
   font-size: var(--fs-heading);
-  letter-spacing: var(--ls-tight);
+  letter-spacing: var(--ls);
   margin: 0;
 }
 
 .subtitles {
-  margin-top: var(--space-lg);
+  margin-top: var(--space-section);
 }
 
 .subtitle {
@@ -37,11 +37,11 @@
 }
 
 .subtitle + .subtitle {
-  margin-top: var(--space-xs);
+  margin-top: var(--space);
 }
 
 .cta {
-  margin-top: var(--space-lg);
+  margin-top: var(--space-section);
 }
 
 .imageWrap {
@@ -50,7 +50,7 @@
 }
 
 .image {
-  border-radius: var(--radius-image);
+  border-radius: var(--radius);
   width: 100%;
   height: auto;
   max-width: var(--content-narrow);
@@ -59,7 +59,7 @@
 @media (max-width: 767px) {
   .splitContainer {
     grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-section);
   }
 
   .image {
