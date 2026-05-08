@@ -44,11 +44,25 @@ export default function HomePage() {
               ctaText="Explore the Retreat"
             />
             <ServiceCard
-              title="Team Collaboration Diagnostic"
+              title="Family Consulting"
+              tagline="Private consulting for families."
+              description="Navigating the relationships that matter most — the ones that money alone can't solve."
+              href="/family-consulting"
+              ctaText="Learn More"
+            />
+            <ServiceCard
+              title="Team Collaboration Lab"
               tagline="Unlock peak team effectiveness."
               description="A 3-hour diagnostic that pinpoints opportunities for team performance improvement. Designed for senior leadership teams of 3-10 people."
-              href="/team-collaboration-diagnostic"
-              ctaText="Learn About TCD"
+              href="/team-collaboration-lab"
+              ctaText="Learn More"
+            />
+            <ServiceCard
+              title="Depth Performance Training"
+              tagline="More effective communication and decision-making."
+              description="Private advisory for senior leaders and executives."
+              href="/depth-performance-training"
+              ctaText="Learn More"
             />
           </div>
         </section>

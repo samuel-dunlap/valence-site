@@ -10,28 +10,26 @@ import sharedStyles from "@/styles/page-header.module.css";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Team Collaboration Diagnostic",
+  title: "Team Collaboration Lab",
   description:
     "A 3-hour introductory diagnostic that pinpoints opportunities for team performance improvement. Designed for senior leadership teams of 3-10 people.",
-  alternates: { canonical: "/team-collaboration-diagnostic/" },
+  alternates: { canonical: "/team-collaboration-lab/" },
 };
 
-export default function TCDPage() {
+export default function TeamCollaborationLabPage() {
   return (
     <>
       <StructuredData
         data={getServiceSchema(
-          "Team Collaboration Diagnostic (TCD)",
+          "Team Collaboration Lab",
           "A 3-hour introductory diagnostic that pinpoints opportunities for team performance improvement. Designed for senior leadership teams of 3-10 people.",
-          "/team-collaboration-diagnostic/"
+          "/team-collaboration-lab/"
         )}
       />
       <FadeIn>
         <section className={sharedStyles.header}>
           <div className={sharedStyles.headerContent}>
-            <h1 className={sharedStyles.title}>
-              Team Collaboration Diagnostic
-            </h1>
+            <h1 className={sharedStyles.title}>Team Collaboration Lab</h1>
             <p className={sharedStyles.headerSubtitle}>
               What foundational levers can you pull to unlock peak team
               effectiveness?
@@ -140,9 +138,9 @@ export default function TCDPage() {
           <SectionHeader title="Change Is Hard to Implement" />
           <p className={styles.bodyText}>
             Only <strong>10%</strong> of managers know how to both create and
-            sustain behavioral change effectively.<sup>10</sup> The diagnostic
-            is just the beginning &mdash; we partner with you from
-            recommendations through permanent behavior change.
+            sustain behavioral change effectively.<sup>10</sup> The lab is just
+            the beginning &mdash; we partner with you from recommendations
+            through permanent behavior change.
           </p>
         </section>
       </FadeIn>

@@ -19,10 +19,9 @@ export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/couples-retreat", label: "Couples Retreat" },
-  {
-    href: "/team-collaboration-diagnostic",
-    label: "Team Collaboration Diagnostic",
-  },
+  { href: "/family-consulting", label: "Family Consulting" },
+  { href: "/team-collaboration-lab", label: "Team Collaboration Lab" },
+  { href: "/depth-performance-training", label: "Depth Performance Training" },
   { href: "/inquire", label: "Inquire" },
 ] as const;
 

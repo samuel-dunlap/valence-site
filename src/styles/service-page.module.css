@@ -1,0 +1,25 @@
+.bodySection {
+  padding: var(--space-xl) var(--content-padding) var(--space-md);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.bodySection + .bodySection {
+  padding-top: 0;
+}
+
+.bodyText {
+  max-width: var(--text-max-width);
+  line-height: var(--lh-body);
+}
+
+.bodyText + .bodyText {
+  margin-top: var(--space-md);
+}
+
+.cta {
+  padding: var(--space-lg) var(--content-padding);
+  text-align: center;
+  position: relative;
+  z-index: var(--z-content);
+}
