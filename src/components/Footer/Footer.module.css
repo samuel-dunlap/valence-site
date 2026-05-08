@@ -1,6 +1,6 @@
 .footer {
   padding: var(--space-section) 0;
-  border-top: var(--border) solid var(--color-text);
+  margin-top: var(--space-section);
 }
 
 .container {
