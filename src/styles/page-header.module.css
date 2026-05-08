@@ -1,6 +1,6 @@
 /* Shared header styles for service pages */
 .header {
-  padding: var(--space-section) var(--content-padding) 0;
+  padding-top: var(--space-section);
 }
 
 .headerContent {
@@ -8,6 +8,7 @@
   z-index: var(--z-content);
   max-width: var(--max-width);
   margin: 0 auto;
+  padding: 0 var(--content-padding);
 }
 
 .title {

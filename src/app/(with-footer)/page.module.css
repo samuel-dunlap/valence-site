@@ -1,6 +1,5 @@
 .services {
-  padding: calc(var(--space-section) * 2) var(--content-padding)
-    var(--space-section);
+  padding: calc(var(--space-section) * 2) 0 var(--space-section);
 }
 
 .servicesGrid {
@@ -9,6 +8,7 @@
   gap: var(--space-section);
   max-width: var(--max-width);
   margin: 0 auto;
+  padding: 0 var(--content-padding);
 }
 
 @media (max-width: 767px) {
