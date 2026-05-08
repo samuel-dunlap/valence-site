@@ -1,13 +1,12 @@
 .hero {
   position: relative;
-  padding: var(--space-section) 0 0;
+  padding: var(--space-section) var(--content-padding) 0;
 }
 
 .container {
   position: relative;
   z-index: var(--z-content);
   max-width: var(--text-max-width);
-  padding: 0 var(--content-padding);
 }
 
 .splitContainer {
@@ -18,7 +17,7 @@
   gap: var(--space-section);
   align-items: center;
   max-width: var(--max-width);
-  padding: 0 var(--content-padding);
+  margin: 0 auto;
 }
 
 .headline {

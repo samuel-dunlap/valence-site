@@ -31,25 +31,34 @@ export default function CouplesRetreatPage() {
         <section className={sharedStyles.header}>
           <div className={sharedStyles.headerContent}>
             <h1 className={sharedStyles.title}>The Couples Retreat</h1>
-            <p className={sharedStyles.headerSubtitle}>
-              An immersive weekend for deepening intimacy in partnership
-            </p>
             <p className={sharedStyles.intro}>
               The Couples Retreat is a multi-day training program for driven
               couples to develop the essential knowledge and advanced skills for{" "}
               <strong>interpersonal mastery</strong>.
             </p>
-            <Image
-              src="/images/home.webp"
-              alt="Couple in New York City"
-              width={1018}
-              height={661}
-              unoptimized
-              className={styles.headerImage}
-            />
           </div>
         </section>
       </FadeIn>
+
+      <div className={styles.imagePair}>
+        <Image
+          src="/images/home.webp"
+          alt="Couple in New York City"
+          width={1018}
+          height={661}
+          unoptimized
+          className={styles.pairImage}
+        />
+        <Image
+          src="/images/retreat.webp"
+          alt="Luxury retreat with mountain views"
+          width={1018}
+          height={661}
+          unoptimized
+          loading="lazy"
+          className={styles.pairImage}
+        />
+      </div>
 
       <FadeIn>
         <section className={styles.legacySection}>
@@ -91,17 +100,6 @@ export default function CouplesRetreatPage() {
               "Deeper joy in partnership, family, and life",
             ]}
           />
-          <div className={styles.legacySectionContent}>
-            <Image
-              src="/images/retreat.webp"
-              alt="Luxury retreat with mountain views"
-              width={1018}
-              height={661}
-              unoptimized
-              loading="lazy"
-              className={styles.sectionImage}
-            />
-          </div>
         </section>
       </FadeIn>
 

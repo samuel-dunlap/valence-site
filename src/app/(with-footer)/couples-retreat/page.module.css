@@ -1,27 +1,25 @@
 /* Page-specific styles - shared header styles moved to @/styles/page-header.module.css */
 
-.headerImage {
-  display: block;
+.imagePair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-section) var(--content-padding) 0;
+}
+
+.pairImage {
   border-radius: var(--radius);
   width: 100%;
-  height: auto;
-  max-width: var(--content-medium);
-  margin-top: var(--space);
+  height: 100%;
+  object-fit: cover;
 }
 
 .bodySection {
   padding: var(--space-section) var(--content-padding) 0;
   max-width: var(--max-width);
   margin: 0 auto;
-}
-
-.sectionImage {
-  display: block;
-  border-radius: var(--radius);
-  width: 100%;
-  height: auto;
-  max-width: var(--content-medium);
-  margin-top: var(--space);
 }
 
 .bodySection + .bodySection {
@@ -52,4 +50,10 @@
   text-align: center;
   position: relative;
   z-index: var(--z-content);
+}
+
+@media (max-width: 767px) {
+  .imagePair {
+    grid-template-columns: 1fr;
+  }
 }
