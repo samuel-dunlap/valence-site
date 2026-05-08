@@ -19,12 +19,12 @@
 }
 
 .logo {
-  border-radius: 6px;
+  border-radius: var(--radius-small);
   margin-bottom: var(--space-sm);
 }
 
 .text {
-  font-size: 0.8125rem;
+  font-size: var(--fs-body);
   margin: 0;
 }
 
@@ -37,7 +37,7 @@
 
 .navLink {
   font-size: var(--fs-body);
-  padding-bottom: 2px;
+  padding-bottom: var(--navbar-underline-pb);
   border-bottom: var(--border-link) solid transparent;
   transition: border-color var(--transition-fast);
   display: inline-block;

@@ -31,8 +31,7 @@ export default function TeamCollaborationLabPage() {
           <div className={sharedStyles.headerContent}>
             <h1 className={sharedStyles.title}>Team Collaboration Lab</h1>
             <p className={sharedStyles.headerSubtitle}>
-              What foundational levers can you pull to unlock peak team
-              effectiveness?
+              Diagnostics and conversations for improving team effectiveness
             </p>
             <p className={sharedStyles.intro}>
               A 3-hour introductory diagnostic that pinpoints opportunities for

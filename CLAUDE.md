@@ -38,7 +38,7 @@ Next.js 16 static site for Valence (private relationship advisory). Deployed to 
 
 - Every font-size MUST use `--fs-heading`, `--fs-subheading`, or `--fs-body`
 - Headings: Libre Baskerville (weight 400 only, never bold)
-- Body: IBM Plex Sans
+- Body: Libre Baskerville
 
 ### Heading Color Rules (Strict)
 
@@ -116,10 +116,7 @@ When adding a new page section:
 
 ## Known Exceptions (Do Not "Fix")
 
-- Navbar pixel values (28px, 24px, etc.) are intentionally hardcoded for visual alignment
-- Footer `.text` font-size `0.8125rem` is an accepted fine-print exception
 - IntroOverlay animation values (600ms, cubic-beziers) are choreography-specific
-- Touch targets (44px) are WCAG requirements
 - `padding-left: 1.25em` on lists is a typographic convention
 
 ## Linting

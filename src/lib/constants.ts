@@ -18,11 +18,14 @@ export const SITE = {
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/inquire", label: "Inquire" },
+] as const;
+
+export const SERVICE_LINKS = [
   { href: "/couples-retreat", label: "Couples Retreat" },
   { href: "/family-consulting", label: "Family Consulting" },
   { href: "/team-collaboration-lab", label: "Team Collaboration Lab" },
   { href: "/depth-performance-training", label: "Depth Performance Training" },
-  { href: "/inquire", label: "Inquire" },
 ] as const;
 
 export const FOOTER_HREFS = new Set(["/", "/about", "/inquire"]);

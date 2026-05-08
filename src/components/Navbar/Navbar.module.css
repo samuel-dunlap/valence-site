@@ -15,7 +15,7 @@
 }
 
 .skipLink:focus-visible {
-  top: 12px;
+  top: var(--navbar-skip-top);
 }
 
 /* ── Navbar wrapper ── */
@@ -35,7 +35,7 @@
 .inner {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 28px 24px 0;
+  padding: var(--navbar-padding-top) var(--navbar-padding-x) 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +44,7 @@
 /* ── Logo ── */
 .logo {
   display: inline-block;
-  margin-bottom: 18px;
+  margin-bottom: var(--navbar-logo-mb);
 }
 
 .logoText {
@@ -60,7 +60,7 @@
 
 .logoPunctuation {
   color: var(--color-accent);
-  letter-spacing: 0;
+  letter-spacing: normal;
 }
 
 .logoFull {
@@ -75,13 +75,13 @@
 .desktopNav {
   display: flex;
   gap: var(--space-md);
-  padding-bottom: 20px;
+  padding-bottom: var(--navbar-nav-pb);
 }
 
 .navLink {
   font-size: var(--fs-body);
   letter-spacing: var(--ls-open);
-  padding-bottom: 4px;
+  padding-bottom: var(--navbar-link-pb);
   border-bottom: var(--border-link) solid transparent;
   transition: border-color var(--transition-fast);
 }
@@ -98,30 +98,96 @@
   color: inherit;
 }
 
+/* ── Services dropdown ── */
+.dropdown {
+  position: relative;
+}
+
+.dropdownTrigger {
+  cursor: default;
+}
+
+.dropdownTrigger::after {
+  content: " \25BE";
+  font-size: 0.7em;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-top: var(--space-xs);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--transition-fast),
+    visibility var(--transition-fast);
+}
+
+.dropdown:hover .dropdownMenu,
+.dropdown:focus-within .dropdownMenu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdownMenu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--space-xs);
+}
+
+.dropdownMenu > a {
+  display: block;
+  white-space: nowrap;
+  background-color: var(--color-bg);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--fs-body);
+  letter-spacing: var(--ls-open);
+  border-bottom: var(--border-thin) solid
+    color-mix(in sRGB, var(--color-text) 8%, transparent);
+  transition: opacity var(--transition-fast);
+}
+
+.dropdownMenu > a:last-child {
+  border-bottom: none;
+}
+
+.dropdownMenu > a:hover {
+  opacity: 0.6;
+}
+
+.dropdownLink.active {
+  border-bottom-color: var(--color-accent);
+}
+
 /* ── Hamburger ── */
 .hamburger {
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: var(--navbar-hamburger-gap);
   background: none;
   border: none;
   cursor: pointer;
-  padding: 12px;
-  min-width: 44px;
-  min-height: 44px;
+  padding: var(--navbar-hamburger-padding);
+  min-width: var(--touch-target);
+  min-height: var(--touch-target);
   position: absolute;
-  right: 20px;
-  top: 22px;
+  right: var(--navbar-hamburger-right);
+  top: var(--navbar-hamburger-top);
 }
 
 .hamburgerLine {
   display: block;
-  width: 24px;
-  height: 1.5px;
+  width: var(--navbar-line-width);
+  height: var(--navbar-line-height);
   background-color: var(--color-text);
-  border-radius: 1px;
+  border-radius: var(--navbar-line-radius);
 }
 
 /* ── Mobile overlay ── */
@@ -147,13 +213,13 @@
 
 .closeBtn {
   position: absolute;
-  top: 22px;
-  right: 20px;
+  top: var(--navbar-hamburger-top);
+  right: var(--navbar-hamburger-right);
   background: none;
   border: none;
   cursor: pointer;
-  width: 44px;
-  height: 44px;
+  width: var(--touch-target);
+  height: var(--touch-target);
   padding: 0;
 }
 
@@ -162,10 +228,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 26px;
-  height: 1.5px;
+  width: var(--navbar-close-width);
+  height: var(--navbar-line-height);
   background-color: var(--color-bg);
-  border-radius: 1px;
+  border-radius: var(--navbar-line-radius);
 }
 
 .closeLine:first-child {
@@ -200,7 +266,25 @@
 
 .overlayLinkActive {
   border-bottom: var(--border-link) solid var(--color-accent);
-  padding-bottom: 2px;
+  padding-bottom: var(--navbar-underline-pb);
+}
+
+.overlayGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.overlayGroupLabel {
+  font-size: var(--fs-body);
+  letter-spacing: var(--ls-open);
+  color: var(--color-bg);
+  opacity: 0.5;
+}
+
+.overlaySubLink {
+  font-size: var(--fs-subheading);
 }
 
 /* ── Responsive ── */
@@ -208,7 +292,7 @@
   .inner {
     flex-direction: row;
     justify-content: center;
-    padding: 22px 24px;
+    padding: var(--navbar-mobile-padding) var(--navbar-padding-x);
     position: relative;
   }
 

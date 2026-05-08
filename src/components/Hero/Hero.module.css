@@ -37,7 +37,7 @@
 }
 
 .subtitle + .subtitle {
-  margin-top: 0.25em;
+  margin-top: var(--space-xs);
 }
 
 .cta {

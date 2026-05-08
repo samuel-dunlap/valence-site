@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
-import { SITE, NAV_LINKS } from "@/lib/constants";
+import { SITE, NAV_LINKS, SERVICE_LINKS } from "@/lib/constants";
 import { throttle } from "@/lib/utils";
 import { createFocusTrap } from "@/lib/focus-trap";
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
@@ -80,7 +80,7 @@ export default function Navbar(): React.ReactElement {
           </Link>
 
           <nav className={styles.desktopNav} aria-label="Main navigation">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.filter((l) => l.href !== "/inquire").map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -91,6 +91,38 @@ export default function Navbar(): React.ReactElement {
                 {link.label}
               </Link>
             ))}
+            <div className={styles.dropdown}>
+              <span
+                className={`${styles.navLink} ${styles.dropdownTrigger} ${
+                  SERVICE_LINKS.some((l) => pathname === l.href)
+                    ? styles.active
+                    : ""
+                }`}
+              >
+                Services
+              </span>
+              <div className={styles.dropdownMenu}>
+                {SERVICE_LINKS.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`${styles.dropdownLink} ${
+                      pathname === link.href ? styles.active : ""
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <Link
+              href="/inquire"
+              className={`${styles.navLink} ${
+                pathname === "/inquire" ? styles.active : ""
+              }`}
+            >
+              Inquire
+            </Link>
             <ThemeToggle />
           </nav>
 
@@ -126,7 +158,7 @@ export default function Navbar(): React.ReactElement {
         </button>
 
         <nav className={styles.overlayNav} aria-label="Mobile navigation">
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.filter((l) => l.href !== "/inquire").map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -139,6 +171,32 @@ export default function Navbar(): React.ReactElement {
               {link.label}
             </Link>
           ))}
+          <div className={styles.overlayGroup}>
+            <span className={styles.overlayGroupLabel}>Services</span>
+            {SERVICE_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`${styles.overlayLink} ${styles.overlaySubLink} ${
+                  pathname === link.href ? styles.overlayLinkActive : ""
+                }`}
+                onClick={closeMenu}
+                tabIndex={menuOpen ? 0 : -1}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <Link
+            href="/inquire"
+            className={`${styles.overlayLink} ${
+              pathname === "/inquire" ? styles.overlayLinkActive : ""
+            }`}
+            onClick={closeMenu}
+            tabIndex={menuOpen ? 0 : -1}
+          >
+            Inquire
+          </Link>
         </nav>
       </div>
     </>

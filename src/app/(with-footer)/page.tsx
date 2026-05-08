@@ -60,7 +60,7 @@ export default function HomePage() {
             <ServiceCard
               title="Depth Performance Training"
               tagline="More effective communication and decision-making."
-              description="Private advisory for senior leaders and executives."
+              description="Learning: deepening and refining skills and knowledge. Communication: asking better questions and giving better responses. Choice: more effectively creating what you want."
               href="/depth-performance-training"
               ctaText="Learn More"
             />

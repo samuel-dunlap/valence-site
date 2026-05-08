@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Libre_Baskerville, IBM_Plex_Sans } from "next/font/google";
+import { Libre_Baskerville } from "next/font/google";
 import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
 import IntroOverlay from "@/components/IntroOverlay/IntroOverlay";
 import Navbar from "@/components/Navbar/Navbar";
@@ -11,18 +11,10 @@ import "./globals.css";
 
 const libreBaskerville = Libre_Baskerville({
   subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-libre-baskerville",
-});
-
-const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
   weight: ["400", "700"],
   style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-ibm-plex-sans",
+  variable: "--font-libre-baskerville",
 });
 
 export const viewport: Viewport = {
@@ -76,13 +68,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${libreBaskerville.variable} ${ibmPlexSans.variable}`}
+      className={libreBaskerville.variable}
       suppressHydrationWarning
     >
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('valence-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}catch(e){}`,
+            __html: `try{var t=localStorage.getItem('valence-theme')||'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}`,
           }}
         />
         <script

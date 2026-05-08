@@ -12,7 +12,7 @@
   /* ── Typography ── */
   --font-heading:
     var(--font-libre-baskerville), "Baskerville", "Georgia", serif;
-  --font-body: var(--font-ibm-plex-sans), "Helvetica Neue", sans-serif;
+  --font-body: var(--font-libre-baskerville), "Baskerville", "Georgia", serif;
 
   /*
    * STRICT 3-SIZE TYPE SCALE — do not add more sizes.
@@ -37,20 +37,20 @@
    * SPACING — use for all layout spacing. Never hardcode px/rem.
    * xs (8px): list items, tight gaps
    * sm (16px): default element margins, form fields
-   * md (32px): below headings, column gaps
-   * lg (64px): major content blocks, hero CTA
-   * xl (96px): structural gaps (hero columns, footer)
-   * 2xl (128px): reserved for very large gaps
-   * section-padding: always for top/bottom of full-width sections
-   * content-padding: always for left/right page gutters
+   * md (24px): below headings, column gaps
+   * lg (40px): major content blocks, hero CTA
+   * xl (64px): structural gaps (hero columns, footer)
+   * 2xl (80px): reserved for very large gaps
+   * section-padding (48-72px): top/bottom of full-width sections
+   * content-padding: left/right page gutters
    */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
-  --space-md: 2rem;
-  --space-lg: 4rem;
-  --space-xl: 6rem;
-  --space-2xl: 8rem;
-  --section-padding: clamp(3.5rem, 8vw, 7.5rem);
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 5rem;
+  --section-padding: clamp(3rem, 5vw, 4.5rem);
   --content-padding: clamp(1.5rem, 5vw, 4rem);
 
   /*
@@ -95,9 +95,45 @@
   --ls-open: 0.05em; /* nav links, display text */
   --ls-wide: 0.35em; /* logo wordmark, brand identity */
 
-  /* ── Visited Link Colors (derivative) ── */
-  --color-visited-light: #4a2d3a;
-  --color-visited-dark: #c8bfb8;
+  /* ── Radii ── */
+  --radius-button: 4px;
+  --radius-small: 6px;
+
+  /* ── Touch Targets ── */
+  --touch-target: 44px;
+
+  /* ── Navbar ── */
+  --navbar-padding-top: 28px;
+  --navbar-padding-x: 24px;
+  --navbar-logo-mb: 18px;
+  --navbar-nav-pb: 20px;
+  --navbar-link-pb: 4px;
+  --navbar-hamburger-gap: 5px;
+  --navbar-hamburger-padding: 12px;
+  --navbar-hamburger-right: 20px;
+  --navbar-hamburger-top: 22px;
+  --navbar-line-width: 24px;
+  --navbar-line-height: 1.5px;
+  --navbar-line-radius: 1px;
+  --navbar-close-width: 26px;
+  --navbar-mobile-padding: 22px;
+  --navbar-skip-top: 12px;
+  --navbar-underline-pb: 2px;
+
+  /* ── Atmosphere Overlay ── */
+  --color-atmosphere-overlay: rgba(0, 32, 66, 0.35);
+
+  /* ── Visited Link Colors (derivative of burgundy) ── */
+  --color-visited-light: color-mix(
+    in sRGB,
+    var(--color-burgundy) 60%,
+    var(--color-navy)
+  );
+  --color-visited-dark: color-mix(
+    in sRGB,
+    var(--color-warm-white) 75%,
+    var(--color-burgundy)
+  );
 }
 
 [data-theme="dark"] {
@@ -171,6 +207,7 @@ h2 {
 }
 h3 {
   font-size: var(--fs-subheading);
+  color: var(--color-burgundy);
 }
 
 main {
@@ -227,7 +264,7 @@ ol {
 .atmosphereOverlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 32, 66, 0.35);
+  background-color: var(--color-atmosphere-overlay);
   z-index: var(--z-content);
 }
 

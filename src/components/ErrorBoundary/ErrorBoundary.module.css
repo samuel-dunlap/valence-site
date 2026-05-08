@@ -27,7 +27,7 @@
   background-color: var(--color-accent);
   color: var(--color-bg);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-button);
   font-size: var(--fs-body);
   cursor: pointer;
   transition: opacity var(--transition-fast);

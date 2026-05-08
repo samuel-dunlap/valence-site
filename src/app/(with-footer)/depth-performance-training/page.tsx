@@ -10,7 +10,7 @@ import styles from "@/styles/service-page.module.css";
 export const metadata: Metadata = {
   title: "Depth Performance Training",
   description:
-    "More effective communication and decision-making. Private advisory for senior leaders and executives.",
+    "Mastering learning, communication, and choice. Private advisory for senior leaders and executives.",
   alternates: { canonical: "/depth-performance-training/" },
 };
 
@@ -20,7 +20,7 @@ export default function DepthPerformanceTrainingPage() {
       <StructuredData
         data={getServiceSchema(
           "Depth Performance Training",
-          "More effective communication and decision-making. Private advisory for senior leaders and executives.",
+          "Mastering learning, communication, and choice. Private advisory for senior leaders and executives.",
           "/depth-performance-training/"
         )}
       />
@@ -29,7 +29,7 @@ export default function DepthPerformanceTrainingPage() {
           <div className={sharedStyles.headerContent}>
             <h1 className={sharedStyles.title}>Depth Performance Training</h1>
             <p className={sharedStyles.headerSubtitle}>
-              More effective communication and decision-making
+              Mastering learning, communication, and choice
             </p>
           </div>
         </section>
