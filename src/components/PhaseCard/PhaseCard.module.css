@@ -4,12 +4,6 @@
   gap: var(--space);
 }
 
-.label {
-  font-family: var(--font-heading);
-  font-size: var(--fs-body);
-  color: var(--color-text);
-}
-
 .title {
   font-size: var(--fs-subheading);
   margin: 0;

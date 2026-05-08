@@ -1,7 +1,6 @@
 .footer {
   padding: var(--space-section) 0;
-  border-top: var(--border) solid
-    color-mix(in sRGB, var(--color-text) 12%, transparent);
+  border-top: var(--border) solid var(--color-text);
 }
 
 .container {

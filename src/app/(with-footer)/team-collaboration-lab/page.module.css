@@ -62,7 +62,7 @@
 }
 
 .bodySection + .bodySection {
-  padding-top: 0;
+  padding-top: var(--space-section);
 }
 
 .bodyText {
@@ -78,7 +78,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space);
-  margin-top: var(--space);
+  margin-top: var(--space-section);
 }
 
 @media (max-width: 767px) {

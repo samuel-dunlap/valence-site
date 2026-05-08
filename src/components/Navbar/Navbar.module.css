@@ -148,8 +148,7 @@
   padding: var(--space) var(--space);
   font-size: var(--fs-body);
   letter-spacing: var(--ls);
-  border-bottom: var(--border) solid
-    color-mix(in sRGB, var(--color-text) 8%, transparent);
+  border-bottom: var(--border) solid var(--color-text);
   transition:
     background-color var(--transition-fast),
     color var(--transition-fast);
