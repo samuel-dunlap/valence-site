@@ -37,18 +37,18 @@ export default function HomePage() {
         <section className={styles.services}>
           <div className={styles.servicesGrid}>
             <ServiceCard
-              title="The Couples Retreat"
-              tagline="Private weekends for couples."
-              description="Integrating luxury hospitality, wellness, and structured relational work to revitalize partnerships, preserve legacy, and deepen relational mastery."
-              href="/couples-retreat"
-              ctaText="Explore the Retreat"
-            />
-            <ServiceCard
               title="Family Consulting"
               tagline="Growing intergenerational relationships, skills, and legacies."
               description="Communication breakdown, parenting effectiveness, children's motivation and readiness for independence, and knowing when to step in and when to step back."
               href="/family-consulting"
               ctaText="Learn More"
+            />
+            <ServiceCard
+              title="The Couples Retreat"
+              tagline="Private weekends for couples."
+              description="Integrating luxury hospitality, wellness, and structured relational work to revitalize partnerships, preserve legacy, and deepen relational mastery."
+              href="/couples-retreat"
+              ctaText="Explore the Retreat"
             />
           </div>
         </section>

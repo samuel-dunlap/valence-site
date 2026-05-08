@@ -22,8 +22,8 @@ export const NAV_LINKS = [
 ] as const;
 
 export const SERVICE_LINKS = [
-  { href: "/couples-retreat", label: "Couples Retreat" },
   { href: "/family-consulting", label: "Family Consulting" },
+  { href: "/couples-retreat", label: "Couples Retreat" },
 ] as const;
 
 export const FOOTER_HREFS = new Set(["/", "/about", "/inquire"]);
