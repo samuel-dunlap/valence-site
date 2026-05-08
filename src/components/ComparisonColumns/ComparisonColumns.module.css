@@ -40,7 +40,7 @@
 
 .stacked {
   grid-template-columns: 1fr;
-  gap: var(--space);
+  gap: var(--space-section);
 }
 
 @media (max-width: 767px) {
