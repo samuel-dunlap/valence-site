@@ -150,7 +150,9 @@
   letter-spacing: var(--ls);
   border-bottom: var(--border) solid
     color-mix(in sRGB, var(--color-text) 8%, transparent);
-  transition: opacity var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .dropdownMenu > a:last-child {
@@ -158,7 +160,8 @@
 }
 
 .dropdownMenu > a:hover {
-  opacity: 0.6;
+  background-color: var(--color-navy);
+  color: var(--color-warm-white);
 }
 
 .dropdownLink.active {

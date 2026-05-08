@@ -23,7 +23,7 @@
 }
 
 .columnTitle {
-  font-size: var(--fs-body);
+  font-size: var(--fs-subheading);
   color: var(--color-text);
 }
 
