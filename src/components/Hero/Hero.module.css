@@ -14,7 +14,7 @@
   position: relative;
   z-index: var(--z-content);
   display: grid;
-  grid-template-columns: 1fr 0.8fr;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-section);
   align-items: center;
   max-width: var(--max-width);
@@ -28,7 +28,7 @@
 }
 
 .subtitles {
-  margin-top: var(--space);
+  margin-top: var(--space-section);
 }
 
 .subtitle {
@@ -52,8 +52,8 @@
 .image {
   border-radius: var(--radius);
   width: 100%;
-  height: auto;
-  max-width: var(--content-narrow);
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (max-width: 767px) {

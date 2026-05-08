@@ -1,5 +1,6 @@
 .services {
-  padding: var(--space-section) var(--content-padding);
+  padding: calc(var(--space-section) * 2) var(--content-padding)
+    var(--space-section);
 }
 
 .servicesGrid {
