@@ -32,11 +32,8 @@ export default function CouplesRetreatPage() {
           <div className={sharedStyles.headerContent}>
             <h1 className={sharedStyles.title}>The Couples Retreat</h1>
             <p className={sharedStyles.headerSubtitle}>
-              an immersive weekend
-              <br />
-              for deepening joy and intimacy
-              <br />
-              in the relationships that matter most
+              An immersive weekend for deepening joy and intimacy in the
+              relationships that matter most
             </p>
             <p className={sharedStyles.intro}>
               The Couples Retreat is a multi-day training program for driven

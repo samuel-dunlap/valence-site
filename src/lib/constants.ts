@@ -19,7 +19,10 @@ export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/couples-retreat", label: "Couples Retreat" },
-  { href: "/team-collaboration-diagnostic", label: "TCD" },
+  {
+    href: "/team-collaboration-diagnostic",
+    label: "Team Collaboration Diagnostic",
+  },
   { href: "/inquire", label: "Inquire" },
 ] as const;
 

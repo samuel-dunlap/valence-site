@@ -34,9 +34,8 @@ export default function TCDPage() {
               Team Collaboration Diagnostic
             </h1>
             <p className={sharedStyles.headerSubtitle}>
-              what foundational levers can you pull
-              <br />
-              to unlock peak team effectiveness?
+              What foundational levers can you pull to unlock peak team
+              effectiveness?
             </p>
             <p className={sharedStyles.intro}>
               A 3-hour introductory diagnostic that pinpoints opportunities for
@@ -55,30 +54,37 @@ export default function TCDPage() {
               <SectionHeader title="Why It Matters" />
               <p className={styles.bodyTextLight}>
                 <strong>80% of teams</strong> are not reaching their performance
-                potential. Organizations with high-performing teams achieve
-                better results:
+                potential.
+                <sup>McKinsey</sup> Organizations with high-performing teams
+                achieve better results:
               </p>
               <div className={styles.statsGrid}>
                 <div className={styles.stat}>
                   <span className={styles.statNumber}>23%</span>
-                  <span className={styles.statLabel}>More profitable</span>
+                  <span className={styles.statLabel}>
+                    More profitable
+                    <sup>Gallup</sup>
+                  </span>
                 </div>
                 <div className={styles.stat}>
                   <span className={styles.statNumber}>50%</span>
                   <span className={styles.statLabel}>
                     Higher customer retention
+                    <sup>Forrester</sup>
                   </span>
                 </div>
                 <div className={styles.stat}>
                   <span className={styles.statNumber}>30%</span>
                   <span className={styles.statLabel}>
                     Faster revenue growth
+                    <sup>McKinsey</sup>
                   </span>
                 </div>
                 <div className={styles.stat}>
                   <span className={styles.statNumber}>27%</span>
                   <span className={styles.statLabel}>
                     Lower employee turnover
+                    <sup>Google</sup>
                   </span>
                 </div>
               </div>
@@ -111,18 +117,22 @@ export default function TCDPage() {
                 <>
                   <strong>67&ndash;90%</strong> of strategic plans fail due to
                   poor execution
+                  <sup>HBR, Norton &amp; Kaplan</sup>
                 </>,
                 <>
                   <strong>97%</strong> of leaders say team misalignments have
                   negatively impacted their performance
+                  <sup>NCBI</sup>
                 </>,
                 <>
                   Only <strong>33%</strong> of employees are actually engaged at
                   work
+                  <sup>Gallup</sup>
                 </>,
                 <>
                   <strong>70&ndash;89%</strong> of employees don&apos;t have the
                   skills to succeed in rapidly changing environments
+                  <sup>McKinsey, Gartner</sup>
                 </>,
               ]}
             />
@@ -154,16 +164,14 @@ export default function TCDPage() {
             />
           </div>
         </section>
-      </FadeIn>
-
-      <FadeIn>
         <section className={styles.bodySection}>
           <SectionHeader title="Change Is Hard to Implement" />
           <p className={styles.bodyText}>
             Only <strong>10%</strong> of managers know how to both create and
-            sustain behavioral change effectively. The diagnostic is just the
-            beginning &mdash; we partner with you from recommendations through
-            permanent behavior change.
+            sustain behavioral change effectively.
+            <sup>IMD Business School</sup> The diagnostic is just the beginning
+            &mdash; we partner with you from recommendations through permanent
+            behavior change.
           </p>
         </section>
       </FadeIn>
