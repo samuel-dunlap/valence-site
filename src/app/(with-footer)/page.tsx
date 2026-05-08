@@ -45,23 +45,9 @@ export default function HomePage() {
             />
             <ServiceCard
               title="Family Consulting"
-              tagline="Private consulting for families."
-              description="Navigating the relationships that matter most — the ones that money alone can't solve."
+              tagline="Deepening joy and capability across generations."
+              description="Communication breakdown, parenting effectiveness, children's motivation and readiness for independence, and knowing when to step in and when to step back."
               href="/family-consulting"
-              ctaText="Learn More"
-            />
-            <ServiceCard
-              title="Team Collaboration Lab"
-              tagline="Unlock peak team effectiveness."
-              description="A 3-hour diagnostic that pinpoints opportunities for team performance improvement. Designed for senior leadership teams of 3-10 people."
-              href="/team-collaboration-lab"
-              ctaText="Learn More"
-            />
-            <ServiceCard
-              title="Depth Performance Training"
-              tagline="More effective communication and decision-making."
-              description="Learning: deepening and refining skills and knowledge. Communication: asking better questions and giving better responses. Choice: more effectively creating what you want."
-              href="/depth-performance-training"
               ctaText="Learn More"
             />
           </div>
