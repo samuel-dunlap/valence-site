@@ -24,7 +24,7 @@ export default function HomePage() {
           </>
         }
         subtitleLines={[
-          "Relationship Advisory for High-Net-Worth Couples & Families.",
+          "Relationship Consulting for High-Net-Worth Couples & Families.",
           "NYC + Aspen + San Diego.",
         ]}
         ctaText={CTA.requestIntroduction}
@@ -37,7 +37,7 @@ export default function HomePage() {
             <ServiceCard
               title="Family Consulting"
               tagline="Growing intergenerational relationships, skills, and legacies."
-              description="Communication breakdown, parenting effectiveness, children's motivation and readiness for independence, and knowing when to step in and when to step back."
+              description="For parents who take their family as seriously as everything else. Long-term relational work with parents and children — building closeness, communication, and confidence across generations."
               href="/family-consulting"
               ctaText="Explore Family Consulting"
             />
