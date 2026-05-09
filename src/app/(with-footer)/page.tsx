@@ -29,8 +29,6 @@ export default function HomePage() {
         ]}
         ctaText={CTA.requestIntroduction}
         ctaHref="/inquire"
-        imageSrc="/images/family.webp"
-        imageAlt="Multigenerational family"
       />
 
       <FadeIn>
