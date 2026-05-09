@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn/FadeIn";
 import ArrowLink from "@/components/ArrowLink/ArrowLink";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
+import ComparisonColumns from "@/components/ComparisonColumns/ComparisonColumns";
 import StructuredData from "@/components/StructuredData/StructuredData";
 import { CTA } from "@/lib/constants";
 import { getServiceSchema } from "@/lib/schema";
 import sharedStyles from "@/styles/page-header.module.css";
-import styles from "@/styles/service-page.module.css";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Family Consulting",
@@ -38,32 +39,34 @@ export default function FamilyConsultingPage() {
       </FadeIn>
 
       <FadeIn>
-        <section className={styles.bodySection}>
-          <ul className={styles.pillars}>
-            <li>Communication breakdown between parents and children</li>
-            <li>
-              Feeling ineffective as a parent despite success in other aspects
-              of life
-            </li>
-            <li>
-              Children lacking motivation, direction, or readiness for
-              independence
-            </li>
-            <li>Not knowing when to step in and when to step back</li>
-          </ul>
-        </section>
-      </FadeIn>
-
-      <FadeIn>
-        <section className={styles.bodySection}>
-          <SectionHeader title="What&rsquo;s at Stake" />
-          <p className={styles.bodyText}>
-            Every parent carries some version of the same fear: that the
-            distance growing between you and your children will become
-            permanent. You know what it felt like to not have the relationship
-            you wanted with your own parents. You don&rsquo;t want that for your
-            kids.
-          </p>
+        <section className={styles.legacySection}>
+          <div className={styles.legacySectionContent}>
+            <SectionHeader title="What&rsquo;s at Stake" />
+            <p className={styles.bodyText}>
+              Every parent carries some version of the same fear: that the
+              distance growing between you and your children will become
+              permanent. You know what it felt like to not have the relationship
+              you wanted with your own parents. You don&rsquo;t want that for
+              your kids.
+            </p>
+          </div>
+          <ComparisonColumns
+            bare
+            stacked
+            leftTitle="Unmitigated Costs & Risks"
+            leftItems={[
+              "Communication breakdown between parents and children",
+              "Feeling ineffective as a parent despite success in other aspects of life",
+              "Children lacking motivation, direction, or readiness for independence",
+              "Not knowing when to step in and when to step back",
+            ]}
+            rightTitle="Benefits of Family Consulting"
+            rightItems={[
+              "Greater confidence and clarity as a parent",
+              "A family where people talk to each other and actually want to be together",
+              "Closeness that's maintained across a lifetime — not just the easy years",
+            ]}
+          />
         </section>
       </FadeIn>
 
