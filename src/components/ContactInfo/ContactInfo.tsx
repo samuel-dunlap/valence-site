@@ -11,11 +11,9 @@ export default function ContactInfo({
   className,
 }: ContactInfoProps): React.ReactElement | null {
   const phone = SITE.phone;
-  const email = SITE.email;
 
-  // Defensive check - return null if essential contact info is missing
-  if (!phone || !email) {
-    console.error("SITE.phone or SITE.email is not defined in constants");
+  if (!phone) {
+    console.error("SITE.phone is not defined in constants");
     return null;
   }
 
@@ -26,7 +24,6 @@ export default function ContactInfo({
       <p className={className}>
         c: <a href={`tel:${phoneLink}`}>{phone}</a>
       </p>
-      <p className={className}>e: {email}</p>
       <p className={className}>
         {SITE.address.street}, {SITE.address.city}, {SITE.address.state}{" "}
         {SITE.address.zip}

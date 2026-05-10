@@ -1,9 +1,9 @@
 {
-  "name": "Valence — Private Relationship Advisory",
-  "short_name": "Valence",
+  "name": "Upper East Side Therapy",
+  "short_name": "UES Therapy",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FAF9F7",
+  "background_color": "#FAF9F6",
   "theme_color": "#002042",
   "icons": [
     {

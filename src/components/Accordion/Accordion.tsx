@@ -1,117 +1,46 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState } from "react";
 import styles from "./Accordion.module.css";
 
-interface AccordionSection {
+interface AccordionItem {
   title: string;
-  content: React.ReactNode;
-  defaultOpen?: boolean;
+  children: React.ReactNode;
 }
 
 interface AccordionProps {
-  sections: AccordionSection[];
+  items: AccordionItem[];
 }
 
-export default function Accordion({ sections }: AccordionProps): React.ReactElement {
-  const [openSections, setOpenSections] = useState<Set<string>>(() => {
-    const initial = new Set<string>();
-    sections.forEach((section) => {
-      if (section.defaultOpen) initial.add(section.title);
-    });
-    return initial;
-  });
-
-  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [heights, setHeights] = useState<number[]>([]);
-  const observerRef = useRef<ResizeObserver | null>(null);
-
-  const measureHeights = useCallback(() => {
-    const measured = contentRefs.current.map((ref) => ref?.scrollHeight ?? 0);
-    setHeights(measured);
-  }, []);
-
-  useEffect(() => {
-    measureHeights();
-  }, [measureHeights, sections]);
-
-  useEffect(() => {
-    // Create observer once if it doesn't exist
-    if (!observerRef.current) {
-      observerRef.current = new ResizeObserver(() => {
-        measureHeights();
-      });
-    }
-
-    const observer = observerRef.current;
-    const currentRefs = contentRefs.current; // Capture current refs for cleanup
-
-    // Observe all content elements
-    currentRefs.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      // Unobserve all elements using captured refs
-      currentRefs.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-      // Disconnect to release observer and prevent memory leak
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-        observerRef.current = null;
-      }
-    };
-  }, [measureHeights, sections]);
-
-  const toggle = (title: string) => {
-    setOpenSections((prev) => {
-      const next = new Set(prev);
-      if (next.has(title)) {
-        next.delete(title);
-      } else {
-        next.add(title);
-      }
-      return next;
-    });
-  };
+export default function Accordion({
+  items,
+}: AccordionProps): React.ReactElement {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <div className={styles.accordion}>
-      {sections.map((section, i) => {
-        const isOpen = openSections.has(section.title);
-
+      {items.map((item, i) => {
+        const isOpen = openIndex === i;
         return (
-          <div key={section.title} className={styles.section}>
+          <div key={i} className={styles.item}>
             <button
-              type="button"
-              className={styles.header}
-              onClick={() => toggle(section.title)}
+              className={styles.trigger}
+              onClick={() => setOpenIndex(isOpen ? null : i)}
               aria-expanded={isOpen}
             >
-              <span className={styles.title}>{section.title}</span>
+              <span className={styles.triggerText}>{item.title}</span>
               <span
-                className={`${styles.indicator} ${isOpen ? styles.indicatorOpen : ""}`}
-                aria-hidden="true"
+                className={`${styles.icon} ${isOpen ? styles.iconOpen : ""}`}
               >
                 +
               </span>
             </button>
-
             <div
-              className={styles.contentWrapper}
-              style={{
-                maxHeight: isOpen ? `${heights[i] ?? 0}px` : "0px",
-              }}
+              className={`${styles.panel} ${isOpen ? styles.panelOpen : ""}`}
+              role="region"
+              hidden={!isOpen}
             >
-              <div
-                className={styles.content}
-                ref={(el) => {
-                  contentRefs.current[i] = el;
-                }}
-              >
-                {section.content}
-              </div>
+              <div className={styles.panelContent}>{item.children}</div>
             </div>
           </div>
         );

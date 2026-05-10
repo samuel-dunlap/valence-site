@@ -1,0 +1,104 @@
+/* Unified content styles — every page draws from this single file */
+
+/* ── Section ── */
+.section {
+  padding: var(--space-section) var(--content-padding) 0;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section + .section {
+  padding-top: var(--space);
+}
+
+/* ── Body Text ── */
+.text {
+  max-width: var(--text-max-width);
+  line-height: var(--lh-body);
+}
+
+.text + .text {
+  margin-top: var(--space);
+}
+
+/* ── Lists ── */
+.list {
+  max-width: var(--text-max-width);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space) * 0.75);
+  line-height: var(--lh-body);
+  padding-left: 1.25em;
+}
+
+.numberedList {
+  composes: list;
+  list-style: decimal;
+}
+
+/* ── Blockquote ── */
+.quote {
+  max-width: var(--text-max-width);
+  border-left: 2px solid var(--color-text);
+  padding-left: var(--space);
+  font-style: italic;
+  line-height: var(--lh-body);
+  margin-top: var(--space);
+}
+
+.quoteSource {
+  margin-top: calc(var(--space) * 0.5);
+  font-style: normal;
+  font-size: var(--fs-body);
+  opacity: 0.7;
+}
+
+/* ── Testimonials ── */
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-section);
+  max-width: var(--text-max-width);
+}
+
+.testimonial {
+  line-height: var(--lh-body);
+  font-style: italic;
+}
+
+.testimonialSource {
+  margin-top: calc(var(--space) * 0.5);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ── Highlight blocks (client example quotes, etc.) ── */
+.highlight {
+  max-width: var(--text-max-width);
+  border-left: 2px solid var(--color-border);
+  padding-left: var(--space);
+  line-height: var(--lh-body);
+  margin-top: var(--space);
+}
+
+/* ── CTA ── */
+.cta {
+  padding: var(--space-section) var(--content-padding) 0;
+  text-align: center;
+  position: relative;
+  z-index: var(--z-content);
+}
+
+/* ── Intro paragraph (larger feel, used after page headers) ── */
+.intro {
+  max-width: var(--text-max-width);
+  line-height: var(--lh-body);
+  margin-bottom: var(--space);
+}
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+  .testimonialGrid {
+    gap: var(--space);
+  }
+}

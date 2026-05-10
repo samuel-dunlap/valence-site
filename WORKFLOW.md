@@ -33,6 +33,7 @@ npm run dev
 - Changes appear automatically (no refresh needed)
 
 **This gives you instant feedback on:**
+
 - Visual changes (CSS, layout, components)
 - Functional changes (JavaScript logic, interactions)
 - New features
@@ -47,6 +48,7 @@ npm run test:all
 ```
 
 This runs:
+
 - TypeScript type checking
 - Linting
 - Unit tests with coverage
@@ -65,6 +67,7 @@ This runs:
 ```
 
 This script:
+
 1. Shows what will be deployed
 2. Asks for commit message
 3. Runs full test suite
@@ -81,6 +84,7 @@ This script:
 ```
 
 Skips local testing (CI will still test). Only use when:
+
 - You already ran `npm run test:all` manually
 - Making trivial changes (typos, copy edits)
 - Time-sensitive updates
@@ -89,13 +93,13 @@ Skips local testing (CI will still test). Only use when:
 
 ## When to Use Each Command
 
-| Task | Command | When |
-|------|---------|------|
-| See changes instantly | `npm run dev` | Every development session |
-| Run specific tests | `npm run test:watch` | While writing new features |
-| Verify before deploy | `npm run test:all` | Before every deployment |
-| Deploy with confidence | `./deploy.sh` | Ready to go live (recommended) |
-| Quick push | `./quick-deploy.sh` | Trivial changes, already tested |
+| Task                   | Command              | When                            |
+| ---------------------- | -------------------- | ------------------------------- |
+| See changes instantly  | `npm run dev`        | Every development session       |
+| Run specific tests     | `npm run test:watch` | While writing new features      |
+| Verify before deploy   | `npm run test:all`   | Before every deployment         |
+| Deploy with confidence | `./deploy.sh`        | Ready to go live (recommended)  |
+| Quick push             | `./quick-deploy.sh`  | Trivial changes, already tested |
 
 ---
 

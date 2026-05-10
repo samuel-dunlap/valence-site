@@ -4,19 +4,19 @@ import { SITE, NAV_LINKS } from "../constants";
 describe("Constants", () => {
   describe("SITE", () => {
     it("exports site name", () => {
-      expect(SITE.name).toBe("Valence");
+      expect(SITE.name).toBe("Upper East Side Therapy");
     });
 
     it("exports site URL", () => {
-      expect(SITE.url).toBe("https://valenceprivate.com");
+      expect(SITE.url).toBe("https://uppereastsidetherapy.com");
     });
 
     it("exports contact email", () => {
-      expect(SITE.email).toBe("samuel [at] valenceprivate {dot} com");
+      expect(SITE.email).toBe("info [at] uppereastsidetherapy {dot} com");
     });
 
     it("exports phone number", () => {
-      expect(SITE.phone).toContain("(212)");
+      expect(SITE.phone).toContain("(720)");
     });
 
     it("exports address", () => {
@@ -37,10 +37,10 @@ describe("Constants", () => {
       expect(homeLink?.label).toBe("Home");
     });
 
-    it("includes about link", () => {
-      const aboutLink = NAV_LINKS.find((link) => link.href === "/about");
-      expect(aboutLink).toBeDefined();
-      expect(aboutLink?.label).toBe("About");
+    it("includes inquire link", () => {
+      const inquireLink = NAV_LINKS.find((link) => link.href === "/inquire/");
+      expect(inquireLink).toBeDefined();
+      expect(inquireLink?.label).toBe("Inquire");
     });
   });
 });

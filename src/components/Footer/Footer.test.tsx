@@ -2,11 +2,10 @@ import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import Footer from "./Footer";
 
-// Mock the constants module
 vi.mock("@/lib/constants", () => ({
   SITE: {
-    phone: "(212) 263-0000",
-    copyright: "© 2026 Valence Relationship Advisory",
+    phone: "(720) 218-0788",
+    copyright: "© 2026 Upper East Side Therapy",
     address: {
       street: "654 Madison Avenue",
       city: "New York",
@@ -16,18 +15,16 @@ vi.mock("@/lib/constants", () => ({
   },
   NAV_LINKS: [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/couples-retreat", label: "Couples Retreat" },
     { href: "/inquire", label: "Inquire" },
   ],
-  FOOTER_HREFS: new Set(["/", "/about", "/inquire"]),
+  FOOTER_HREFS: new Set(["/", "/inquire"]),
 }));
 
 describe("Footer", () => {
   it("renders copyright text", () => {
     render(<Footer />);
     expect(
-      screen.getByText("© 2026 Valence Relationship Advisory")
+      screen.getByText("© 2026 Upper East Side Therapy")
     ).toBeInTheDocument();
   });
 
@@ -39,22 +36,20 @@ describe("Footer", () => {
 
   it("renders phone link", () => {
     render(<Footer />);
-    const phoneLink = screen.getByText("(212) 263-0000").closest("a");
-    expect(phoneLink).toHaveAttribute("href", "tel:+12122630000");
+    const phoneLink = screen.getByText("(720) 218-0788").closest("a");
+    expect(phoneLink).toHaveAttribute("href", "tel:+17202180788");
   });
 
   it("renders logo image", () => {
     render(<Footer />);
-    const logo = screen.getByAltText("Valence");
+    const logo = screen.getByAltText("Upper East Side Therapy");
     expect(logo).toBeInTheDocument();
   });
 
   it("renders only footer navigation links", () => {
     render(<Footer />);
     expect(screen.getByText("Home")).toBeInTheDocument();
-    expect(screen.getByText("About")).toBeInTheDocument();
     expect(screen.getByText("Inquire")).toBeInTheDocument();
-    expect(screen.queryByText("Couples Retreat")).not.toBeInTheDocument();
   });
 
   it("renders navigation links with correct hrefs", () => {

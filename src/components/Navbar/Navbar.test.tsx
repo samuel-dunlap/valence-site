@@ -2,7 +2,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import Navbar from "./Navbar";
 
-// Mock next/navigation
 vi.mock("next/navigation", () => ({
   usePathname: () => "/",
 }));
@@ -10,9 +9,10 @@ vi.mock("next/navigation", () => ({
 describe("Navbar", () => {
   it("renders logo and navigation links", () => {
     render(<Navbar />);
-    expect(screen.getByLabelText("Valence Home")).toBeInTheDocument();
+    expect(
+      screen.getByLabelText("Upper East Side Therapy Home")
+    ).toBeInTheDocument();
     expect(screen.getAllByText("Home").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("About").length).toBeGreaterThan(0);
   });
 
   it("opens mobile menu when hamburger clicked", () => {

@@ -33,7 +33,7 @@ export default function ThemeToggle(): React.ReactElement {
       "data-theme",
       next ? "dark" : "light"
     );
-    localStorage.setItem("valence-theme", next ? "dark" : "light");
+    localStorage.setItem("uest-theme", next ? "dark" : "light");
   }
 
   return (

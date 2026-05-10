@@ -28,6 +28,7 @@ npm run validate-links
 ---
 
 ## Table of Contents
+
 1. [Unit Tests](#1-unit-tests)
 2. [Integration Tests](#2-integration-tests)
 3. [Accessibility Tests](#3-accessibility-tests)
@@ -44,13 +45,16 @@ npm run validate-links
 ## 1. Unit Tests
 
 ### Current Coverage
+
 You have **16 test files** covering:
+
 - ✅ All 13 components
 - ✅ Storage utilities
 - ✅ Schema generators
 - ✅ Constants
 
 ### Run Unit Tests
+
 ```bash
 npm test                    # Run all tests
 npm run test:coverage       # With coverage report
@@ -58,15 +62,18 @@ npm run test:watch          # Watch mode for development
 ```
 
 ### Coverage Goals
+
 - **Current threshold:** 70% (lines, functions, branches, statements)
 - **Target:** 80%+ for production
 
 ### Missing Unit Tests to Add
 
 #### Test Page Components
+
 Currently only components are tested, not pages. Add:
 
 **File: `src/app/(with-footer)/page.test.tsx`**
+
 ```typescript
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
@@ -87,6 +94,7 @@ describe('HomePage', () => {
 ```
 
 **File: `src/app/(with-footer)/about/page.test.tsx`**
+
 ```typescript
 import { render, screen } from '@testing-library/react';
 import AboutPage from './page';
@@ -108,19 +116,25 @@ describe('AboutPage', () => {
 #### Test Utils More Thoroughly
 
 **File: `src/lib/utils.test.ts`**
-```typescript
-import { describe, it, expect, vi } from 'vitest';
-import { throttle, formatPhoneForLink, isValidPhone, generateListKey } from './utils';
 
-describe('throttle', () => {
-  it('calls function immediately on first invocation', () => {
+```typescript
+import { describe, it, expect, vi } from "vitest";
+import {
+  throttle,
+  formatPhoneForLink,
+  isValidPhone,
+  generateListKey,
+} from "./utils";
+
+describe("throttle", () => {
+  it("calls function immediately on first invocation", () => {
     const fn = vi.fn();
     const throttled = throttle(fn, 100);
     throttled();
     expect(fn).toHaveBeenCalledTimes(1);
   });
 
-  it('prevents subsequent calls within delay period', () => {
+  it("prevents subsequent calls within delay period", () => {
     vi.useFakeTimers();
     const fn = vi.fn();
     const throttled = throttle(fn, 100);
@@ -139,54 +153,54 @@ describe('throttle', () => {
   });
 });
 
-describe('formatPhoneForLink', () => {
-  it('formats 10-digit phone number', () => {
-    expect(formatPhoneForLink('(555) 123-4567')).toBe('+15551234567');
+describe("formatPhoneForLink", () => {
+  it("formats 10-digit phone number", () => {
+    expect(formatPhoneForLink("(555) 123-4567")).toBe("+15551234567");
   });
 
-  it('removes all non-digit characters', () => {
-    expect(formatPhoneForLink('555-123-4567')).toBe('+15551234567');
+  it("removes all non-digit characters", () => {
+    expect(formatPhoneForLink("555-123-4567")).toBe("+15551234567");
   });
 
-  it('handles already formatted numbers', () => {
-    expect(formatPhoneForLink('+15551234567')).toBe('+15551234567');
-  });
-});
-
-describe('isValidPhone', () => {
-  it('validates 10-digit US phone number', () => {
-    expect(isValidPhone('5551234567')).toBe(true);
-  });
-
-  it('validates 11-digit number with country code', () => {
-    expect(isValidPhone('15551234567')).toBe(true);
-  });
-
-  it('rejects invalid lengths', () => {
-    expect(isValidPhone('555')).toBe(false);
-    expect(isValidPhone('123456789012')).toBe(false);
-  });
-
-  it('rejects non-numeric strings', () => {
-    expect(isValidPhone('abc')).toBe(false);
+  it("handles already formatted numbers", () => {
+    expect(formatPhoneForLink("+15551234567")).toBe("+15551234567");
   });
 });
 
-describe('generateListKey', () => {
-  it('generates key with prefix, index, and preview', () => {
-    const key = generateListKey('item', 0, 'Hello World');
-    expect(key).toBe('item-0-hello-world');
+describe("isValidPhone", () => {
+  it("validates 10-digit US phone number", () => {
+    expect(isValidPhone("5551234567")).toBe(true);
   });
 
-  it('truncates preview to 20 characters', () => {
-    const longText = 'A'.repeat(50);
-    const key = generateListKey('item', 0, longText);
+  it("validates 11-digit number with country code", () => {
+    expect(isValidPhone("15551234567")).toBe(true);
+  });
+
+  it("rejects invalid lengths", () => {
+    expect(isValidPhone("555")).toBe(false);
+    expect(isValidPhone("123456789012")).toBe(false);
+  });
+
+  it("rejects non-numeric strings", () => {
+    expect(isValidPhone("abc")).toBe(false);
+  });
+});
+
+describe("generateListKey", () => {
+  it("generates key with prefix, index, and preview", () => {
+    const key = generateListKey("item", 0, "Hello World");
+    expect(key).toBe("item-0-hello-world");
+  });
+
+  it("truncates preview to 20 characters", () => {
+    const longText = "A".repeat(50);
+    const key = generateListKey("item", 0, longText);
     expect(key.length).toBeLessThan(30);
   });
 
-  it('handles special characters in preview', () => {
-    const key = generateListKey('item', 1, 'Hello, World!');
-    expect(key).toBe('item-1-hello-world');
+  it("handles special characters in preview", () => {
+    const key = generateListKey("item", 1, "Hello, World!");
+    expect(key).toBe("item-1-hello-world");
   });
 });
 ```
@@ -194,16 +208,17 @@ describe('generateListKey', () => {
 #### Test Focus Trap
 
 **File: `src/lib/focus-trap.test.ts`**
-```typescript
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { createFocusTrap } from './focus-trap';
 
-describe('createFocusTrap', () => {
+```typescript
+import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { createFocusTrap } from "./focus-trap";
+
+describe("createFocusTrap", () => {
   let container: HTMLDivElement;
   let cleanup: (() => void) | undefined;
 
   beforeEach(() => {
-    container = document.createElement('div');
+    container = document.createElement("div");
     document.body.appendChild(container);
   });
 
@@ -212,9 +227,9 @@ describe('createFocusTrap', () => {
     document.body.removeChild(container);
   });
 
-  it('traps focus within container', () => {
-    const button1 = document.createElement('button');
-    const button2 = document.createElement('button');
+  it("traps focus within container", () => {
+    const button1 = document.createElement("button");
+    const button2 = document.createElement("button");
     container.appendChild(button1);
     container.appendChild(button2);
 
@@ -223,16 +238,16 @@ describe('createFocusTrap', () => {
     button2.focus();
 
     // Simulate Tab from last element
-    const event = new KeyboardEvent('keydown', { key: 'Tab', bubbles: true });
+    const event = new KeyboardEvent("keydown", { key: "Tab", bubbles: true });
     button2.dispatchEvent(event);
 
     // Focus should wrap to first element
     expect(document.activeElement).toBe(button1);
   });
 
-  it('wraps focus backwards with Shift+Tab', () => {
-    const button1 = document.createElement('button');
-    const button2 = document.createElement('button');
+  it("wraps focus backwards with Shift+Tab", () => {
+    const button1 = document.createElement("button");
+    const button2 = document.createElement("button");
     container.appendChild(button1);
     container.appendChild(button2);
 
@@ -241,10 +256,10 @@ describe('createFocusTrap', () => {
     button1.focus();
 
     // Simulate Shift+Tab from first element
-    const event = new KeyboardEvent('keydown', {
-      key: 'Tab',
+    const event = new KeyboardEvent("keydown", {
+      key: "Tab",
       shiftKey: true,
-      bubbles: true
+      bubbles: true,
     });
     button1.dispatchEvent(event);
 
@@ -252,7 +267,7 @@ describe('createFocusTrap', () => {
     expect(document.activeElement).toBe(button2);
   });
 
-  it('returns cleanup function that removes listener', () => {
+  it("returns cleanup function that removes listener", () => {
     cleanup = createFocusTrap(container);
     expect(cleanup).toBeInstanceOf(Function);
 
@@ -274,6 +289,7 @@ Integration tests verify that multiple components work together correctly.
 ### Page Navigation Flow Tests
 
 **File: `src/__tests__/integration/navigation.test.tsx`**
+
 ```typescript
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
@@ -329,6 +345,7 @@ describe('Navigation Integration', () => {
 ### Layout + Component Integration
 
 **File: `src/__tests__/integration/page-rendering.test.tsx`**
+
 ```typescript
 import { render, screen } from '@testing-library/react';
 import CouplesRetreatPage from '@/app/(with-footer)/couples-retreat/page';
@@ -365,6 +382,7 @@ describe('Page Rendering Integration', () => {
 ### Intro Overlay + SessionStorage Integration
 
 **File: `src/__tests__/integration/intro-overlay.test.tsx`**
+
 ```typescript
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
@@ -415,11 +433,13 @@ describe('IntroOverlay Integration', () => {
 ### Automated Accessibility Testing
 
 **Install jest-axe:**
+
 ```bash
 npm install --save-dev jest-axe
 ```
 
 **File: `src/__tests__/accessibility/wcag-compliance.test.tsx`**
+
 ```typescript
 import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
@@ -468,6 +488,7 @@ describe('WCAG 2.1 Accessibility', () => {
 ### Keyboard Navigation Tests
 
 **File: `src/__tests__/accessibility/keyboard-navigation.test.tsx`**
+
 ```typescript
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -522,11 +543,13 @@ describe('Keyboard Navigation', () => {
 ### Color Contrast Tests
 
 **Manual Tool:** Use browser DevTools or:
+
 ```bash
 npm install --save-dev pa11y-ci
 ```
 
 **File: `.pa11yci.json`**
+
 ```json
 {
   "defaults": {
@@ -547,6 +570,7 @@ npm install --save-dev pa11y-ci
 ```
 
 **Add script to `package.json`:**
+
 ```json
 {
   "scripts": {
@@ -562,6 +586,7 @@ npm install --save-dev pa11y-ci
 ### Schema.org Validation Tests
 
 **File: `src/__tests__/seo/structured-data.test.tsx`**
+
 ```typescript
 import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
@@ -610,24 +635,25 @@ describe('Structured Data SEO', () => {
 ### Metadata Tests
 
 **File: `src/__tests__/seo/metadata.test.tsx`**
-```typescript
-import { describe, it, expect } from 'vitest';
-import { metadata as homeMetadata } from '@/app/(with-footer)/page';
-import { metadata as aboutMetadata } from '@/app/(with-footer)/about/page';
 
-describe('Page Metadata', () => {
-  it('home page has title and description', () => {
+```typescript
+import { describe, it, expect } from "vitest";
+import { metadata as homeMetadata } from "@/app/(with-footer)/page";
+import { metadata as aboutMetadata } from "@/app/(with-footer)/about/page";
+
+describe("Page Metadata", () => {
+  it("home page has title and description", () => {
     expect(homeMetadata.title).toBeTruthy();
     expect(homeMetadata.description).toBeTruthy();
   });
 
-  it('about page has unique metadata', () => {
+  it("about page has unique metadata", () => {
     expect(aboutMetadata.title).toBeTruthy();
     expect(aboutMetadata.description).toBeTruthy();
     expect(aboutMetadata.title).not.toBe(homeMetadata.title);
   });
 
-  it('all pages have canonical URLs', () => {
+  it("all pages have canonical URLs", () => {
     expect(homeMetadata.alternates?.canonical).toMatch(/^https?:\/\//);
     expect(aboutMetadata.alternates?.canonical).toMatch(/^https?:\/\//);
   });
@@ -637,35 +663,36 @@ describe('Page Metadata', () => {
 ### Sitemap Validation
 
 **File: `src/__tests__/seo/sitemap.test.ts`**
-```typescript
-import { describe, it, expect } from 'vitest';
-import sitemap from '@/app/sitemap';
 
-describe('Sitemap', () => {
-  it('includes all main pages', async () => {
+```typescript
+import { describe, it, expect } from "vitest";
+import sitemap from "@/app/sitemap";
+
+describe("Sitemap", () => {
+  it("includes all main pages", async () => {
     const urls = await sitemap();
 
-    const paths = urls.map(u => new URL(u.url).pathname);
+    const paths = urls.map((u) => new URL(u.url).pathname);
 
-    expect(paths).toContain('/');
-    expect(paths).toContain('/about');
-    expect(paths).toContain('/couples-retreat');
-    expect(paths).toContain('/partner-search');
-    expect(paths).toContain('/inquire');
+    expect(paths).toContain("/");
+    expect(paths).toContain("/about");
+    expect(paths).toContain("/couples-retreat");
+    expect(paths).toContain("/partner-search");
+    expect(paths).toContain("/inquire");
   });
 
-  it('all URLs have lastModified dates', async () => {
+  it("all URLs have lastModified dates", async () => {
     const urls = await sitemap();
 
-    urls.forEach(url => {
+    urls.forEach((url) => {
       expect(url.lastModified).toBeInstanceOf(Date);
     });
   });
 
-  it('all URLs have priority and changeFrequency', async () => {
+  it("all URLs have priority and changeFrequency", async () => {
     const urls = await sitemap();
 
-    urls.forEach(url => {
+    urls.forEach((url) => {
       expect(url.priority).toBeGreaterThan(0);
       expect(url.priority).toBeLessThanOrEqual(1);
       expect(url.changeFrequency).toBeTruthy();
@@ -691,11 +718,13 @@ npm run validate-links
 ### Bundle Size Tests
 
 **Install size-limit:**
+
 ```bash
 npm install --save-dev @size-limit/preset-app
 ```
 
 **File: `.size-limit.json`**
+
 ```json
 [
   {
@@ -712,6 +741,7 @@ npm install --save-dev @size-limit/preset-app
 ```
 
 **Add to `package.json`:**
+
 ```json
 {
   "scripts": {
@@ -723,11 +753,13 @@ npm install --save-dev @size-limit/preset-app
 ### Lighthouse CI
 
 **Install:**
+
 ```bash
 npm install --save-dev @lhci/cli
 ```
 
 **File: `lighthouserc.json`**
+
 ```json
 {
   "ci": {
@@ -743,10 +775,10 @@ npm install --save-dev @lhci/cli
     },
     "assert": {
       "assertions": {
-        "categories:performance": ["error", {"minScore": 0.9}],
-        "categories:accessibility": ["error", {"minScore": 0.95}],
-        "categories:best-practices": ["error", {"minScore": 0.9}],
-        "categories:seo": ["error", {"minScore": 0.95}]
+        "categories:performance": ["error", { "minScore": 0.9 }],
+        "categories:accessibility": ["error", { "minScore": 0.95 }],
+        "categories:best-practices": ["error", { "minScore": 0.9 }],
+        "categories:seo": ["error", { "minScore": 0.95 }]
       }
     },
     "upload": {
@@ -757,6 +789,7 @@ npm install --save-dev @lhci/cli
 ```
 
 **Add script:**
+
 ```json
 {
   "scripts": {
@@ -768,16 +801,17 @@ npm install --save-dev @lhci/cli
 ### Core Web Vitals Testing
 
 **File: `src/__tests__/performance/web-vitals.test.ts`**
-```typescript
-import { describe, it, expect } from 'vitest';
 
-describe('Web Vitals Targets', () => {
-  it('defines performance budget', () => {
+```typescript
+import { describe, it, expect } from "vitest";
+
+describe("Web Vitals Targets", () => {
+  it("defines performance budget", () => {
     const budget = {
       FCP: 1800, // First Contentful Paint (ms)
       LCP: 2500, // Largest Contentful Paint (ms)
-      CLS: 0.1,  // Cumulative Layout Shift
-      FID: 100,  // First Input Delay (ms)
+      CLS: 0.1, // Cumulative Layout Shift
+      FID: 100, // First Input Delay (ms)
       TTI: 3800, // Time to Interactive (ms)
     };
 
@@ -797,84 +831,88 @@ describe('Web Vitals Targets', () => {
 ### Setup Playwright for Visual Testing
 
 **Install:**
+
 ```bash
 npm install --save-dev @playwright/test
 npx playwright install
 ```
 
 **File: `playwright.config.ts`**
+
 ```typescript
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: './src/__tests__/visual',
+  testDir: "./src/__tests__/visual",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  reporter: "html",
   use: {
-    baseURL: 'http://localhost:3000',
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
+    baseURL: "http://localhost:3000",
+    trace: "on-first-retry",
+    screenshot: "only-on-failure",
   },
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
     },
     {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 13'] },
+      name: "Mobile Safari",
+      use: { ...devices["iPhone 13"] },
     },
   ],
   webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:3000',
+    command: "npm run dev",
+    url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
   },
 });
 ```
 
 **File: `src/__tests__/visual/pages.spec.ts`**
+
 ```typescript
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test.describe('Visual Regression Tests', () => {
-  test('homepage renders correctly', async ({ page }) => {
-    await page.goto('/');
-    await expect(page).toHaveScreenshot('homepage.png', {
+test.describe("Visual Regression Tests", () => {
+  test("homepage renders correctly", async ({ page }) => {
+    await page.goto("/");
+    await expect(page).toHaveScreenshot("homepage.png", {
       fullPage: true,
     });
   });
 
-  test('about page renders correctly', async ({ page }) => {
-    await page.goto('/about');
-    await expect(page).toHaveScreenshot('about-page.png', {
+  test("about page renders correctly", async ({ page }) => {
+    await page.goto("/about");
+    await expect(page).toHaveScreenshot("about-page.png", {
       fullPage: true,
     });
   });
 
-  test('mobile menu opens correctly', async ({ page }) => {
+  test("mobile menu opens correctly", async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/');
+    await page.goto("/");
 
     await page.click('[aria-label*="menu"]');
-    await expect(page).toHaveScreenshot('mobile-menu.png');
+    await expect(page).toHaveScreenshot("mobile-menu.png");
   });
 
-  test('accordion expands correctly', async ({ page }) => {
-    await page.goto('/about');
+  test("accordion expands correctly", async ({ page }) => {
+    await page.goto("/about");
 
     // Click second accordion section
     await page.click('button:has-text("Foundational Research")');
 
-    await expect(page).toHaveScreenshot('accordion-expanded.png');
+    await expect(page).toHaveScreenshot("accordion-expanded.png");
   });
 });
 ```
 
 **Add script:**
+
 ```json
 {
   "scripts": {
@@ -891,20 +929,23 @@ test.describe('Visual Regression Tests', () => {
 ### User Journey Tests with Playwright
 
 **File: `src/__tests__/e2e/user-journeys.spec.ts`**
-```typescript
-import { test, expect } from '@playwright/test';
 
-test.describe('User Journeys', () => {
-  test('visitor can navigate from home to couples-retreat to inquire', async ({ page }) => {
+```typescript
+import { test, expect } from "@playwright/test";
+
+test.describe("User Journeys", () => {
+  test("visitor can navigate from home to couples-retreat to inquire", async ({
+    page,
+  }) => {
     // Start on homepage
-    await page.goto('/');
+    await page.goto("/");
 
     // Click "Couples Retreat" service card
     await page.click('a:has-text("Couples Retreat")');
 
     // Verify on couples-retreat page
     await expect(page).toHaveURL(/couples-retreat/);
-    await expect(page.locator('h1')).toContainText('Couples Retreat');
+    await expect(page.locator("h1")).toContainText("Couples Retreat");
 
     // Click "Inquire" CTA
     await page.click('a:has-text("Inquire")');
@@ -915,42 +956,42 @@ test.describe('User Journeys', () => {
     await expect(page.locator('a[href^="mailto:"]')).toBeVisible();
   });
 
-  test('visitor can navigate from home to partner-search', async ({ page }) => {
-    await page.goto('/');
+  test("visitor can navigate from home to partner-search", async ({ page }) => {
+    await page.goto("/");
 
     await page.click('a:has-text("Partner Search")');
 
     await expect(page).toHaveURL(/partner-search/);
 
     // Verify 6 phases are visible
-    const phases = page.locator('text=/Phase [1-6]/');
+    const phases = page.locator("text=/Phase [1-6]/");
     await expect(phases).toHaveCount(6);
   });
 
-  test('visitor can use navbar to access about page', async ({ page }) => {
-    await page.goto('/');
+  test("visitor can use navbar to access about page", async ({ page }) => {
+    await page.goto("/");
 
     // Click "About" in navbar
     await page.click('nav a:has-text("About")');
 
     await expect(page).toHaveURL(/about/);
-    await expect(page.locator('h1')).toContainText('Samuel Dunlap');
+    await expect(page.locator("h1")).toContainText("Samuel Dunlap");
   });
 
-  test('mobile visitor can use hamburger menu', async ({ page }) => {
+  test("mobile visitor can use hamburger menu", async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/');
+    await page.goto("/");
 
     // Menu should be hidden initially
     const menuButton = page.locator('[aria-label*="menu"]');
-    await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+    await expect(menuButton).toHaveAttribute("aria-expanded", "false");
 
     // Open menu
     await menuButton.click();
-    await expect(menuButton).toHaveAttribute('aria-expanded', 'true');
+    await expect(menuButton).toHaveAttribute("aria-expanded", "true");
 
     // Click a link in mobile menu
-    await page.click('text=About');
+    await page.click("text=About");
 
     // Verify navigation
     await expect(page).toHaveURL(/about/);
@@ -961,13 +1002,14 @@ test.describe('User Journeys', () => {
 ### Responsive Design Tests
 
 **File: `src/__tests__/e2e/responsive.spec.ts`**
+
 ```typescript
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
 const viewports = [
-  { name: 'Mobile', width: 375, height: 667 },
-  { name: 'Tablet', width: 768, height: 1024 },
-  { name: 'Desktop', width: 1440, height: 900 },
+  { name: "Mobile", width: 375, height: 667 },
+  { name: "Tablet", width: 768, height: 1024 },
+  { name: "Desktop", width: 1440, height: 900 },
 ];
 
 viewports.forEach(({ name, width, height }) => {
@@ -976,8 +1018,8 @@ viewports.forEach(({ name, width, height }) => {
       await page.setViewportSize({ width, height });
     });
 
-    test('homepage renders without layout issues', async ({ page }) => {
-      await page.goto('/');
+    test("homepage renders without layout issues", async ({ page }) => {
+      await page.goto("/");
 
       // No horizontal scrollbar
       const scrollWidth = await page.evaluate(() => document.body.scrollWidth);
@@ -985,13 +1027,13 @@ viewports.forEach(({ name, width, height }) => {
       expect(scrollWidth).toBeLessThanOrEqual(clientWidth);
 
       // Hero is visible
-      await expect(page.locator('h1')).toBeVisible();
+      await expect(page.locator("h1")).toBeVisible();
     });
 
-    test('navbar is accessible', async ({ page }) => {
-      await page.goto('/');
+    test("navbar is accessible", async ({ page }) => {
+      await page.goto("/");
 
-      const nav = page.locator('nav');
+      const nav = page.locator("nav");
       await expect(nav).toBeVisible();
 
       if (width < 768) {
@@ -1009,34 +1051,35 @@ viewports.forEach(({ name, width, height }) => {
 ### Form Interaction Tests (Future)
 
 **File: `src/__tests__/e2e/contact-form.spec.ts`**
+
 ```typescript
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
 // Note: Currently no form exists, but when you add one:
-test.describe('Contact Form', () => {
-  test.skip('visitor can submit contact form', async ({ page }) => {
-    await page.goto('/inquire');
+test.describe("Contact Form", () => {
+  test.skip("visitor can submit contact form", async ({ page }) => {
+    await page.goto("/inquire");
 
     // Fill out form
-    await page.fill('[name="name"]', 'John Doe');
-    await page.fill('[name="email"]', 'john@example.com');
-    await page.fill('[name="message"]', 'I would like more information.');
+    await page.fill('[name="name"]', "John Doe");
+    await page.fill('[name="email"]', "john@example.com");
+    await page.fill('[name="message"]', "I would like more information.");
 
     // Submit
     await page.click('button[type="submit"]');
 
     // Verify success message
-    await expect(page.locator('text=/thank you/i')).toBeVisible();
+    await expect(page.locator("text=/thank you/i")).toBeVisible();
   });
 
-  test.skip('form validates email format', async ({ page }) => {
-    await page.goto('/inquire');
+  test.skip("form validates email format", async ({ page }) => {
+    await page.goto("/inquire");
 
-    await page.fill('[name="email"]', 'invalid-email');
+    await page.fill('[name="email"]', "invalid-email");
     await page.click('button[type="submit"]');
 
     // Should show validation error
-    await expect(page.locator('text=/valid email/i')).toBeVisible();
+    await expect(page.locator("text=/valid email/i")).toBeVisible();
   });
 });
 ```
@@ -1048,12 +1091,13 @@ test.describe('Contact Form', () => {
 ### Content Security Policy Validation
 
 **File: `src/__tests__/security/csp.test.ts`**
-```typescript
-import { describe, it, expect } from 'vitest';
-import { headers } from 'next/headers';
 
-describe('Content Security Policy', () => {
-  it('has strict CSP defined', async () => {
+```typescript
+import { describe, it, expect } from "vitest";
+import { headers } from "next/headers";
+
+describe("Content Security Policy", () => {
+  it("has strict CSP defined", async () => {
     // Note: This tests that CSP is configured in next.config.ts
     // Actual header validation happens in E2E tests
 
@@ -1068,9 +1112,9 @@ describe('Content Security Policy', () => {
     ];
 
     // Verify CSP is strict (no 'unsafe-inline' or 'unsafe-eval')
-    expectedDirectives.forEach(directive => {
-      expect(directive).not.toContain('unsafe-inline');
-      expect(directive).not.toContain('unsafe-eval');
+    expectedDirectives.forEach((directive) => {
+      expect(directive).not.toContain("unsafe-inline");
+      expect(directive).not.toContain("unsafe-eval");
     });
   });
 });
@@ -1079,27 +1123,28 @@ describe('Content Security Policy', () => {
 **E2E Security Header Test:**
 
 **File: `src/__tests__/e2e/security-headers.spec.ts`**
-```typescript
-import { test, expect } from '@playwright/test';
 
-test.describe('Security Headers', () => {
-  test('response includes security headers', async ({ page }) => {
-    const response = await page.goto('/');
+```typescript
+import { test, expect } from "@playwright/test";
+
+test.describe("Security Headers", () => {
+  test("response includes security headers", async ({ page }) => {
+    const response = await page.goto("/");
 
     expect(response).not.toBeNull();
     const headers = response!.headers();
 
     // CSP header
-    expect(headers['content-security-policy']).toBeTruthy();
-    expect(headers['content-security-policy']).toContain("default-src 'self'");
+    expect(headers["content-security-policy"]).toBeTruthy();
+    expect(headers["content-security-policy"]).toContain("default-src 'self'");
 
     // Other security headers (if configured)
     // expect(headers['x-frame-options']).toBe('DENY');
     // expect(headers['x-content-type-options']).toBe('nosniff');
   });
 
-  test('no sensitive data in HTML comments', async ({ page }) => {
-    await page.goto('/');
+  test("no sensitive data in HTML comments", async ({ page }) => {
+    await page.goto("/");
 
     const html = await page.content();
 
@@ -1123,6 +1168,7 @@ npm outdated
 ```
 
 **Add to CI:**
+
 ```json
 {
   "scripts": {
@@ -1138,70 +1184,72 @@ npm outdated
 ### Static Export Validation
 
 **File: `src/__tests__/build/static-export.test.ts`**
+
 ```typescript
-import { describe, it, expect } from 'vitest';
-import fs from 'fs';
-import path from 'path';
+import { describe, it, expect } from "vitest";
+import fs from "fs";
+import path from "path";
 
-describe('Static Export Build', () => {
-  const outDir = path.join(process.cwd(), 'out');
+describe("Static Export Build", () => {
+  const outDir = path.join(process.cwd(), "out");
 
-  it('generates HTML files for all pages', () => {
+  it("generates HTML files for all pages", () => {
     const expectedFiles = [
-      'index.html',
-      'about/index.html',
-      'couples-retreat/index.html',
-      'partner-search/index.html',
-      'inquire/index.html',
-      '404.html',
+      "index.html",
+      "about/index.html",
+      "couples-retreat/index.html",
+      "partner-search/index.html",
+      "inquire/index.html",
+      "404.html",
     ];
 
-    expectedFiles.forEach(file => {
+    expectedFiles.forEach((file) => {
       const filePath = path.join(outDir, file);
       expect(fs.existsSync(filePath)).toBe(true);
     });
   });
 
-  it('generates sitemap.xml', () => {
-    const sitemapPath = path.join(outDir, 'sitemap.xml');
+  it("generates sitemap.xml", () => {
+    const sitemapPath = path.join(outDir, "sitemap.xml");
     expect(fs.existsSync(sitemapPath)).toBe(true);
   });
 
-  it('all HTML files are valid', () => {
+  it("all HTML files are valid", () => {
     const htmlFiles = [
-      'index.html',
-      'about/index.html',
-      'couples-retreat/index.html',
+      "index.html",
+      "about/index.html",
+      "couples-retreat/index.html",
     ];
 
-    htmlFiles.forEach(file => {
+    htmlFiles.forEach((file) => {
       const filePath = path.join(outDir, file);
-      const content = fs.readFileSync(filePath, 'utf-8');
+      const content = fs.readFileSync(filePath, "utf-8");
 
       // Basic HTML structure validation
-      expect(content).toContain('<!DOCTYPE html>');
-      expect(content).toContain('<html');
-      expect(content).toContain('</html>');
-      expect(content).toContain('<head>');
-      expect(content).toContain('</head>');
-      expect(content).toContain('<body>');
-      expect(content).toContain('</body>');
+      expect(content).toContain("<!DOCTYPE html>");
+      expect(content).toContain("<html");
+      expect(content).toContain("</html>");
+      expect(content).toContain("<head>");
+      expect(content).toContain("</head>");
+      expect(content).toContain("<body>");
+      expect(content).toContain("</body>");
     });
   });
 
-  it('static assets are copied', () => {
+  it("static assets are copied", () => {
     // Check for _next directory
-    const nextDir = path.join(outDir, '_next');
+    const nextDir = path.join(outDir, "_next");
     expect(fs.existsSync(nextDir)).toBe(true);
 
     // Check for static files
-    const staticDir = path.join(nextDir, 'static');
+    const staticDir = path.join(nextDir, "static");
     expect(fs.existsSync(staticDir)).toBe(true);
   });
 });
 ```
 
 **Run build tests:**
+
 ```bash
 # Build first
 npm run build
@@ -1223,39 +1271,38 @@ npm run validate-links
 ### Image Optimization Check
 
 **File: `src/__tests__/build/assets.test.ts`**
-```typescript
-import { describe, it, expect } from 'vitest';
-import fs from 'fs';
-import path from 'path';
 
-describe('Static Assets', () => {
-  it('all images are WebP format', () => {
-    const imagesDir = path.join(process.cwd(), 'public/images');
+```typescript
+import { describe, it, expect } from "vitest";
+import fs from "fs";
+import path from "path";
+
+describe("Static Assets", () => {
+  it("all images are WebP format", () => {
+    const imagesDir = path.join(process.cwd(), "public/images");
 
     if (!fs.existsSync(imagesDir)) {
       return; // Skip if no images directory
     }
 
     const files = fs.readdirSync(imagesDir);
-    const imageFiles = files.filter(f =>
-      /\.(png|jpg|jpeg|webp)$/i.test(f)
-    );
+    const imageFiles = files.filter((f) => /\.(png|jpg|jpeg|webp)$/i.test(f));
 
-    imageFiles.forEach(file => {
+    imageFiles.forEach((file) => {
       if (!/\.webp$/i.test(file)) {
         console.warn(`Non-WebP image found: ${file}`);
       }
     });
   });
 
-  it('no unnecessarily large files in public directory', () => {
-    const publicDir = path.join(process.cwd(), 'public');
+  it("no unnecessarily large files in public directory", () => {
+    const publicDir = path.join(process.cwd(), "public");
     const maxSize = 500 * 1024; // 500 KB
 
     function checkDirectory(dir: string) {
       const files = fs.readdirSync(dir);
 
-      files.forEach(file => {
+      files.forEach((file) => {
         const filePath = path.join(dir, file);
         const stats = fs.statSync(filePath);
 
@@ -1263,7 +1310,9 @@ describe('Static Assets', () => {
           checkDirectory(filePath);
         } else {
           if (stats.size > maxSize) {
-            console.warn(`Large file detected: ${filePath} (${(stats.size / 1024).toFixed(2)} KB)`);
+            console.warn(
+              `Large file detected: ${filePath} (${(stats.size / 1024).toFixed(2)} KB)`
+            );
           }
         }
       });
@@ -1281,6 +1330,7 @@ describe('Static Assets', () => {
 ### Pre-Release Testing Checklist
 
 #### Functionality
+
 - [ ] All navigation links work correctly
 - [ ] Mobile hamburger menu opens/closes
 - [ ] Mobile menu focus trap works
@@ -1291,6 +1341,7 @@ describe('Static Assets', () => {
 - [ ] 404 page displays for invalid routes
 
 #### Responsive Design
+
 - [ ] Test on mobile (320px, 375px, 414px widths)
 - [ ] Test on tablet (768px, 1024px)
 - [ ] Test on desktop (1440px, 1920px)
@@ -1300,6 +1351,7 @@ describe('Static Assets', () => {
 - [ ] Touch targets are at least 44x44px on mobile
 
 #### Accessibility
+
 - [ ] Tab through entire site with keyboard only
 - [ ] Escape key closes mobile menu
 - [ ] Focus indicators visible on all interactive elements
@@ -1310,6 +1362,7 @@ describe('Static Assets', () => {
 - [ ] Respect prefers-reduced-motion setting
 
 #### Cross-Browser Testing
+
 - [ ] Chrome (latest)
 - [ ] Firefox (latest)
 - [ ] Safari (latest)
@@ -1318,6 +1371,7 @@ describe('Static Assets', () => {
 - [ ] Chrome Android
 
 #### Performance
+
 - [ ] Lighthouse score > 90 for all categories
 - [ ] First Contentful Paint < 1.8s
 - [ ] Largest Contentful Paint < 2.5s
@@ -1326,6 +1380,7 @@ describe('Static Assets', () => {
 - [ ] Animations run at 60fps
 
 #### SEO
+
 - [ ] All pages have unique title tags
 - [ ] All pages have unique meta descriptions
 - [ ] Structured data validates (use Google Rich Results Test)
@@ -1335,6 +1390,7 @@ describe('Static Assets', () => {
 - [ ] Open Graph tags present (for social sharing)
 
 #### Visual Testing
+
 - [ ] Typography renders correctly
 - [ ] Colors match design system
 - [ ] Spacing/padding consistent across pages
@@ -1344,6 +1400,7 @@ describe('Static Assets', () => {
 - [ ] Active states indicate current page
 
 #### Security
+
 - [ ] HTTPS enforced
 - [ ] Content Security Policy headers present
 - [ ] No console errors or warnings in production
@@ -1355,6 +1412,7 @@ describe('Static Assets', () => {
 ## Testing Workflow Recommendations
 
 ### Development Workflow
+
 ```bash
 # 1. Run tests in watch mode while developing
 npm run test:watch
@@ -1367,6 +1425,7 @@ npm run lint
 ```
 
 ### Pre-Commit Workflow
+
 ```bash
 # Run automatically via Husky pre-commit hook
 # - Lints staged files
@@ -1375,6 +1434,7 @@ npm run lint
 ```
 
 ### Pre-Push Workflow
+
 ```bash
 # Before pushing to GitHub, run:
 npm test                  # All unit tests
@@ -1385,6 +1445,7 @@ npm run build             # Ensure build succeeds
 ### CI/CD Pipeline (GitHub Actions Example)
 
 **File: `.github/workflows/test.yml`**
+
 ```yaml
 name: Test Suite
 
@@ -1400,8 +1461,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: "18"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
@@ -1479,6 +1540,7 @@ npm run test:security       # Audit in CI mode
 ## Next Steps
 
 1. **Install missing test tools:**
+
    ```bash
    npm install --save-dev jest-axe @playwright/test @lhci/cli pa11y-ci @size-limit/preset-app
    npx playwright install

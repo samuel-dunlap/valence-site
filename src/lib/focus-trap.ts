@@ -12,7 +12,7 @@
  */
 export function createFocusTrap(container: HTMLElement): () => void {
   const focusableSelector =
-    'a[href], button:not([disabled]), textarea:not([disabled]), ' +
+    "a[href], button:not([disabled]), textarea:not([disabled]), " +
     'input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
   const focusableElements =

@@ -13,7 +13,7 @@ export default function Footer(): React.ReactElement {
         <div className={styles.left}>
           <Image
             src="/images/logo-mark.png"
-            alt="Valence"
+            alt="Upper East Side Therapy"
             width={40}
             height={40}
             className={styles.logo}

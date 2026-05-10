@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Libre_Baskerville } from "next/font/google";
+import Script from "next/script";
 import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
 import IntroOverlay from "@/components/IntroOverlay/IntroOverlay";
 import Navbar from "@/components/Navbar/Navbar";
@@ -21,17 +22,17 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#faf9f7",
+  themeColor: "#faf9f6",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Valence | Private Relationship Advisory",
-    template: "%s — VALENCE",
+    default: "Upper East Side Therapy | Psychotherapy & Couples Therapy",
+    template: "%s — Upper East Side Therapy",
   },
   description:
-    "Private relationship advisory for high-net-worth men. Expert matchmaking, couples retreats, and relational coaching in New York City and Aspen.",
+    "Psychotherapy for young adults, couples therapy, and depth performance training on the Upper East Side of Manhattan.",
   robots: { index: true, follow: true },
   icons: {
     icon: [
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Valence — Private Relationship Advisory",
+        alt: "Upper East Side Therapy — Psychotherapy & Couples Therapy",
       },
     ],
   },
@@ -72,14 +73,18 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link
+          href="https://assets.calendly.com/assets/external/widget.css"
+          rel="stylesheet"
+        />
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('valence-theme')||'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}`,
+            __html: `try{var t=localStorage.getItem('uest-theme')||'light';document.documentElement.setAttribute('data-theme',t)}catch(e){}`,
           }}
         />
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(!sessionStorage.getItem('valence-intro-seen')&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-pending')}}catch(e){}`,
+            __html: `try{if(!sessionStorage.getItem('uest-intro-seen')&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-pending')}}catch(e){}`,
           }}
         />
       </head>
@@ -91,6 +96,13 @@ export default function RootLayout({
           <Navbar />
           <main id="main-content">{children}</main>
         </ErrorBoundary>
+        <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="afterInteractive"
+        />
+        <Script id="calendly-badge" strategy="afterInteractive">
+          {`window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/samuel-valenceprivate/consultation-call', text: 'Schedule time with us', color: '#002042', textColor: '#faf9f6', branding: false }); }`}
+        </Script>
       </body>
     </html>
   );

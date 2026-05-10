@@ -33,11 +33,14 @@ export function throttle<T extends (...args: unknown[]) => void>(
       func(...args);
     } else {
       // Otherwise, schedule to run after the delay
-      timeoutId = setTimeout(() => {
-        lastRun = Date.now();
-        func(...args);
-        timeoutId = null;
-      }, delay - (now - lastRun));
+      timeoutId = setTimeout(
+        () => {
+          lastRun = Date.now();
+          func(...args);
+          timeoutId = null;
+        },
+        delay - (now - lastRun)
+      );
     }
   };
 }

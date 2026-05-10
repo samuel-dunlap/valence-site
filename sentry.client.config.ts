@@ -8,7 +8,8 @@ import * as Sentry from "@sentry/nextjs";
  */
 
 const SENTRY_DSN = process.env.NEXT_PUBLIC_SENTRY_DSN;
-const SENTRY_ENVIRONMENT = process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT || "production";
+const SENTRY_ENVIRONMENT =
+  process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT || "production";
 
 // Only initialize Sentry if DSN is configured
 if (SENTRY_DSN) {

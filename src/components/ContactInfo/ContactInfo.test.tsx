@@ -2,11 +2,10 @@ import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import ContactInfo from "./ContactInfo";
 
-// Mock the constants module
 vi.mock("@/lib/constants", () => ({
   SITE: {
-    phone: "(212) 263-0000",
-    email: "samuel [at] valenceprivate {dot} com",
+    phone: "(720) 218-0788",
+    email: "info [at] uppereastsidetherapy {dot} com",
     address: {
       street: "654 Madison Avenue",
       city: "New York",
@@ -19,21 +18,22 @@ vi.mock("@/lib/constants", () => ({
 describe("ContactInfo", () => {
   it("renders phone number link", () => {
     render(<ContactInfo />);
-    const phoneLink = screen.getByText("(212) 263-0000").closest("a");
-    expect(phoneLink).toHaveAttribute("href", "tel:+12122630000");
+    const phoneLink = screen.getByText("(720) 218-0788").closest("a");
+    expect(phoneLink).toHaveAttribute("href", "tel:+17202180788");
   });
 
   it("renders email text", () => {
     render(<ContactInfo />);
     expect(
-      screen.getByText("samuel [at] valenceprivate {dot} com")
+      screen.getByText(/info \[at\] uppereastsidetherapy \{dot\} com/)
     ).toBeInTheDocument();
   });
 
   it("renders full address", () => {
     render(<ContactInfo />);
-    expect(screen.getByText("654 Madison Avenue")).toBeInTheDocument();
-    expect(screen.getByText(/New York, NY 10065/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/654 Madison Avenue.*New York.*NY.*10065/)
+    ).toBeInTheDocument();
   });
 
   it("applies custom className to paragraphs", () => {
@@ -45,9 +45,6 @@ describe("ContactInfo", () => {
   });
 
   it("handles missing phone gracefully (verified by code review)", () => {
-    // This test verifies the defensive null check exists in ContactInfo.tsx:14-17
-    // Module mocking in Vitest is complex for already-imported modules
-    // The null check code path is verified: if (!phone || !email) return null
     expect(true).toBe(true);
   });
 });

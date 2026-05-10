@@ -31,9 +31,7 @@ describe("Hero", () => {
   });
 
   it("renders image when provided", () => {
-    render(
-      <Hero {...mockProps} imageSrc="/test.jpg" imageAlt="Test Image" />
-    );
+    render(<Hero {...mockProps} imageSrc="/test.jpg" imageAlt="Test Image" />);
     expect(screen.getByAltText("Test Image")).toBeInTheDocument();
   });
 
@@ -41,13 +39,17 @@ describe("Hero", () => {
     const { container } = render(
       <Hero {...mockProps} imageSrc="/test.jpg" imageAlt="Test" />
     );
-    expect(container.querySelector('[class*="splitContainer"]')).toBeInTheDocument();
+    expect(
+      container.querySelector('[class*="splitContainer"]')
+    ).toBeInTheDocument();
   });
 
   it("uses regular container class without image", () => {
     const { container } = render(<Hero {...mockProps} />);
     expect(container.querySelector('[class*="container"]')).toBeInTheDocument();
-    expect(container.querySelector('[class*="splitContainer"]')).not.toBeInTheDocument();
+    expect(
+      container.querySelector('[class*="splitContainer"]')
+    ).not.toBeInTheDocument();
   });
 
   it("uses default alt text when imageAlt not provided", () => {

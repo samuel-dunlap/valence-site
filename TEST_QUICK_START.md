@@ -44,21 +44,25 @@ npm run test:all
 Your website now has **20+ test files** covering:
 
 ✅ **Unit Tests (New!)**
+
 - `utils.test.ts` - All utility functions (throttle, phone formatting, key generation)
 - `focus-trap.test.ts` - Focus trap functionality
 - `storage.test.ts` - Session storage utilities
 - `schema.test.ts` - SEO schema generation
 
 ✅ **Component Tests (Existing + New)**
+
 - All 13 components (Navbar, Footer, Hero, etc.)
 - Page components (Home, About)
 
 ✅ **Accessibility Tests (New!)**
+
 - Basic WCAG compliance checks
 - Keyboard navigation
 - ARIA attributes
 
 ✅ **Integration Tests**
+
 - Multi-component interactions
 - Layout rendering
 
@@ -67,6 +71,7 @@ Your website now has **20+ test files** covering:
 ## 🎯 Test Categories by Purpose
 
 ### Development (Run Often)
+
 ```bash
 npm run test:watch    # Auto-run tests on file changes
 npm run typecheck     # Check TypeScript types
@@ -74,6 +79,7 @@ npm run lint          # Check code style
 ```
 
 ### Pre-Commit (Automatic via Husky)
+
 ```bash
 # Runs automatically when you commit
 # - Lints staged files
@@ -81,6 +87,7 @@ npm run lint          # Check code style
 ```
 
 ### Pre-Deploy (Run Before Release)
+
 ```bash
 npm run test:all      # Everything: types, lint, tests, build, links
 npm run test:a11y     # Accessibility audit
@@ -111,9 +118,11 @@ npm install --save-dev @size-limit/preset-app
 ### 2. Uncomment Axe Tests
 
 Once you install `jest-axe`, uncomment the axe test blocks in:
+
 - `src/__tests__/accessibility/basic-a11y.test.tsx`
 
 Then run comprehensive accessibility tests:
+
 ```bash
 npm test -- accessibility
 ```
@@ -121,11 +130,13 @@ npm test -- accessibility
 ### 3. Add E2E Tests (Recommended)
 
 Follow the guide in `TESTING_GUIDE.md` section 7 to:
+
 - Create user journey tests
 - Test responsive design
 - Validate complete user flows
 
 Run with:
+
 ```bash
 npx playwright test
 ```
@@ -133,6 +144,7 @@ npx playwright test
 ### 4. Add Visual Regression Tests
 
 Follow section 6 of `TESTING_GUIDE.md` to:
+
 - Capture baseline screenshots
 - Detect visual changes automatically
 
@@ -183,14 +195,15 @@ npm test -- -u
 
 ## 📋 Coverage Goals
 
-| Category | Current Target | Production Target |
-|----------|----------------|-------------------|
-| Lines | 70% | 80%+ |
-| Functions | 70% | 80%+ |
-| Branches | 70% | 80%+ |
-| Statements | 70% | 80%+ |
+| Category   | Current Target | Production Target |
+| ---------- | -------------- | ----------------- |
+| Lines      | 70%            | 80%+              |
+| Functions  | 70%            | 80%+              |
+| Branches   | 70%            | 80%+              |
+| Statements | 70%            | 80%+              |
 
 View detailed coverage:
+
 ```bash
 npm run test:coverage
 # Then open: coverage/index.html
@@ -218,21 +231,26 @@ Before deploying to production:
 ## 🆘 Troubleshooting
 
 ### Tests fail with "ResizeObserver is not defined"
+
 ✅ **Already fixed** in `vitest.setup.ts`
 
 ### Tests fail with "IntersectionObserver is not defined"
+
 ✅ **Already fixed** in `vitest.setup.ts`
 
 ### Tests fail with "sessionStorage is not defined"
+
 ✅ **Already handled** with safe storage wrappers in `lib/storage.ts`
 
 ### Coverage not showing
+
 ```bash
 # Install coverage provider
 npm install --save-dev @vitest/coverage-v8
 ```
 
 ### Link validator fails
+
 ```bash
 # Make sure you build first
 npm run build
@@ -254,17 +272,17 @@ npm run validate-links
 
 ## 🔥 Quick Commands Cheatsheet
 
-| What you want to do | Command |
-|---------------------|---------|
-| Run tests once | `npm test` |
-| Run tests while coding | `npm run test:watch` |
-| See test coverage | `npm run test:coverage` |
-| Check types | `npm run typecheck` |
-| Fix linting issues | `npm run lint:fix` |
-| Format code | `npm run format` |
-| Validate build | `npm run build` |
-| Check links | `npm run validate-links` |
-| Everything at once | `npm run test:all` |
+| What you want to do    | Command                  |
+| ---------------------- | ------------------------ |
+| Run tests once         | `npm test`               |
+| Run tests while coding | `npm run test:watch`     |
+| See test coverage      | `npm run test:coverage`  |
+| Check types            | `npm run typecheck`      |
+| Fix linting issues     | `npm run lint:fix`       |
+| Format code            | `npm run format`         |
+| Validate build         | `npm run build`          |
+| Check links            | `npm run validate-links` |
+| Everything at once     | `npm run test:all`       |
 
 ---
 

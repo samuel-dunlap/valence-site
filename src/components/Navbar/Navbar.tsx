@@ -74,13 +74,17 @@ export default function Navbar(): React.ReactElement {
       </a>
       <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
         <div className={styles.inner}>
-          <Link href="/" className={styles.logo} aria-label="Valence Home">
+          <Link
+            href="/"
+            className={styles.logo}
+            aria-label="Upper East Side Therapy Home"
+          >
             <span className={styles.logoFull}>{renderLogo("full")}</span>
             <span className={styles.logoMark}>{renderLogo("mark")}</span>
           </Link>
 
           <nav className={styles.desktopNav} aria-label="Main navigation">
-            {NAV_LINKS.filter((l) => l.href !== "/inquire").map((link) => (
+            {NAV_LINKS.filter((l) => l.href !== "/inquire/").map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -161,7 +165,7 @@ export default function Navbar(): React.ReactElement {
         </button>
 
         <nav className={styles.overlayNav} aria-label="Mobile navigation">
-          {NAV_LINKS.filter((l) => l.href !== "/inquire").map((link) => (
+          {NAV_LINKS.filter((l) => l.href !== "/inquire/").map((link) => (
             <Link
               key={link.href}
               href={link.href}

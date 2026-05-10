@@ -8,11 +8,10 @@ describe("Schema utilities", () => {
       const schema = getOrganizationSchema();
 
       expect(schema["@context"]).toBe("https://schema.org");
-      expect(schema["@type"]).toBe("ProfessionalService");
+      expect(schema["@type"]).toEqual(["MedicalBusiness", "LocalBusiness"]);
       expect(schema.name).toBe(SITE.name);
       expect(schema.url).toBe(SITE.url);
       expect(schema.telephone).toBe(SITE.phone);
-      expect(schema.email).toBe(SITE.email);
     });
 
     it("includes complete address from SITE constants", () => {
@@ -26,21 +25,20 @@ describe("Schema utilities", () => {
       expect(schema.address.addressCountry).toBe("US");
     });
 
-    it("includes founder information", () => {
-      const schema = getOrganizationSchema();
-
-      expect(schema.founder["@type"]).toBe("Person");
-      expect(schema.founder.name).toBe("Samuel Dunlap");
-      expect(schema.founder.jobTitle).toBe(
-        "Relationship Advisor & Researcher"
-      );
-    });
-
     it("includes area served and price range", () => {
       const schema = getOrganizationSchema();
 
-      expect(schema.areaServed).toEqual(["New York City", "Aspen"]);
+      expect(schema.areaServed).toEqual([
+        { "@type": "City", name: "New York" },
+        { "@type": "Neighborhood", name: "Upper East Side" },
+      ]);
       expect(schema.priceRange).toBe("$$$");
+    });
+
+    it("includes medical specialty", () => {
+      const schema = getOrganizationSchema();
+
+      expect(schema.medicalSpecialty).toBe("Psychiatric");
     });
   });
 
@@ -62,7 +60,7 @@ describe("Schema utilities", () => {
     it("includes provider reference with SITE constants", () => {
       const schema = getServiceSchema("Test", "Desc", "/test/");
 
-      expect(schema.provider["@type"]).toBe("ProfessionalService");
+      expect(schema.provider["@type"]).toBe("MedicalBusiness");
       expect(schema.provider.name).toBe(SITE.name);
       expect(schema.provider.url).toBe(SITE.url);
     });
@@ -70,13 +68,13 @@ describe("Schema utilities", () => {
     it("includes area served", () => {
       const schema = getServiceSchema("Test", "Desc", "/test/");
 
-      expect(schema.areaServed).toEqual(["New York City", "Aspen"]);
+      expect(schema.areaServed).toEqual(["Upper East Side", "New York City"]);
     });
 
     it("constructs full URL from SITE.url and path", () => {
-      const schema = getServiceSchema("Test", "Desc", "/couples-retreat/");
+      const schema = getServiceSchema("Test", "Desc", "/couples-therapy/");
 
-      expect(schema.url).toBe(`${SITE.url}/couples-retreat/`);
+      expect(schema.url).toBe(`${SITE.url}/couples-therapy/`);
     });
   });
 });

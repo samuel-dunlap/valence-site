@@ -162,7 +162,11 @@ Create a test error to verify Sentry is capturing issues:
 1. Add a test button to any page (temporarily):
 
    ```tsx
-   <button onClick={() => { throw new Error("Test Sentry error"); }}>
+   <button
+     onClick={() => {
+       throw new Error("Test Sentry error");
+     }}
+   >
      Test Error Tracking
    </button>
    ```
@@ -251,12 +255,14 @@ These are required for error tracking and are safe to whitelist.
 ### Sentry Not Capturing Errors
 
 1. **Check environment variables:**
+
    ```bash
    # In browser console:
    console.log('DSN configured:', !!process.env.NEXT_PUBLIC_SENTRY_DSN)
    ```
 
 2. **Check CSP headers:**
+
    ```bash
    curl -I https://valenceprivate.com | grep Content-Security-Policy
    # Should include: https://browser.sentry-cdn.com and https://*.ingest.sentry.io

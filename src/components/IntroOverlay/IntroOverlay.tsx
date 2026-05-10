@@ -4,56 +4,46 @@ import { useState, useEffect } from "react";
 import { safeSessionGet, safeSessionSet } from "@/lib/storage";
 import styles from "./IntroOverlay.module.css";
 
-const INTRO_KEY = "valence-intro-seen";
-const EXPAND_LETTERS = ["A", "L", "E", "N", "C", "E"];
+const INTRO_KEY = "uest-intro-seen";
 
 const TIMING = {
-  SHOW_MARK: 35,
-  START_EXPAND: 385,
+  SHOW_TEXT: 35,
   START_EXIT: 1155,
   COMPLETE: 1575,
-  FAILSAFE: 3000, // Force hide after 3 seconds as failsafe
+  FAILSAFE: 3000,
 } as const;
 
-type Phase = "initial" | "mark" | "expand" | "exit" | "done";
+type Phase = "initial" | "visible" | "exit" | "done";
 
 export default function IntroOverlay(): React.ReactElement | null {
-  // Start as "done" to match SSR output (null) and avoid hydration mismatch.
-  // The mount effect below will initialise the real phase on the client.
   const [phase, setPhase] = useState<Phase>("done");
 
   useEffect(() => {
     const removePendingClass = () =>
       document.documentElement.classList.remove("intro-pending");
 
-    // Skip if already seen this session
     if (safeSessionGet(INTRO_KEY)) {
       removePendingClass();
       return;
     }
 
-    // Respect prefers-reduced-motion
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       safeSessionSet(INTRO_KEY, "1");
       removePendingClass();
       return;
     }
 
-    // Mark as seen immediately to prevent replays on back-navigation
     safeSessionSet(INTRO_KEY, "1");
 
-    // Kick off the animation timeline — remove the CSS cover now that React overlay is rendering
     const t0 = setTimeout(() => {
       setPhase("initial");
       removePendingClass();
     }, 0);
 
-    const t1 = setTimeout(() => setPhase("mark"), TIMING.SHOW_MARK);
-    const t2 = setTimeout(() => setPhase("expand"), TIMING.START_EXPAND);
-    const t3 = setTimeout(() => setPhase("exit"), TIMING.START_EXIT);
-    const t4 = setTimeout(() => setPhase("done"), TIMING.COMPLETE);
+    const t1 = setTimeout(() => setPhase("visible"), TIMING.SHOW_TEXT);
+    const t2 = setTimeout(() => setPhase("exit"), TIMING.START_EXIT);
+    const t3 = setTimeout(() => setPhase("done"), TIMING.COMPLETE);
 
-    // Failsafe: Force completion after max time to prevent stuck overlay
     const failsafe = setTimeout(() => {
       setPhase("done");
     }, TIMING.FAILSAFE);
@@ -63,15 +53,13 @@ export default function IntroOverlay(): React.ReactElement | null {
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
-      clearTimeout(t4);
       clearTimeout(failsafe);
     };
-  }, []); // Empty dependency array - run once on mount
+  }, []);
 
   if (phase === "done") return null;
 
-  const showMark = phase !== "initial";
-  const expanded = phase === "expand" || phase === "exit";
+  const showText = phase !== "initial";
   const exiting = phase === "exit";
 
   return (
@@ -79,31 +67,8 @@ export default function IntroOverlay(): React.ReactElement | null {
       className={`${styles.overlay} ${exiting ? styles.exiting : ""}`}
       aria-hidden="true"
     >
-      <div className={`${styles.wordmark} ${showMark ? styles.visible : ""}`}>
-        <span
-          className={`${styles.colon} ${expanded ? styles.punctuationVisible : ""}`}
-        >
-          :
-        </span>
-        <span className={styles.letter}>V</span>
-        <span
-          className={`${styles.expandGroup} ${expanded ? styles.expanded : ""}`}
-        >
-          {EXPAND_LETTERS.map((char, i) => (
-            <span
-              key={`letter-${char}-${i}`}
-              className={styles.expandLetter}
-              style={{ transitionDelay: expanded ? `${i * 60}ms` : "0ms" }}
-            >
-              {char}
-            </span>
-          ))}
-        </span>
-        <span
-          className={`${styles.period} ${expanded ? styles.punctuationVisible : ""}`}
-        >
-          .
-        </span>
+      <div className={`${styles.wordmark} ${showText ? styles.visible : ""}`}>
+        Upper East Side Therapy
       </div>
     </div>
   );

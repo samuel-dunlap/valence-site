@@ -24,30 +24,3 @@
   margin-bottom: var(--space);
   max-width: var(--text-max-width);
 }
-
-.intro {
-  margin-bottom: var(--space);
-  max-width: var(--text-max-width);
-}
-
-.headerDivider {
-  border: none;
-  border-top: var(--border) solid var(--color-text);
-  margin: 0;
-  max-width: var(--content-medium);
-}
-
-.accentWrap {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--space) var(--content-padding) 0;
-}
-
-.accentImage {
-  display: block;
-  border-radius: var(--radius);
-  width: 100%;
-  height: auto;
-  max-width: var(--content-medium);
-  margin: 0 auto;
-}

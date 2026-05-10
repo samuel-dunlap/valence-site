@@ -44,8 +44,8 @@ describe("ComparisonColumns", () => {
     expect(lists[1].children).toHaveLength(0);
   });
 
-  it("renders within navySection", () => {
+  it("wraps in section element when not bare", () => {
     const { container } = render(<ComparisonColumns {...mockProps} />);
-    expect(container.querySelector(".navySection")).toBeInTheDocument();
+    expect(container.querySelector("section")).toBeInTheDocument();
   });
 });

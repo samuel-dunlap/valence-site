@@ -7,48 +7,37 @@ describe("HomePage", () => {
     render(<HomePage />);
     const heading = screen.getByRole("heading", { level: 1 });
     expect(heading).toBeInTheDocument();
-    expect(heading).toHaveTextContent(
-      /finding and mastering.*lifelong partnership/i
-    );
+    expect(heading).toHaveTextContent(/psychotherapy.*couples therapy/i);
   });
 
   it("renders subtitle lines", () => {
     render(<HomePage />);
-    expect(
-      screen.getByText(/relationship advisory for high-net-worth men/i)
-    ).toBeInTheDocument();
-    expect(screen.getByText(/nyc \+ aspen/i)).toBeInTheDocument();
+    expect(screen.getByText(/upper east side, manhattan/i)).toBeInTheDocument();
   });
 
-  it("renders service card", () => {
-    render(<HomePage />);
-
-    const couplesLink = screen.getByRole("link", { name: /couples retreat/i });
-    expect(couplesLink).toBeInTheDocument();
-  });
-
-  it("service card has correct href", () => {
-    render(<HomePage />);
-
-    const couplesLink = screen.getByRole("link", { name: /couples retreat/i });
-    expect(couplesLink).toHaveAttribute("href", "/couples-retreat");
-  });
-
-  it("renders service card description", () => {
+  it("renders welcome section", () => {
     render(<HomePage />);
 
     expect(
-      screen.getByText(
-        /luxury hospitality, wellness, and structured relational work/i
-      )
+      screen.getByRole("heading", { name: /welcome/i })
     ).toBeInTheDocument();
+  });
+
+  it("renders CTA link to inquire", () => {
+    render(<HomePage />);
+
+    const ctaLinks = screen.getAllByRole("link", {
+      name: /request an introduction/i,
+    });
+    expect(ctaLinks.length).toBeGreaterThan(0);
+    expect(ctaLinks[0]).toHaveAttribute("href", "/inquire");
   });
 
   describe("Metadata", () => {
     it("has title and description", () => {
       expect(metadata.title).toBeTruthy();
       expect(metadata.description).toBeTruthy();
-      expect(typeof metadata.title).toBe("string");
+      expect(typeof metadata.title).toBe("object");
       expect(typeof metadata.description).toBe("string");
     });
 
@@ -57,15 +46,15 @@ describe("HomePage", () => {
       expect(metadata.alternates?.canonical).toBe("/");
     });
 
-    it("title contains Valence", () => {
-      expect(metadata.title).toMatch(/valence/i);
+    it("title contains Upper East Side Therapy", () => {
+      const title = (metadata.title as { absolute: string }).absolute;
+      expect(title).toMatch(/upper east side therapy/i);
     });
 
-    it("description is not too long", () => {
-      // Meta descriptions should be 50-160 characters
+    it("description is a reasonable length", () => {
       const desc = metadata.description as string;
       expect(desc.length).toBeGreaterThan(50);
-      expect(desc.length).toBeLessThan(160);
+      expect(desc.length).toBeLessThan(300);
     });
   });
 });

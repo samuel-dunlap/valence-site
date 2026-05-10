@@ -3,25 +3,25 @@ import { describe, it, expect } from "vitest";
 import Accordion from "./Accordion";
 
 describe("Accordion", () => {
-  const mockSections = [
-    { title: "Section 1", content: "Content 1", defaultOpen: true },
-    { title: "Section 2", content: "Content 2" },
+  const mockItems = [
+    { title: "Section 1", children: <p>Content 1</p> },
+    { title: "Section 2", children: <p>Content 2</p> },
   ];
 
   it("renders all section titles", () => {
-    render(<Accordion sections={mockSections} />);
+    render(<Accordion items={mockItems} />);
     expect(screen.getByText("Section 1")).toBeInTheDocument();
     expect(screen.getByText("Section 2")).toBeInTheDocument();
   });
 
-  it("opens default sections on mount", () => {
-    render(<Accordion sections={mockSections} />);
+  it("all sections closed by default", () => {
+    render(<Accordion items={mockItems} />);
     const button1 = screen.getByText("Section 1").closest("button");
-    expect(button1).toHaveAttribute("aria-expanded", "true");
+    expect(button1).toHaveAttribute("aria-expanded", "false");
   });
 
   it("toggles section when clicked", () => {
-    render(<Accordion sections={mockSections} />);
+    render(<Accordion items={mockItems} />);
     const button2 = screen.getByText("Section 2").closest("button");
 
     expect(button2).toHaveAttribute("aria-expanded", "false");
@@ -31,10 +31,9 @@ describe("Accordion", () => {
     expect(button2).toHaveAttribute("aria-expanded", "false");
   });
 
-  it("uses section title as key (no React key warnings)", () => {
-    // This test verifies the refactoring works correctly
-    const { container } = render(<Accordion sections={mockSections} />);
-    const sections = container.querySelectorAll('[class*="section"]');
-    expect(sections.length).toBe(2);
+  it("renders correct number of items", () => {
+    const { container } = render(<Accordion items={mockItems} />);
+    const items = container.querySelectorAll('[class*="item"]');
+    expect(items.length).toBe(2);
   });
 });

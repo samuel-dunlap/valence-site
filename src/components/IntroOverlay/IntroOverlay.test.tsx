@@ -8,14 +8,12 @@ describe("IntroOverlay", () => {
   beforeEach(() => {
     sessionStorage.clear();
     vi.useFakeTimers();
-    // Save original matchMedia before each test
     originalMatchMedia = window.matchMedia;
   });
 
   afterEach(() => {
     vi.restoreAllMocks();
     vi.useRealTimers();
-    // Restore matchMedia after each test
     Object.defineProperty(window, "matchMedia", {
       writable: true,
       value: originalMatchMedia,
@@ -24,19 +22,24 @@ describe("IntroOverlay", () => {
 
   it("shows animation on first visit", () => {
     const { container } = render(<IntroOverlay />);
+    act(() => {
+      vi.advanceTimersByTime(1);
+    });
     const overlay = container.querySelector('[class*="overlay"]');
     expect(overlay).toBeInTheDocument();
   });
 
   it("skips animation if already seen", () => {
-    sessionStorage.setItem("valence-intro-seen", "1");
+    sessionStorage.setItem("uest-intro-seen", "1");
     const { container } = render(<IntroOverlay />);
-    expect(container.querySelector('[class*="overlay"]')).not.toBeInTheDocument();
+    expect(
+      container.querySelector('[class*="overlay"]')
+    ).not.toBeInTheDocument();
   });
 
   it("sets sessionStorage flag immediately on animation start", () => {
     render(<IntroOverlay />);
-    expect(sessionStorage.getItem("valence-intro-seen")).toBe("1");
+    expect(sessionStorage.getItem("uest-intro-seen")).toBe("1");
   });
 
   it("skips animation if prefers-reduced-motion", () => {
@@ -56,8 +59,10 @@ describe("IntroOverlay", () => {
 
     sessionStorage.clear();
     const { container } = render(<IntroOverlay />);
-    expect(container.querySelector('[class*="overlay"]')).not.toBeInTheDocument();
-    expect(sessionStorage.getItem("valence-intro-seen")).toBe("1");
+    expect(
+      container.querySelector('[class*="overlay"]')
+    ).not.toBeInTheDocument();
+    expect(sessionStorage.getItem("uest-intro-seen")).toBe("1");
   });
 
   it("handles sessionStorage errors gracefully", () => {
@@ -76,24 +81,28 @@ describe("IntroOverlay", () => {
   it("completes animation sequence and removes overlay", async () => {
     const { container } = render(<IntroOverlay />);
 
+    await act(async () => {
+      vi.advanceTimersByTime(1);
+    });
     expect(container.querySelector('[class*="overlay"]')).toBeInTheDocument();
 
-    // Fast-forward through the animation phases
     await act(async () => {
       vi.advanceTimersByTime(1575);
     });
-
-    // After all timers complete, overlay should be removed
-    expect(container.querySelector('[class*="overlay"]')).not.toBeInTheDocument();
+    expect(
+      container.querySelector('[class*="overlay"]')
+    ).not.toBeInTheDocument();
   });
 
   it("renders wordmark with correct letters", () => {
     const { container } = render(<IntroOverlay />);
+    act(() => {
+      vi.advanceTimersByTime(1);
+    });
     const wordmark = container.querySelector('[class*="wordmark"]');
     expect(wordmark).toBeInTheDocument();
 
-    // Should contain V and expanded letters A L E N C E
-    expect(wordmark?.textContent).toContain("V");
-    expect(wordmark?.textContent).toContain("ALENCE");
+    expect(wordmark?.textContent).toContain("U");
+    expect(wordmark?.textContent).toContain("EST");
   });
 });

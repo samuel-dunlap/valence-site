@@ -1,8 +1,8 @@
-# Valence Site -- Claude Code Instructions
+# Upper East Side Therapy Site — Claude Code Instructions
 
 ## Project
 
-Next.js 16 static site for Valence (private relationship advisory). Deployed to Cloudflare Pages via `output: "export"`.
+Next.js 16 static site for Upper East Side Therapy (uppereastsidetherapy.com). Deployed to Cloudflare Pages via `output: "export"`.
 
 ## Design System
 
@@ -62,6 +62,26 @@ Next.js 16 static site for Valence (private relationship advisory). Deployed to 
 ### Responsive
 
 - Single breakpoint: `@media (max-width: 767px)`
+
+## Pages
+
+- `/` — Home (hero, services overview, testimonials, contact)
+- `/our-approach` — Philosophy, method, five dimensions
+- `/faq` — Rates, insurance, logistics (Accordion)
+- `/inquire` — Contact form
+- `/psychotherapy-for-adults` — Service page
+- `/psychotherapy-for-young-adults` — Service page
+- `/psychotherapy-for-adolescents` — Service page
+- `/psychotherapy-for-children` — Service page
+- `/couples-therapy` — Service page
+- `/family-counseling` — Service page
+- `/therapy-for-anxiety` — Service page
+- `/therapy-for-ptsd` — Service page
+- `/therapy-for-college-students` — Service page
+- `/therapy-for-creatives` — Service page (Creatives & HSPs)
+- `/wellness-coaching` — Service page
+- `/career-coaching` — Service page
+- `/depth-performance-training` — Service page (do not modify)
 
 ## New Section Checklist
 

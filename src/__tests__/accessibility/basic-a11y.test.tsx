@@ -8,40 +8,40 @@
  * Then uncomment the axe tests in this file.
  */
 
-import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { render, screen } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
 // import { axe, toHaveNoViolations } from 'jest-axe';
-import Navbar from '@/components/Navbar/Navbar';
-import Hero from '@/components/Hero/Hero';
-import Footer from '@/components/Footer/Footer';
+import Navbar from "@/components/Navbar/Navbar";
+import Hero from "@/components/Hero/Hero";
+import Footer from "@/components/Footer/Footer";
 
 // expect.extend(toHaveNoViolations);
 
-describe('Basic Accessibility', () => {
-  describe('Navbar', () => {
-    it('has navigation landmark', () => {
+describe("Basic Accessibility", () => {
+  describe("Navbar", () => {
+    it("has navigation landmark", () => {
       render(<Navbar />);
-      const nav = screen.getByRole('navigation');
+      const nav = screen.getByRole("navigation");
       expect(nav).toBeInTheDocument();
     });
 
-    it('hamburger menu has accessible label', () => {
+    it("hamburger menu has accessible label", () => {
       render(<Navbar />);
-      const button = screen.getByRole('button', { name: /open menu/i });
+      const button = screen.getByRole("button", { name: /open menu/i });
       expect(button).toBeInTheDocument();
     });
 
-    it('mobile menu has aria-expanded attribute', () => {
+    it("mobile menu has aria-expanded attribute", () => {
       render(<Navbar />);
-      const button = screen.getByRole('button', { name: /open menu/i });
-      expect(button).toHaveAttribute('aria-expanded');
+      const button = screen.getByRole("button", { name: /open menu/i });
+      expect(button).toHaveAttribute("aria-expanded");
     });
 
-    it('all navigation links are accessible', () => {
+    it("all navigation links are accessible", () => {
       render(<Navbar />);
-      const links = screen.getAllByRole('link');
+      const links = screen.getAllByRole("link");
 
-      links.forEach(link => {
+      links.forEach((link) => {
         // Each link should have accessible text
         expect(link.textContent).toBeTruthy();
       });
@@ -55,47 +55,47 @@ describe('Basic Accessibility', () => {
     // });
   });
 
-  describe('Hero', () => {
-    it('renders heading with proper hierarchy', () => {
+  describe("Hero", () => {
+    it("renders heading with proper hierarchy", () => {
       render(
         <Hero
           headline="Test Headline"
-          subtitleLines={['Subtitle 1', 'Subtitle 2']}
+          subtitleLines={["Subtitle 1", "Subtitle 2"]}
         />
       );
 
-      const heading = screen.getByRole('heading', { level: 1 });
+      const heading = screen.getByRole("heading", { level: 1 });
       expect(heading).toBeInTheDocument();
-      expect(heading).toHaveTextContent('Test Headline');
+      expect(heading).toHaveTextContent("Test Headline");
     });
 
-    it('image has alt text when provided', () => {
+    it("image has alt text when provided", () => {
       render(
         <Hero
           headline="Test"
-          subtitleLines={['Test']}
+          subtitleLines={["Test"]}
           imageSrc="/test.jpg"
           imageAlt="Test image"
         />
       );
 
-      const img = screen.getByRole('img');
-      expect(img).toHaveAttribute('alt', 'Test image');
+      const img = screen.getByRole("img");
+      expect(img).toHaveAttribute("alt", "Test image");
     });
 
-    it('CTA link is accessible when provided', () => {
+    it("CTA link is accessible when provided", () => {
       render(
         <Hero
           headline="Test"
-          subtitleLines={['Test']}
+          subtitleLines={["Test"]}
           ctaText="Click me"
           ctaHref="/test"
         />
       );
 
-      const link = screen.getByRole('link', { name: /click me/i });
+      const link = screen.getByRole("link", { name: /click me/i });
       expect(link).toBeInTheDocument();
-      expect(link).toHaveAttribute('href', '/test');
+      expect(link).toHaveAttribute("href", "/test");
     });
 
     // Uncomment when jest-axe is installed:
@@ -108,27 +108,29 @@ describe('Basic Accessibility', () => {
     // });
   });
 
-  describe('Footer', () => {
-    it('has contentinfo landmark', () => {
+  describe("Footer", () => {
+    it("has contentinfo landmark", () => {
       render(<Footer />);
-      const footer = screen.getByRole('contentinfo');
+      const footer = screen.getByRole("contentinfo");
       expect(footer).toBeInTheDocument();
     });
 
-    it('phone link uses tel: protocol', () => {
+    it("phone link uses tel: protocol", () => {
       render(<Footer />);
-      const phoneLink = screen.getByRole('link', { name: /\d{3}.*\d{3}.*\d{4}/ });
-      expect(phoneLink).toHaveAttribute('href');
-      expect(phoneLink.getAttribute('href')).toMatch(/^tel:/);
+      const phoneLink = screen.getByRole("link", {
+        name: /\d{3}.*\d{3}.*\d{4}/,
+      });
+      expect(phoneLink).toHaveAttribute("href");
+      expect(phoneLink.getAttribute("href")).toMatch(/^tel:/);
     });
 
-    it('all footer links are accessible', () => {
+    it("all footer links are accessible", () => {
       render(<Footer />);
-      const links = screen.getAllByRole('link');
+      const links = screen.getAllByRole("link");
 
-      links.forEach(link => {
+      links.forEach((link) => {
         expect(link.textContent).toBeTruthy();
-        expect(link).toHaveAttribute('href');
+        expect(link).toHaveAttribute("href");
       });
     });
 
@@ -140,24 +142,26 @@ describe('Basic Accessibility', () => {
     // });
   });
 
-  describe('Interactive Elements', () => {
-    it('buttons have accessible names', () => {
+  describe("Interactive Elements", () => {
+    it("buttons have accessible names", () => {
       render(<Navbar />);
-      const button = screen.getByRole('button');
+      const buttons = screen.getAllByRole("button");
 
-      // Button should have accessible text via aria-label or text content
-      const accessibleName = button.getAttribute('aria-label') || button.textContent;
-      expect(accessibleName).toBeTruthy();
+      buttons.forEach((button) => {
+        const accessibleName =
+          button.getAttribute("aria-label") || button.textContent;
+        expect(accessibleName).toBeTruthy();
+      });
     });
   });
 
-  describe('Semantic HTML', () => {
-    it('uses proper heading hierarchy in navbar', () => {
+  describe("Semantic HTML", () => {
+    it("uses proper heading hierarchy in navbar", () => {
       render(<Navbar />);
 
       // Navbar should not have h1 (that's for page content)
-      const headings = screen.queryAllByRole('heading');
-      const h1s = headings.filter(h => h.tagName === 'H1');
+      const headings = screen.queryAllByRole("heading");
+      const h1s = headings.filter((h) => h.tagName === "H1");
 
       expect(h1s.length).toBe(0);
     });

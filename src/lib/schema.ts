@@ -1,29 +1,7 @@
 import { SITE } from "./constants";
 
-export interface SchemaOrganization {
-  "@context": "https://schema.org";
-  "@type": "ProfessionalService";
-  name: string;
-  description: string;
-  url: string;
-  telephone: string;
-  email: string;
-  address: {
-    "@type": "PostalAddress";
-    streetAddress: string;
-    addressLocality: string;
-    addressRegion: string;
-    postalCode: string;
-    addressCountry: string;
-  };
-  founder: {
-    "@type": "Person";
-    name: string;
-    jobTitle: string;
-  };
-  areaServed: string[];
-  priceRange: string;
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type SchemaOrganization = Record<string, any>;
 
 export interface SchemaService {
   "@context": "https://schema.org";
@@ -31,7 +9,7 @@ export interface SchemaService {
   name: string;
   description: string;
   provider: {
-    "@type": "ProfessionalService";
+    "@type": "MedicalBusiness";
     name: string;
     url: string;
   };
@@ -39,19 +17,15 @@ export interface SchemaService {
   url: string;
 }
 
-/**
- * Generates Schema.org structured data for the organization
- * @returns Organization schema object
- */
 export function getOrganizationSchema(): SchemaOrganization {
   return {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": ["MedicalBusiness", "LocalBusiness"],
     name: SITE.name,
-    description: "Private Relationship Advisory for High-Net-Worth Men",
+    description:
+      "Psychotherapy and couples therapy on the Upper East Side of Manhattan.",
     url: SITE.url,
     telephone: SITE.phone,
-    email: SITE.email,
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE.address.street,
@@ -60,23 +34,63 @@ export function getOrganizationSchema(): SchemaOrganization {
       postalCode: SITE.address.zip,
       addressCountry: "US",
     },
-    founder: {
-      "@type": "Person",
-      name: "Samuel Dunlap",
-      jobTitle: "Relationship Advisor & Researcher",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 40.7644,
+      longitude: -73.9718,
     },
-    areaServed: ["New York City", "Aspen"],
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "20:00",
+      },
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Therapy Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Individual Psychotherapy" },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Couples Therapy" },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Family Therapy" },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Adolescent Therapy" },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Child Therapy" },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Depth Performance Training",
+          },
+        },
+      ],
+    },
+    areaServed: [
+      { "@type": "City", name: "New York" },
+      { "@type": "Neighborhood", name: "Upper East Side" },
+    ],
     priceRange: "$$$",
+    medicalSpecialty: "Psychiatric",
+    currenciesAccepted: "USD",
+    paymentAccepted: "Credit Card, Debit Card",
   };
 }
 
-/**
- * Generates Schema.org structured data for a service offering
- * @param name - Service name
- * @param description - Service description
- * @param path - Service page path (e.g., "/couples-retreat/")
- * @returns Service schema object
- */
 export function getServiceSchema(
   name: string,
   description: string,
@@ -88,11 +102,11 @@ export function getServiceSchema(
     name,
     description,
     provider: {
-      "@type": "ProfessionalService",
+      "@type": "MedicalBusiness",
       name: SITE.name,
       url: SITE.url,
     },
-    areaServed: ["New York City", "Aspen"],
+    areaServed: ["Upper East Side", "New York City"],
     url: `${SITE.url}${path}`,
   };
 }
